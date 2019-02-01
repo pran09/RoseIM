@@ -27,6 +27,7 @@
 				echo "</select>";
 
 				$stmt->close();
+
 				$stmt = $conn->prepare("SELECT League.name FROM League, Sport WHERE Sport.name = League.sport AND Sport.name = '" . $sport . "'") or die($conn->error);
 				$stmt->execute();
 				$result = $stmt->get_result();
@@ -39,7 +40,7 @@
 				}
 				echo "</select";
 				$stmt->close();
-				mysql_close($conn);
+				mysqli_close($conn);
 			?>
 			<label>Team Name:</label>
 			<input type="text" name="teamName">
