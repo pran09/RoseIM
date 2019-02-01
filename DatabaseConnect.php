@@ -21,25 +21,25 @@ if($getPasswordConfirmation != null){
   }
   else{
 echo "error 2";
-    $firstName = $_POST["firstName"];
-    $lastName = $_POST["lastName"];
-    $sex = $_POST["sex"];
-    $password = password_hash($getPassword, PASSWORD_DEFAULT);
-    $unExistingEmail = true;
+    // $firstName = $_POST["firstName"];
+    // $lastName = $_POST["lastName"];
+    // $sex = $_POST["sex"];
+    // $password = password_hash($getPassword, PASSWORD_DEFAULT);
+    // $unExistingEmail = true;
 
-    $s = $conn->prepare("SELECT email FROM Person") or die($conn->error);
-    $s->execute();
-      $re = $s->get_result();
-      while ($row = $re->fetch_array(MYSQLI_NUM))
-      {
-          foreach ($row as $r)
-          {
-            if($r == $emailAddress){
-              $unExistingEmail = false;
-              echo "Email address already exists.";
-            }
-          }
-        }
+    // $s = $conn->prepare("SELECT email FROM Person") or die($conn->error);
+    // $s->execute();
+    //   $re = $s->get_result();
+    //   while ($row = $re->fetch_array(MYSQLI_NUM))
+    //   {
+    //       foreach ($row as $r)
+    //       {
+    //         if($r == $emailAddress){
+    //           $unExistingEmail = false;
+    //           echo "Email address already exists.";
+    //         }
+    //       }
+    //     }
 
 echo "error 3";
   if($unExistingEmail){
