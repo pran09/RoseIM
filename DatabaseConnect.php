@@ -10,7 +10,7 @@
  $getPasswordConfirmation = $_POST["passwordConfirmation"];
 
  #header("Location: index.html");
-  $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+         $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
 #Register Query
 if($getPasswordConfirmation != null){
@@ -25,19 +25,41 @@ if($getPasswordConfirmation != null){
     $lastName = $_POST["lastName"];
     $sex = $_POST["sex"];
     $password = password_hash($getPassword, PASSWORD_DEFAULT);
+    $unExistingEmail = true;
+
+    $s = $conn->prepare("SELECT email FROM Person") or die($conn->error);
+    $s->execute();
+      $re = $s->get_result();
+      while ($row = $re->fetch_array(MYSQLI_NUM))
+      {
+          foreach ($row as $r)
+          {
+            if($r == $emailAddress){
+              $unExistingEmail = false;
+            }
+          }
+        }
 
 
-  $stmt = $conn->prepare("SELECT Create_Player(?, ?, ?, ?, ?) as return_value") or die($conn->error);
+  if($unExistingEmail){
+        $stmt = $conn->prepare("SELECT Create_Player(?, ?, ?, ?, ?) as return_value") or die($conn->error);
   $stmt->bind_param("sssss", $firstName, $lastName, $emailAddress, $password, $sex);
-  $stmt->execute() or die($stmt->error); 
-  $stmt->bind_result($r);   
-  $stmt->fetch();
 
+     $stmt->execute();
+     $result = $stmt->get_result();
+     while ($row = $result->fetch_array())
+     {
+     	foreach ($row as $r)
+        {
         if($r == 0){
          //echo "success";
          header("Location: TeamSelect.php");
         }
-        else if ($r == 1){
+        else{
+          echo "Make sure all fields are filled out."
+        }
+        /*
+        if ($r == 1){
           echo "Enter a non null first name.";
          }
          else if ($r == 2){
@@ -64,12 +86,16 @@ if($getPasswordConfirmation != null){
          else if ($r == 9){
            echo "Sex is not male or female.";
         }
-    
+        */
+          			}
 
-      $stmt->close();
-      mysqli_close($conn);
-  }
- 
+      			}		
+            $stmt->close();
+    }
+  			      
+mysqli_close($conn);
+
+}
 }
 #Login Query
 else{
