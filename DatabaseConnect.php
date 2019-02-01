@@ -4,7 +4,7 @@
 <body>
 
 <?php
-echo "error 1";
+
  $emailAddress = $_POST["emailAddress"];
  $getPassword = $_POST["password"];
  $getPasswordConfirmation = $_POST["passwordConfirmation"];
@@ -20,32 +20,16 @@ if($getPasswordConfirmation != null){
     echo "Passwords do not match.";
   }
   else{
-echo "error 2";
-    // $firstName = $_POST["firstName"];
-    // $lastName = $_POST["lastName"];
-    // $sex = $_POST["sex"];
-    // $password = password_hash($getPassword, PASSWORD_DEFAULT);
-    // $unExistingEmail = true;
 
-    // $s = $conn->prepare("SELECT email FROM Person") or die($conn->error);
-    // $s->execute();
-    //   $re = $s->get_result();
-    //   while ($row = $re->fetch_array(MYSQLI_NUM))
-    //   {
-    //       foreach ($row as $r)
-    //       {
-    //         if($r == $emailAddress){
-    //           $unExistingEmail = false;
-    //           echo "Email address already exists.";
-    //         }
-    //       }
-    //     }
+    $firstName = $_POST["firstName"];
+    $lastName = $_POST["lastName"];
+    $sex = $_POST["sex"];
+    $password = password_hash($getPassword, PASSWORD_DEFAULT);
 
-echo "error 3";
-// if($unExistingEmail){
-        $stmt = $conn->prepare("SELECT Create_Player(?, ?, ?, ?, ?)") or die($conn->error);
-        $stmt->bind_param("sssss", $firstName, $lastName, $emailAddress, $password, $sex);
-echo "error 4";
+
+  $stmt = $conn->prepare("SELECT Create_Player(?, ?, ?, ?, ?) as return_value") or die($conn->error);
+  $stmt->bind_param("sssss", $firstName, $lastName, $emailAddress, $password, $sex);
+
      $stmt->execute();
      $result = $stmt->get_result();
      while ($row = $result->fetch_array())
@@ -56,11 +40,7 @@ echo "error 4";
          //echo "success";
          header("Location: TeamSelect.php");
         }
-        else{
-          echo "Make sure all fields are filled out."
-        }
-        /*
-        if ($r == 1){
+        else if ($r == 1){
           echo "Enter a non null first name.";
          }
          else if ($r == 2){
@@ -87,13 +67,14 @@ echo "error 4";
          else if ($r == 9){
            echo "Sex is not male or female.";
         }
-        */
           			}
 
       			}		
-            $stmt->close();
-    //}
-  			      
+
+  			$stmt->close();
+
+
+      
 mysqli_close($conn);
 
 }
@@ -142,7 +123,7 @@ $s->execute();
       }
 	  }
 	  
-	  if ($NotInDatabase){
+	  If ($NotInDatabase){
 	  	echo "This email address is not registered.";
 	  }
 
