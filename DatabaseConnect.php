@@ -4,7 +4,7 @@
 <body>
 
 <?php
-
+echo "error 1";
  $emailAddress = $_POST["emailAddress"];
  $getPassword = $_POST["password"];
  $getPasswordConfirmation = $_POST["passwordConfirmation"];
@@ -20,7 +20,7 @@ if($getPasswordConfirmation != null){
     echo "Passwords do not match.";
   }
   else{
-
+echo "error 2";
     $firstName = $_POST["firstName"];
     $lastName = $_POST["lastName"];
     $sex = $_POST["sex"];
@@ -41,11 +41,11 @@ if($getPasswordConfirmation != null){
           }
         }
 
-
+echo "error 3";
   if($unExistingEmail){
         $stmt = $conn->prepare("SELECT Create_Player(?, ?, ?, ?, ?)") or die($conn->error);
         $stmt->bind_param("sssss", $firstName, $lastName, $emailAddress, $password, $sex);
-
+echo "error 4";
      $stmt->execute();
      $result = $stmt->get_result();
      while ($row = $result->fetch_array())
