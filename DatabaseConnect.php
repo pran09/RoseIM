@@ -43,8 +43,8 @@ if($getPasswordConfirmation != null){
 
 
   if($unExistingEmail){
-        $stmt = $conn->prepare("SELECT Create_Player(?, ?, ?, ?, ?) as return_value") or die($conn->error);
-  $stmt->bind_param("sssss", $firstName, $lastName, $emailAddress, $password, $sex);
+        $stmt = $conn->prepare("SELECT Create_Player(?, ?, ?, ?, ?)") or die($conn->error);
+        $stmt->bind_param("sssss", $firstName, $lastName, $emailAddress, $password, $sex);
 
      $stmt->execute();
      $result = $stmt->get_result();
@@ -142,7 +142,7 @@ $s->execute();
       }
 	  }
 	  
-	  If ($NotInDatabase){
+	  if ($NotInDatabase){
 	  	echo "This email address is not registered.";
 	  }
 
