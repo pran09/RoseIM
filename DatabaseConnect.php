@@ -36,6 +36,7 @@ if($getPasswordConfirmation != null){
           {
             if($r == $emailAddress){
               $unExistingEmail = false;
+              echo "Email address already exists.";
             }
           }
         }
