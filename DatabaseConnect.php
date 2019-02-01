@@ -10,7 +10,7 @@
  $getPasswordConfirmation = $_POST["passwordConfirmation"];
 
  #header("Location: index.html");
-         $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+  $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
 #Register Query
 if($getPasswordConfirmation != null){
@@ -29,13 +29,10 @@ if($getPasswordConfirmation != null){
 
   $stmt = $conn->prepare("SELECT Create_Player(?, ?, ?, ?, ?) as return_value") or die($conn->error);
   $stmt->bind_param("sssss", $firstName, $lastName, $emailAddress, $password, $sex);
+  $stmt->execute() or die($stmt->error); 
+  $stmt->bind_result($r);   
+  $stmt->fetch();
 
-     $stmt->execute();
-     $result = $stmt->get_result();
-     while ($row = $result->fetch_array())
-     {
-     	foreach ($row as $r)
-        {
         if($r == 0){
          //echo "success";
          header("Location: TeamSelect.php");
@@ -67,17 +64,12 @@ if($getPasswordConfirmation != null){
          else if ($r == 9){
            echo "Sex is not male or female.";
         }
-          			}
+    
 
-      			}		
-
-  			$stmt->close();
-
-
-      
-mysqli_close($conn);
-
-}
+      $stmt->close();
+      mysqli_close($conn);
+  }
+ 
 }
 #Login Query
 else{
