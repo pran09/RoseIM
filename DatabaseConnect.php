@@ -42,7 +42,7 @@ echo "error 2";
     //     }
 
 echo "error 3";
-  if($unExistingEmail){
+// if($unExistingEmail){
         $stmt = $conn->prepare("SELECT Create_Player(?, ?, ?, ?, ?)") or die($conn->error);
         $stmt->bind_param("sssss", $firstName, $lastName, $emailAddress, $password, $sex);
 echo "error 4";
@@ -92,7 +92,7 @@ echo "error 4";
 
       			}		
             $stmt->close();
-    }
+    //}
   			      
 mysqli_close($conn);
 
