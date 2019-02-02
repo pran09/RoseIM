@@ -22,6 +22,22 @@ if($getPasswordConfirmation != null){
   }
   else{
 
+    $s = $conn->prepare("SELECT email FROM Person") or die($conn->error);
+    $s->execute();
+      $re = $s->get_result();
+      while ($row = $re->fetch_array(MYSQLI_NUM))
+      {
+          foreach ($row as $r)
+          {
+            if($r == $emailAddress){
+              $notExistingEmail = false;
+              echo "Email address already exists.";
+            }
+          }
+        }
+
+
+
     $firstName = $_POST["firstName"];
     $lastName = $_POST["lastName"];
     $sex = $_POST["sex"];
@@ -44,9 +60,7 @@ if($getPasswordConfirmation != null){
          //echo "success";
          header("Location: TeamSelect.php");
         }
-        else {
-          echo "Make sure all fields are filled out.";
-        }
+            
 
        /* if ($r == 1){
           echo "Enter a non null first name.";
@@ -78,7 +92,7 @@ if($getPasswordConfirmation != null){
           			}
 
       			}		
-
+        echo "Make sure all fields are filled out.";
   			$stmt->close();
   }
 
@@ -97,8 +111,8 @@ $NotInDatabase = true;
   }
   else{
 
- $s = $conn->prepare("SELECT email FROM Person") or die($conn->error);
-$s->execute();
+    $s = $conn->prepare("SELECT email FROM Person") or die($conn->error);
+    $s->execute();
       $re = $s->get_result();
       while ($row = $re->fetch_array(MYSQLI_NUM))
       {
