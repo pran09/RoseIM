@@ -31,7 +31,7 @@ if($getPasswordConfirmation != null){
           {
             if($r == $emailAddress){
               $notExistingEmail = false;
-              echo "Email address already exists.";
+              echo "Email address already exists. ";
             }
           }
         }
@@ -46,8 +46,7 @@ if($getPasswordConfirmation != null){
     if($firstName == null OR $lastName == null OR $sex == Unselected){
       echo "Please make sure all fields are filled out.";
     }
-
-
+    else{
 
 
   if($notExistingEmail){
@@ -70,6 +69,7 @@ if($getPasswordConfirmation != null){
         echo "Make sure all fields are filled out.";
   			$stmt->close();
   }
+}
 
       
 mysqli_close($conn);
