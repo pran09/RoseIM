@@ -8,6 +8,7 @@
  $emailAddress = $_POST["emailAddress"];
  $getPassword = $_POST["password"];
  $getPasswordConfirmation = $_POST["passwordConfirmation"];
+ $notExistingEmail = true;
 
  #header("Location: index.html");
          $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
@@ -27,6 +28,9 @@ if($getPasswordConfirmation != null){
     $password = password_hash($getPassword, PASSWORD_DEFAULT);
 
 
+
+
+  if($notExistingEmail){
   $stmt = $conn->prepare("SELECT Create_Player(?, ?, ?, ?, ?) as return_value") or die($conn->error);
   $stmt->bind_param("sssss", $firstName, $lastName, $emailAddress, $password, $sex);
 
@@ -73,7 +77,7 @@ if($getPasswordConfirmation != null){
       			}		
 
   			$stmt->close();
-
+  }
 
       
 mysqli_close($conn);
