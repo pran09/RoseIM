@@ -44,6 +44,9 @@ if($getPasswordConfirmation != null){
          //echo "success";
          header("Location: TeamSelect.php");
         }
+        else {
+          echo "Make sure all fields are filled out.";
+        }
 
        /* if ($r == 1){
           echo "Enter a non null first name.";
