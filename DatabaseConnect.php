@@ -40,7 +40,8 @@ if($getPasswordConfirmation != null){
          //echo "success";
          header("Location: TeamSelect.php");
         }
-        else if ($r == 1){
+
+       /* if ($r == 1){
           echo "Enter a non null first name.";
          }
          else if ($r == 2){
@@ -66,7 +67,7 @@ if($getPasswordConfirmation != null){
          }
          else if ($r == 9){
            echo "Sex is not male or female.";
-        }
+        }*/
           			}
 
       			}		
