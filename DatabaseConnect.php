@@ -43,6 +43,10 @@ if($getPasswordConfirmation != null){
     $sex = $_POST["sex"];
     $password = password_hash($getPassword, PASSWORD_DEFAULT);
 
+    if($firstName == null OR $lastName == null OR $sex == Unselected){
+      echo "Please make sure all fields are filled out.";
+    }
+
 
 
 
@@ -60,36 +64,7 @@ if($getPasswordConfirmation != null){
          //echo "success";
          header("Location: TeamSelect.php");
         }
-            
-
-       /* if ($r == 1){
-          echo "Enter a non null first name.";
-         }
-         else if ($r == 2){
-           echo "Enter a non null last name.";
-         }
-        else if ($r == 3){
-          echo "Enter a non null email address.";
-         }
-         else if ($r == 4){
-           echo "Enter a non null password.";
-        }
-         else if ($r == 5){
-           echo "Enter a non null sex.";
-         }
-         else if ($r == 6){
-           echo "Not a @rose-hulman.edu email address.";
-         }
-         else if ($r == 7){
-           echo "Your email address already exists.";
-         }
-         else if ($r == 8){
-           echo "Your password cannot be null.";
-         }
-         else if ($r == 9){
-           echo "Sex is not male or female.";
-        }*/
-          			}
+      			}
 
       			}		
         echo "Make sure all fields are filled out.";
