@@ -59,7 +59,7 @@
 				mysqli_close($conn);
 			?>
 			<label>Team Name:</label>
-			<input type="text" name="teamName">
+			<input type="text" name="teamName" required>
 		</fieldset>
 		<input type="submit" name="submit" value="Create Team"/>
 	</form>
