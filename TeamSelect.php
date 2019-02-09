@@ -17,7 +17,6 @@ session_start();
 
 
 <?php
- echo $_SESSION["emailAddress"];
 	$sport = $_POST["Sport"];
 	$league = $_POST["League"];
 	$name = $_POST["teamName"];
@@ -28,7 +27,8 @@ session_start();
 		
 	}
 
-	$stmt = $conn->prepare("SELECT Team.name AS Team, League.name AS League, Sport.name AS Sport FROM Sport JOIN League ON Sport.name = League.sport JOIN Team ON Team.league = league_ID; ") or die($conn->error);
+	$stmt = $conn->prepare("CALL Get_Teams(?)") or die($conn->error);
+	 $stmt->bind_param("s", $_SESSION["emailAddress"]);
 
 	$stmt->execute();
 	$result = $stmt->get_result();

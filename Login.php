@@ -45,7 +45,9 @@ input[type=password] {
       transition: 0.5s;
       outline: none;
     }
-
+input[type=password]:focus {
+      border: 3px solid #555;
+    }
     input[type=text]:focus {
       border: 3px solid #555;
     }
