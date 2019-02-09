@@ -48,7 +48,6 @@
 		<input type="submit" name="submit" value="Create Team"/>
 	</form>
 
-	<?php
 		if (isset($_POST['submit'])) {
 			$sport = $_POST['Sport'];
 			$league = $_POST['League'];
