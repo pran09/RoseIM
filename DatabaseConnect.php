@@ -30,16 +30,11 @@ $stmt->execute();
 
 $result = $mysqli->query('CALL get_permission(@email, @permission)') or die($conn->error);
 
-      while ($row = $result->fetch_array(MYSQLI_NUM))
-      {
-          foreach ($row as $r)
-          {
-            if($r == $emailAddress){
-            
-              echo $r;
-            }
-          }
-        }
+$r = $mysqli->query('SELECT @permission as output');
+$row = $r->fetch_assoc();                       
+
+echo $row['output'];
+  
 
 #Register Query
 if($getPasswordConfirmation != null){
