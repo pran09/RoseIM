@@ -9,6 +9,37 @@ session_start();
       <link rel="stylesheet" href="normalize.css">
       <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
       <link rel="stylesheet" href="css/main.css">
+      <style>
+    input[type=submit] {
+        padding: 19px 39px 18px 39px;
+      color: #FFF;
+      background-color: #800000;
+        font-size: 18px;
+        text-align: center;
+        font-style: normal;
+        border-radius: 5px;
+        width: 100%;
+        border: 1px solid #000000;
+        border-width: 1px 1px 3px;
+        box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+        margin-bottom: 10px;
+    }
+
+    input[type=text] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 3px solid #ccc;
+      -webkit-transition: 0.5s;
+      transition: 0.5s;
+      outline: none;
+    }
+
+    input[type=text]:focus {
+      border: 3px solid #555;
+    }
+  </style>
   </head>
   <body>
 
