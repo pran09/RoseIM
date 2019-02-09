@@ -87,6 +87,10 @@ $stmt->close();
                   if(password_verify($getPassword, $r)){
                     
                     //header("Location: TeamSelect.php");
+                    function redirect($url, $statusCode = 303) {
+          header('Location: ' . $url, true, $statusCode);
+          die();
+        }
                     redirect("TeamSelect.php");
                   }
                   else{

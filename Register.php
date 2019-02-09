@@ -101,6 +101,10 @@ if($getPassword != $getPasswordConfirmation){
         {
         if($r == 0){
          //echo "success";
+          function redirect($url, $statusCode = 303) {
+          header('Location: ' . $url, true, $statusCode);
+          die();
+        }
           redirect("TeamSelect.php");
         // header("Location: TeamSelect.php");
         }
