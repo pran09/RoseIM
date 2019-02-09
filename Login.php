@@ -20,10 +20,10 @@ session_start();
       <fieldset>
         <legend><span class="number">1</span>Login Information</legend>
         <label>Email Address:</label>
-        <input type="text" name="emailAddress" placeholder="@rose-hulman.edu">
+        <input type="text" name="emailAddress" placeholder="@rose-hulman.edu" required>
 
         <label>Password:</label>
-        <input type="password" name="password">
+        <input type="password" name="password" required>
 
 
       </fieldset>
@@ -49,15 +49,7 @@ $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
 $NotInDatabase = true;
 
-  if($getPassword == null){
-    echo "Please enter a valid password.";
-  }
-  else{
   #Get permission
-  if($emailAddress == null){
-  echo "Please enter an email address";
-  }
-  else{
 
 $_SESSION["emailAddress"] = $emailAddress;
 
@@ -119,7 +111,7 @@ $stmt->close();
 mysqli_close($conn);
 
 }
-}
+
 
 
     }

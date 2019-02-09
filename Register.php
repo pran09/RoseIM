@@ -15,19 +15,19 @@
       <fieldset>
         <legend><span class="number">1</span>Your basic info</legend>
         <label>First Name:</label>
-        <input type="text" name="firstName">
+        <input type="text" name="firstName" required>
 
         <label>Last Name:</label>
-        <input type="text" name="lastName">
+        <input type="text" name="lastName" required>
 
         <label>Email:</label>
-        <input type="email" name="emailAddress" placeholder="@rose-hulman.edu">
+        <input type="email" name="emailAddress" placeholder="@rose-hulman.edu" required>
 
         <label>Password:</label>
-        <input type="password"name="password">
+        <input type="password"name="password" required>
 
         <label>Confirm Password:</label>
-        <input type="password" name="passwordConfirmation">
+        <input type="password" name="passwordConfirmation" required>
 
         <label>Sex:</label>
         <select name = "sex">
@@ -54,11 +54,6 @@ $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
 
 $NotInDatabase = true;
-
-  if($emailAddress == null){
-  echo "Please enter an email address";
-  }
-  else{
 
 $_SESSION["emailAddress"] = $emailAddress;                    
 
@@ -94,12 +89,6 @@ if($getPassword != $getPasswordConfirmation){
     $sex = $_POST["sex"];
     $password = password_hash($getPassword, PASSWORD_DEFAULT);
 
-    if($firstName == null OR $lastName == null OR $sex == Unselected){
-      echo "Please make sure all fields are filled out.";
-    }
-    else{
-
-
   if($notExistingEmail){
   $stmt = $conn->prepare("SELECT Create_Player(?, ?, ?, ?, ?) as return_value") or die($conn->error);
   $stmt->bind_param("sssss", $firstName, $lastName, $emailAddress, $password, $sex);
@@ -120,7 +109,7 @@ if($getPassword != $getPasswordConfirmation){
         echo "Make sure all fields are filled out.";
         $stmt->close();
   }
-}
+
 
       
 mysqli_close($conn);
@@ -132,7 +121,7 @@ mysqli_close($conn);
 
 
 
-}
+
 }
 
 
