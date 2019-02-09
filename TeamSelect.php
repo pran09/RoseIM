@@ -35,7 +35,7 @@ session_start();
 
 	while ($row = $result->fetch_array()) {
 
-		echo '<span style = "font-size: 150%">Team <a href = TeamView.php?TeamName=', urlencode( $row['Team']), '> ' . $row['Team'] . ' </a> | ' . $row['League']. ' ' . $row['Sport']. '</span>';
+		echo '<span style = "font-size: 150%">Team <a href = TeamView.php?TeamName=', urlencode( $row['team_ID']), '> ' . $row['Team'] . ' </a> | ' . $row['League']. ' ' . $row['Sport']. '</span>';
 		echo '</br>';
 	}
 
