@@ -101,7 +101,8 @@ if($getPassword != $getPasswordConfirmation){
         {
         if($r == 0){
          //echo "success";
-         header("Location: TeamSelect.php");
+          redirect("TeamSelect.php");
+        // header("Location: TeamSelect.php");
         }
             }
 

@@ -113,8 +113,6 @@ mysqli_close($conn);
 }
 
 
-
-    }
   ?>
 
   <body>
