@@ -4,6 +4,16 @@
 	<title>New Team</title>
 	<link rel="stylesheet" href="normalize.css">
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito:400,300">
+	<style>
+		input[type=text] {
+			width: 75%;
+			background-color: #800000;
+			color: white;
+		}
+		input[type=text]:focus {
+  			border: 3px solid #555;
+		}
+	</style>
 </head>
 <body>
 	<center><font size = "128" color="black">Rose</font><font size="128" color="red">IM</font></center>
@@ -45,7 +55,7 @@
 			<label>Team Name:</label>
 			<input type="text" name="teamName">
 		</fieldset>
-		<input type="submit" name="submit" value="Get Selected Values" />
+		<input type="submit" name="submit" value="Create Team"/>
 	</form>
 
 	<?php
@@ -82,6 +92,7 @@
           		//$result = $stmt->get_result();
           		$stmt->close();
           		mysql_close();
+          		header("Location: TeamSelect.php");
 			}
 		}
 	?>
