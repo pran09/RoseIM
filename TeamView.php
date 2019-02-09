@@ -12,9 +12,6 @@
    
    
   	<?php
-
-   //echo ' <div class="row">';
-  //echo '<div class="column">'
 	
 $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
@@ -23,9 +20,7 @@ $stmt->bind_param("s", $_GET['TeamName']);
 
       			$stmt->execute();
       			$result = $stmt->get_result();
-				   echo ' <font size="118">Schedule</font>'
-          
-
+				   echo ' <font size="118">My Schedule</font>';
       			while ($row = $result->fetch_array())
       			{
           		
@@ -36,33 +31,6 @@ $stmt->bind_param("s", $_GET['TeamName']);
 			
 
   			$stmt->close();
-
-      // echo  '</div>';
-
-       //echo '<div class="column">'
-// $stmt = $conn->prepare("CALL Get_Roster (?)") or die($conn->error);
-// $stmt->bind_param("s", $_GET['TeamName']);
-
-//             $stmt->execute();
-//             $result = $stmt->get_result();
-//            echo '<font size="118">Roster</font>';
-          
-//             while ($row = $result->fetch_array())
-//             {
-              
-//             echo '<span style = "font-size: 150%">' . $row['Player'] . '</span>';
-//             echo '</br>';
-
-//             }
-      
-
-//         $stmt->close();
-
-
-
-
-      // echo '</div></div>';
-  
 			
 mysqli_close($conn);
 
