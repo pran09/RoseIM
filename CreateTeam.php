@@ -45,7 +45,7 @@
 			<label>Team Name:</label>
 			<input type="text" name="teamName">
 		</fieldset>
-		<button type="submit">Create Team</button>
+		<input type="submit" name="submit" value="Get Selected Values" />
 	</form>
 
 	<?php
