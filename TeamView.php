@@ -47,7 +47,7 @@ $stmt->bind_param("s", $_GET['TeamName']);
             while ($row = $result->fetch_array())
             {
               
-            echo '<span style = "font-size: 150%">' . $row['Player'] . '</span>';
+            echo '<span style = "font-size: 150%">' . $row['First'] . ' ' . $row['Last']. '</span>';
             echo '</br>';
 
             }
