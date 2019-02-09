@@ -97,7 +97,7 @@
 					header('Location: ' . $url, true, $statusCode);
 					die();
 				}
-				redirect("roseim.csse.rose-hulman.edu/RoseIM/TeamSelect.php");
+				redirect("TeamSelect.php");
           		mysql_close();
 			}
 		}
