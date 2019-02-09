@@ -21,7 +21,8 @@ echo "session didnt work";
          $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
   #Get permission
-  $s = $conn->prepare("SET @permission = ''; CALL get_permission(?, @permission);") or die($conn->error);
+
+  $s = ($conn->prepare("SET @permission = ''") AND $conn->prepare("CALL get_permission(?, @permission)")) or die($conn->error);
   $stmt->bind_param("s", $emailAddress);
     $s->execute();
     echo "here";
