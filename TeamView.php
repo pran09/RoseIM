@@ -13,8 +13,8 @@
    
   	<?php
 
-   echo ' <div class="row">';
-  echo '<div class="column">'
+   //echo ' <div class="row">';
+  //echo '<div class="column">'
 	
 $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
@@ -35,9 +35,9 @@ $stmt->bind_param("s", $_GET['TeamName']);
 
   			$stmt->close();
 
-       echo  '</div>';
+      // echo  '</div>';
 
-       echo '<div class="column">'
+       //echo '<div class="column">'
 $stmt = $conn->prepare("CALL Get_Roster (?)") or die($conn->error);
 $stmt->bind_param("s", $_GET['TeamName']);
 
@@ -58,7 +58,7 @@ $stmt->bind_param("s", $_GET['TeamName']);
 
 
 
-       echo '</div></div>';
+      // echo '</div></div>';
   
 			
 mysqli_close($conn);
