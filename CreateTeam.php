@@ -7,7 +7,7 @@
 </head>
 <body>
 	<center><font size = "128" color="black">Rose</font><font size="128" color="red">IM</font></center>
-	<form action="TeamSelect.php" method="post">
+	<form action= <?php echo $_SERVER['PHP_SELF']; ?> method="post">
 		<h1>New Team</h1>
 		<fieldset>
 			<?php
@@ -47,4 +47,39 @@
 		</fieldset>
 		<button type="submit">Create Team</button>
 	</form>
+
+	<?php
+		if ($_SERVER["REQUEST_METHOD"] == "POST") {
+			$sport = $_REQUEST['sport'];
+			$league = $_REQUEST['league'];
+			$name = $_REQUEST['teamName'];
+			if ($sport == Unselected or $league == Unselected or $name == Unselected) {
+				echo "Inputs cannot be empty";
+			} else {
+				$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+				$leagueid;
+				$get_league = $conn->prepare("SELECT league_ID FROM League WHERE name = " . $league . " AND sport = " . $sport) or die($conn->error);
+				$get_league->execute();
+				$result = $get_league->get_result();
+				while ($row = $result->fetch_array(MYSQLI_NUM)) {
+					$i = 0;
+					foreach ($row as $r) {
+						$i++;
+						$leagueid = $r;
+						if ($i == 2) {
+							echo "Something went wrong, Line 70: CreateTeam.php";
+						}
+					}
+				}
+				$get_league->close();
+				$stmt = $conn->prepare("SELECT Create_Team(?, ?) as return_value") or die($conn->error);
+				$stmt->bind_param("si", $name, $leagueid);
+
+          		$stmt->execute();
+          		$result = $stmt->get_result();
+          		$stmt->close();
+          		mysql_close();
+			}
+		}
+	?>
 </body>
