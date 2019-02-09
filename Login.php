@@ -28,14 +28,13 @@ session_start();
 
       </fieldset>
 
-      <button type="submit">Login</button>
+      <input type="submit" name="submit" value="Login"/>
 
       <label>
       <input type="checkbox" name="remember"> Remember me
     </label>
     </div>
     </form>
-  </body>
 
   <?php
     if (isset($_POST['submit'])) {
@@ -120,7 +119,6 @@ mysqli_close($conn);
 
   ?>
 
-  <body>
 <form action="Register.php" method="post">
         <button type="submit">Sign Up</button>
     </form>

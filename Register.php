@@ -38,7 +38,7 @@
 
       </fieldset>
 
-      <button type="submit">Sign Up</button>
+      <input type="submit" name="submit" value="Sign Up"/>
     </form>
 
     <?php
