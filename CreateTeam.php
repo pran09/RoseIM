@@ -58,7 +58,8 @@
 			} else {
 				$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 				$leagueid;
-				$get_league = $conn->prepare("SELECT league_ID FROM League WHERE name = " . $league . " AND sport = " . $sport) or die($conn->error);
+				$get_league = $conn->prepare("SELECT league_ID FROM League WHERE name = ? AND sport = ?") or die($conn->error);
+				$get_league->bind_param("ss", $league, $sport);
 				$get_league->execute();
 				$result = $get_league->get_result();
 				while ($row = $result->fetch_array(MYSQLI_NUM)) {
