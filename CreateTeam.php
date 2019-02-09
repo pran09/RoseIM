@@ -19,6 +19,21 @@
   			box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
   			margin-bottom: 10px;
 		}
+
+		input[type=text] {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			box-sizing: border-box;
+			border: 3px solid #ccc;
+			-webkit-transition: 0.5s;
+			transition: 0.5s;
+			outline: none;
+		}
+
+		input[type=text]:focus {
+			border: 3px solid #555;
+		}
 	</style>
 </head>
 <body>
