@@ -16,11 +16,11 @@
 				$stmt->execute();
 				$result = $stmt->get_result();
 					echo '<label>Choose Sport:</label>';
-					echo '<select name="Sport" required>';
+					echo '<select name="Sport">';
 				$sport = 5;
 				while ($row = $result->fetch_array(MYSQLI_NUM)) {
 					foreach ($row as $r) {
-						echo '<option name="' . $r . '":>' . $r . '</option>';
+						echo '<option value="' . $r . '":>' . $r . '</option>';
 						$sport = $r;
 					}
 				}
@@ -35,7 +35,7 @@
 					echo '<select name="League" required>';
 				while ($row = $result->fetch_array(MYSQLI_NUM)) {
 					foreach ($row as $r) {
-						echo '<option name="' . $r . '">' . $r . '</option>';
+						echo '<option value="' . $r . '">' . $r . '</option>';
 					}
 				}
 				echo "</select";
@@ -50,8 +50,8 @@
 
 	<?php
 		if (isset($_POST['submit'])) {
-			$sport = $_POST['sport'];
-			$league = $_POST['league'];
+			$sport = $_POST['Sport'];
+			$league = $_POST['League'];
 			$name = $_POST['teamName'];
 			echo $sport;
 			echo $league;
