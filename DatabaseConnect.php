@@ -20,10 +20,10 @@
          $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
   #Get permission
-
+echo "here";
 $stmt = $mysqli->prepare("SET @permission = ''");
 $stmt->execute();
-
+echo "here0";
 $stmt = $mysqli->prepare("SET @email = ?");
 $stmt->bind_param("s", $emailAddress);
 $stmt->execute();
