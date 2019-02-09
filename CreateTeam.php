@@ -4,29 +4,6 @@
 	<title>New Team</title>
 	<link rel="stylesheet" href="normalize.css">
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito:400,300">
-<<<<<<< HEAD
-	<style>
-		input[type=submit] {
-			width: 75%;
-			background-color: #800000;
-			color: white;
-		}
-		input[type=text] {
- 			width: 100%;
-  			padding: 12px 20px;
- 	 		margin: 8px 0;
-  			box-sizing: border-box;
-  			border: 3px solid #ccc;
-  			-webkit-transition: 0.5s;
-  			transition: 0.5s;
-  			outline: none;
-		}
-		input[type=text]:focus {
-  			border: 3px solid #555;
-		}
-	</style>
-=======
->>>>>>> 0511d5d869fd29e869e79d94ef7e9ec7a2e28476
 </head>
 <body>
 	<center><font size = "128" color="black">Rose</font><font size="128" color="red">IM</font></center>
