@@ -86,7 +86,8 @@ $stmt->close();
                 {
                   if(password_verify($getPassword, $r)){
                     
-                    header("Location: TeamSelect.php");
+                    //header("Location: TeamSelect.php");
+                    redirect("TeamSelect.php");
                   }
                   else{
                     echo "Username or password are incorrect.";
