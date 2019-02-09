@@ -14,7 +14,7 @@ session_start();
 
 	<center><font size="128" color ="black">Rose</font><font size ="128" color="red">IM</font></center>
 
-    <form action="#" method="post">
+    <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
       <h1>Login</h1>
 
       <fieldset>
