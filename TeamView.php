@@ -21,6 +21,7 @@ $stmt->bind_param("s", $_GET['TeamName']);
       			$stmt->execute();
       			$result = $stmt->get_result();
 				   echo ' <font size="118">My Schedule</font>';
+           echo '</br>';
       			while ($row = $result->fetch_array())
       			{
           		
