@@ -22,10 +22,10 @@
   #Get permission
 
 echo "here1";
-$stmt = $mysqli->prepare("CALL get_permission(?, @permission)") or die($conn->error);
+$stmt = $conn->prepare("CALL get_permission(?, @permission)") or die($conn->error);
 $stmt->bind_param("s", $emailAddress);
 echo "here2";
-$r = $mysqli->query('SELECT @permission as output');
+$r = $conn->query('SELECT @permission as output');
 $row = $r->fetch_assoc();                       
 echo "here3";
 echo $row['output'];
