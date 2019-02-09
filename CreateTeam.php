@@ -7,7 +7,7 @@
 </head>
 <body>
 	<center><font size = "128" color="black">Rose</font><font size="128" color="red">IM</font></center>
-	<form action= <?php echo $_SERVER['PHP_SELF']; ?> method="post">
+	<form action= "#" method="post">
 		<h1>New Team</h1>
 		<fieldset>
 			<?php
@@ -49,10 +49,10 @@
 	</form>
 
 	<?php
-		if ($_SERVER["REQUEST_METHOD"] == "POST") {
-			$sport = $_REQUEST['sport'];
-			$league = $_REQUEST['league'];
-			$name = $_REQUEST['teamName'];
+		if (isset($_POST['submit'])) {
+			$sport = $_POST['sport'];
+			$league = $_POST['league'];
+			$name = $_POST['teamName'];
 			echo $sport;
 			echo $league;
 			echo $name;
