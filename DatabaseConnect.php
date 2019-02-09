@@ -24,11 +24,14 @@
 echo "here1";
 $stmt = $conn->prepare("CALL get_permission(?, @permission)") or die($conn->error);
 $stmt->bind_param("s", $emailAddress);
+$stmt->execute();
 echo "here2";
 $r = $conn->query('SELECT @permission as output');
 $row = $r->fetch_assoc();                       
 echo "here3";
 echo $row['output'];
+
+$stmt->close();
 
 
   
