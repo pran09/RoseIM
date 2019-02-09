@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 
 <head><title>DatabaseConnect</title></head>
@@ -13,23 +17,22 @@
  $getPasswordConfirmation = $_POST["passwordConfirmation"];
  $notExistingEmail = true;
 
-//echo "session didnt work";
- //$_SESSION["emailAddress"] = $emailAddress
- //echo "session worked";
+echo "session didnt work";
+$_SESSION["emailAddress"] = $emailAddress
+ echo "session worked";
 
          $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
+
   #Get permission
 
-echo "here1";
 $stmt = $conn->prepare("CALL get_permission(?, @permission)") or die($conn->error);
 $stmt->bind_param("s", $emailAddress);
 $stmt->execute();
-echo "here2";
 $r = $conn->query('SELECT @permission as output');
 $row = $r->fetch_assoc();                       
-echo "here3";
-echo $row['output'];
+
+$_SESSION["permission"] = $row['output'];
 
 $stmt->close();
 
