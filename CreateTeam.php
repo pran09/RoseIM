@@ -4,6 +4,7 @@
 	<title>New Team</title>
 	<link rel="stylesheet" href="normalize.css">
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito:400,300">
+<<<<<<< HEAD
 	<style>
 		input[type=submit] {
 			width: 75%;
@@ -24,6 +25,8 @@
   			border: 3px solid #555;
 		}
 	</style>
+=======
+>>>>>>> 0511d5d869fd29e869e79d94ef7e9ec7a2e28476
 </head>
 <body>
 	<center><font size = "128" color="black">Rose</font><font size="128" color="red">IM</font></center>
@@ -68,7 +71,6 @@
 		<input type="submit" name="submit" value="Create Team"/>
 	</form>
 
-	<?php
 		if (isset($_POST['submit'])) {
 			$sport = $_POST['Sport'];
 			$league = $_POST['League'];
