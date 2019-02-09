@@ -20,16 +20,10 @@
          $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
   #Get permission
-echo "here";
-$stmt = $mysqli->prepare("SET @permission = ''");
-$stmt->execute();
-echo "here0";
-$stmt = $mysqli->prepare("SET @email = ?");
-$stmt->bind_param("s", $emailAddress);
-$stmt->execute();
 
 echo "here1";
-$result = $mysqli->query('CALL get_permission(@email, @permission)') or die($conn->error);
+$stmt = $mysqli->prepare("CALL get_permission(?, @permission)") or die($conn->error);
+$stmt->bind_param("s", $emailAddress);
 echo "here2";
 $r = $mysqli->query('SELECT @permission as output');
 $row = $r->fetch_assoc();                       
