@@ -24,13 +24,13 @@ $stmt->bind_param("s", $_GET['TeamName']);
       			$stmt->execute();
       			$result = $stmt->get_result();
 				   echo ' <font size="118">Schedule</font>'
-           echo '</br>';
+           echo '<br />';
 
       			while ($row = $result->fetch_array())
       			{
           		
 						echo '<span style = "font-size: 150%">' . $row['Team1'] . ' VS ' . $row['Team2']. ' AT ' .$row['StartTime'] .' | ' . $row['Location']. '</span>';
-						echo '</br>';
+						echo '<br />';
 
       			}
 			
@@ -46,12 +46,12 @@ $stmt->bind_param("s", $_GET['TeamName']);
             $stmt->execute();
             $result = $stmt->get_result();
            echo ' <font size="118">Roster</font>';
-           echo '</br>';
+           echo '<br />';
             while ($row = $result->fetch_array())
             {
               
             echo '<span style = "font-size: 150%">' . $row['Player'] . '</span>';
-            echo '</br>';
+            echo '<br />';
 
             }
       
