@@ -33,18 +33,28 @@ session_start();
       <label>
       <input type="checkbox" name="remember"> Remember me
     </label>
-
-
     </div>
-
-
     </form>
+  </body>
 
-    <form action="Register.php" method="post">
+  <?php
+    if (isset($_POST['submit'])) {
+      $emailAddress = $_POST['emailAddress'];
+      if ($emailAddress == null) {
+        echo "EmailAddress can not be null.";
+      } else {
+        $_SESSION["emailAddress"] = $emailAddress;
+      }
+    }
+  ?>
+
+  <body>
+<form action="Register.php" method="post">
         <button type="submit">Sign Up</button>
     </form>
-
-
   </body>
+
 </html>
+
+
 
