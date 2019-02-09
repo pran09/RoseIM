@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 
 <head><title>DatabaseConnect</title></head>
@@ -18,7 +14,7 @@ session_start();
  $notExistingEmail = true;
 
 echo "session didnt work";
-$_SESSION["emailAddress"] = $emailAddress
+
  echo "session worked";
 
          $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
@@ -32,7 +28,7 @@ $stmt->execute();
 $r = $conn->query('SELECT @permission as output');
 $row = $r->fetch_assoc();                       
 
-$_SESSION["permission"] = $row['output'];
+//$_SESSION["permission"] = $row['output'];
 
 $stmt->close();
 
