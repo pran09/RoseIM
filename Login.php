@@ -10,7 +10,7 @@
       <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
       <link rel="stylesheet" href="css/main.css">
   </head>
-  <body style="background-color: rgb(255, 111, 127)">
+  <body>
 
 	<center><font size="128" color ="black">Rose</font><font size ="128" color="red">IM</font></center>
 
