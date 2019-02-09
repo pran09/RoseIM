@@ -10,6 +10,16 @@
 			background-color: #800000;
 			color: white;
 		}
+		input[type=text] {
+ 			width: 100%;
+  			padding: 12px 20px;
+ 	 		margin: 8px 0;
+  			box-sizing: border-box;
+  			border: 3px solid #ccc;
+  			-webkit-transition: 0.5s;
+  			transition: 0.5s;
+  			outline: none;
+		}
 		input[type=text]:focus {
   			border: 3px solid #555;
 		}
@@ -63,9 +73,6 @@
 			$sport = $_POST['Sport'];
 			$league = $_POST['League'];
 			$name = $_POST['teamName'];
-			echo $sport;
-			echo $league;
-			echo $name;
 			if ($sport == Unselected or $league == Unselected or $name == Unselected) {
 				echo "Inputs cannot be empty";
 			} else {
