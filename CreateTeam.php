@@ -53,6 +53,9 @@
 			$sport = $_REQUEST['sport'];
 			$league = $_REQUEST['league'];
 			$name = $_REQUEST['teamName'];
+			echo $sport;
+			echo $league;
+			echo $name;
 			if ($sport == Unselected or $league == Unselected or $name == Unselected) {
 				echo "Inputs cannot be empty";
 			} else {
@@ -75,9 +78,8 @@
 				$get_league->close();
 				$stmt = $conn->prepare("SELECT Create_Team(?, ?) as return_value") or die($conn->error);
 				$stmt->bind_param("si", $name, $leagueid);
-
           		$stmt->execute();
-          		$result = $stmt->get_result();
+          		//$result = $stmt->get_result();
           		$stmt->close();
           		mysql_close();
 			}
