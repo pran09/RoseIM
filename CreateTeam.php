@@ -92,6 +92,12 @@
 				$stmt->bind_param("si", $name, $leagueid);
           		$stmt->execute();
           		$stmt->close();
+
+          		function redirect($url, $statusCode = 303) {
+					header('Location: ' . $url, true, $statusCode);
+					die();
+				}
+				redirect("roseim.csse.rose-hulman.edu/RoseIM/TeamSelect.php");
           		mysql_close();
 			}
 		}
