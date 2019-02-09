@@ -20,7 +20,7 @@ $stmt->bind_param("s", $_GET['TeamName']);
 
       			$stmt->execute();
       			$result = $stmt->get_result();
-				   echo ' <font size="118">My Schedule</font>';
+				   echo ' <font size="118">Schedule</font>';
            echo '</br>';
       			while ($row = $result->fetch_array())
       			{
@@ -32,6 +32,28 @@ $stmt->bind_param("s", $_GET['TeamName']);
 			
 
   			$stmt->close();
+
+
+
+
+
+        $stmt = $conn->prepare("CALL Get_Roster (?)") or die($conn->error);
+$stmt->bind_param("s", $_GET['TeamName']);
+
+            $stmt->execute();
+            $result = $stmt->get_result();
+           echo ' <font size="118">Roster</font>';
+           echo '</br>';
+            while ($row = $result->fetch_array())
+            {
+              
+            echo '<span style = "font-size: 150%">' . $row['Player'] . '</span>';
+            echo '</br>';
+
+            }
+      
+
+        $stmt->close();
 			
 mysqli_close($conn);
 
