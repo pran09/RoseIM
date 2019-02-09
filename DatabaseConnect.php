@@ -5,17 +5,12 @@
 
 <?php
 
-  //session_start();
 
 
  $emailAddress = $_POST["emailAddress"];
  $getPassword = $_POST["password"];
  $getPasswordConfirmation = $_POST["passwordConfirmation"];
  $notExistingEmail = true;
-
-echo "session didnt work";
-
- echo "session worked";
 
          $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
@@ -27,8 +22,6 @@ $stmt->bind_param("s", $emailAddress);
 $stmt->execute();
 $r = $conn->query('SELECT @permission as output');
 $row = $r->fetch_assoc();                       
-
-//$_SESSION["permission"] = $row['output'];
 
 $stmt->close();
 
@@ -127,8 +120,8 @@ $NotInDatabase = true;
           			foreach ($row as $r)
           			{
             			if(password_verify($getPassword, $r)){
-              			echo "logged in";
-                    //header("Location: TeamSelect.php");
+              			
+                    header("Location: TeamSelect.php");
             			}
             			else{
               			echo "Username or password are incorrect.";

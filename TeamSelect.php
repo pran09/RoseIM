@@ -17,7 +17,7 @@ session_start();
 
 
 <?php
-
+echp $_SESSION["permission"];
 	$sport = $_POST["Sport"];
 	$league = $_POST["League"];
 	$name = $_POST["teamName"];
