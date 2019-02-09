@@ -22,18 +22,24 @@ echo "session didnt work";
   #Get permission
 
 $stmt = $mysqli->prepare("SET @permission = ''");
-$stmt->bind_param("s", $emailAddress);
 $stmt->execute();
 
 $stmt = $mysqli->prepare("SET @email = ?");
+$stmt->bind_param("s", $emailAddress);
 $stmt->execute();
 
 $result = $mysqli->query('CALL get_permission(@email, @permission)') or die($conn->error);
-$r = $mysqli->query('SELECT @permission as output');
-$row = $r->fetch_assoc();
 
-echo $row['output'];
-  
+      while ($row = $result->fetch_array(MYSQLI_NUM))
+      {
+          foreach ($row as $r)
+          {
+            if($r == $emailAddress){
+            
+              echo $r;
+            }
+          }
+        }
 
 #Register Query
 if($getPasswordConfirmation != null){
