@@ -17,15 +17,11 @@ session_start();
 
 
 <?php
+
 	$sport = $_POST["Sport"];
 	$league = $_POST["League"];
 	$name = $_POST["teamName"];
 	$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
-
-
-	if ($sport != null AND $league != null AND $name != null) {
-		
-	}
 
 	$stmt = $conn->prepare("CALL Get_Teams(?)") or die($conn->error);
 	 $stmt->bind_param("s", $_SESSION["emailAddress"]);

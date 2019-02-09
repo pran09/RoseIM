@@ -14,27 +14,25 @@
    
   	<?php
 	
-	$TeamName = $_GET['TeamName'];
-	echo $TeamName;
-	
-/*$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
-$stmt = $conn->prepare("SELECT Team.name AS Team, League.name AS League, Sport.name AS Sport FROM Sport JOIN League ON Sport.name = League.sport JOIN Team ON Team.league = league_ID; ") or die($conn->error);
+$stmt = $conn->prepare("CALL Get_Schedule (?)") or die($conn->error);
+$stmt->bind_param("s", $_GET['TeamName']);
 
       			$stmt->execute();
       			$result = $stmt->get_result();
-				
+				   echo ' <font size="118">My Schedule</font>';
       			while ($row = $result->fetch_array())
       			{
           		
-						echo '<span style = "font-size: 150%">Team <a href = TeamView.php?TeamName=', urlencode( $row['Team']), '> ' . $row['Team'] . ' </a> | ' . $row['League']. ' ' . $row['Sport']. '</span>';
+						echo '<span style = "font-size: 150%">' . $row['Team1'] . ' VS ' . $row['Team2']. ' AT ' .$row['StartTime'] .' | ' . $row['Location']. '</span>';
 						echo '</br>';
 
       			}
 			
 
   			$stmt->close();
-			*/
+			
 mysqli_close($conn);
 
 ?> 
