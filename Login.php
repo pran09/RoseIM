@@ -14,7 +14,7 @@ session_start();
 
 	<center><font size="128" color ="black">Rose</font><font size ="128" color="red">IM</font></center>
 
-    <form action="DatabaseConnect.php" method="post">
+    <form action="#" method="post">
       <h1>Login</h1>
 
       <fieldset>
@@ -39,12 +39,113 @@ session_start();
 
   <?php
     if (isset($_POST['submit'])) {
-      $emailAddress = $_POST['emailAddress'];
-      if ($emailAddress == null) {
-        echo "EmailAddress can not be null.";
-      } else {
-        $_SESSION["emailAddress"] = $emailAddress;
+      
+ $emailAddress = $_POST["emailAddress"];
+ $getPassword = $_POST["password"];
+ $notExistingEmail = true;
+
+$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+
+
+$NotInDatabase = true;
+
+  if($getPassword == null){
+    echo "Please enter a valid password.";
+  }
+  else{
+  #Get permission
+  if($emailAddress == null){
+  echo "Please enter an email address";
+  }
+  else{
+
+$_SESSION["emailAddress"] = $emailAddress;
+
+
+  $stmt = $conn->prepare("CALL get_permission(?, @permission)") or die($conn->error);
+$stmt->bind_param("s", $emailAddress);
+$stmt->execute();
+$r = $conn->query('SELECT @permission as output');
+$row = $r->fetch_assoc();                       
+
+$_SESSION["permission"] = $row['output'];
+
+$stmt->close();
+
+
+
+    $s = $conn->prepare("SELECT email FROM Person") or die($conn->error);
+    $s->execute();
+      $re = $s->get_result();
+      while ($row = $re->fetch_array(MYSQLI_NUM))
+      {
+          foreach ($row as $r)
+          {
+            if($r == $emailAddress){
+        $NotInDatabase = false;
+                $stmt = $conn->prepare("SELECT password FROM Person WHERE email = ?") or die($conn->error);
+          $stmt->bind_param("s", $emailAddress);
+
+            $stmt->execute();
+            $result = $stmt->get_result();
+            while ($row = $result->fetch_array(MYSQLI_NUM))
+            {
+                foreach ($row as $r)
+                {
+                  if(password_verify($getPassword, $r)){
+                    
+                    header("Location: TeamSelect.php");
+                  }
+                  else{
+                    echo "Username or password are incorrect.";
+                  }
+                }
+
+            }   
+
+        $stmt->close();
+          }
+
       }
+    }
+    
+    If ($NotInDatabase){
+      echo "This email address is not registered.";
+    }
+
+  $s->close();
+
+
+mysqli_close($conn);
+
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
   ?>
 
