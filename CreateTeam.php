@@ -5,7 +5,7 @@
 	<link rel="stylesheet" href="normalize.css">
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito:400,300">
 	<style>
-		input[type=text] {
+		input[type=submit] {
 			width: 75%;
 			background-color: #800000;
 			color: white;
