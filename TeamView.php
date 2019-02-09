@@ -40,23 +40,23 @@ $stmt->bind_param("s", $_GET['TeamName']);
       // echo  '</div>';
 
        //echo '<div class="column">'
-$stmt = $conn->prepare("CALL Get_Roster (?)") or die($conn->error);
-$stmt->bind_param("s", $_GET['TeamName']);
+// $stmt = $conn->prepare("CALL Get_Roster (?)") or die($conn->error);
+// $stmt->bind_param("s", $_GET['TeamName']);
 
-            $stmt->execute();
-            $result = $stmt->get_result();
-           echo '<font size="118">Roster</font>';
+//             $stmt->execute();
+//             $result = $stmt->get_result();
+//            echo '<font size="118">Roster</font>';
           
-            while ($row = $result->fetch_array())
-            {
+//             while ($row = $result->fetch_array())
+//             {
               
-            echo '<span style = "font-size: 150%">' . $row['Player'] . '</span>';
-            echo '</br>';
+//             echo '<span style = "font-size: 150%">' . $row['Player'] . '</span>';
+//             echo '</br>';
 
-            }
+//             }
       
 
-        $stmt->close();
+//         $stmt->close();
 
 
 
