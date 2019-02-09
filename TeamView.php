@@ -23,7 +23,9 @@ $stmt->bind_param("s", $_GET['TeamName']);
 
       			$stmt->execute();
       			$result = $stmt->get_result();
-				   echo ' <font size="118">Schedule</font>';
+				   echo ' <font size="118">Schedule</font>'
+           echo '</br>';
+
       			while ($row = $result->fetch_array())
       			{
           		
@@ -44,6 +46,7 @@ $stmt->bind_param("s", $_GET['TeamName']);
             $stmt->execute();
             $result = $stmt->get_result();
            echo ' <font size="118">Roster</font>';
+           echo '</br>';
             while ($row = $result->fetch_array())
             {
               
