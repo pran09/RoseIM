@@ -8,7 +8,7 @@
   </head>
   <body>
 	 <center><font size="128" color ="black">Rose</font><font size ="128" color="red">IM</font></center>
-    <form action="DatabaseConnect.php" method="post">
+    <form action="#" method="post">
 
       <h1>Sign Up</h1>
 
@@ -40,6 +40,104 @@
 
       <button type="submit">Sign Up</button>
     </form>
+
+    <?php
+
+    if (isset($_POST['submit'])) {
+      
+ $emailAddress = $_POST["emailAddress"];
+ $getPassword = $_POST["password"];
+ $getPasswordConfirmation = $_POST["passwordConfirmation"];
+ $notExistingEmail = true;
+
+$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+
+
+$NotInDatabase = true;
+
+  if($emailAddress == null){
+  echo "Please enter an email address";
+  }
+  else{
+
+$_SESSION["emailAddress"] = $emailAddress;                    
+
+$_SESSION["permission"] = 'Player';
+
+
+
+
+if($getPassword != $getPasswordConfirmation){
+    mysqli_close($conn);
+    echo "Passwords do not match.";
+  }
+  else{
+
+    $s = $conn->prepare("SELECT email FROM Person") or die($conn->error);
+    $s->execute();
+      $re = $s->get_result();
+      while ($row = $re->fetch_array(MYSQLI_NUM))
+      {
+          foreach ($row as $r)
+          {
+            if($r == $emailAddress){
+              $notExistingEmail = false;
+              echo "Email address already exists. ";
+            }
+          }
+        }
+
+
+
+    $firstName = $_POST["firstName"];
+    $lastName = $_POST["lastName"];
+    $sex = $_POST["sex"];
+    $password = password_hash($getPassword, PASSWORD_DEFAULT);
+
+    if($firstName == null OR $lastName == null OR $sex == Unselected){
+      echo "Please make sure all fields are filled out.";
+    }
+    else{
+
+
+  if($notExistingEmail){
+  $stmt = $conn->prepare("SELECT Create_Player(?, ?, ?, ?, ?) as return_value") or die($conn->error);
+  $stmt->bind_param("sssss", $firstName, $lastName, $emailAddress, $password, $sex);
+
+     $stmt->execute();
+     $result = $stmt->get_result();
+     while ($row = $result->fetch_array())
+     {
+      foreach ($row as $r)
+        {
+        if($r == 0){
+         //echo "success";
+         header("Location: TeamSelect.php");
+        }
+            }
+
+            }   
+        echo "Make sure all fields are filled out.";
+        $stmt->close();
+  }
+}
+
+      
+mysqli_close($conn);
+
+}
+
+
+
+
+
+
+}
+}
+
+
+    }
+  ?>
 
   </body>
 </html>
