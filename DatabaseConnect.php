@@ -18,24 +18,24 @@ echo "session didnt work";
  echo "session worked";
 
  #header("Location: index.html");
-         $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+  //        $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
-  #Get permission
-  $s = $conn->prepare("SET @permission = ''; CALL get_permission(?, @permission);") or die($conn->error);
-  $stmt->bind_param("s", $emailAddress);
-    $s->execute();
-    echo "here";
-      $re = $s->get_result();
-      while ($row = $re->fetch_array(MYSQLI_NUM))
-      {
-          foreach ($row as $r)
-          {
-            echo $r;
-            $_SESSION["permission"] = $r;
-          }
-        }
+  // #Get permission
+  // $s = $conn->prepare("SET @permission = ''; CALL get_permission(?, @permission);") or die($conn->error);
+  // $stmt->bind_param("s", $emailAddress);
+  //   $s->execute();
+  //   echo "here";
+  //     $re = $s->get_result();
+  //     while ($row = $re->fetch_array(MYSQLI_NUM))
+  //     {
+  //         foreach ($row as $r)
+  //         {
+  //           echo $r;
+  //           $_SESSION["permission"] = $r;
+  //         }
+  //       }
 
-        $s->close();
+  //       $s->close();
 
 
 
