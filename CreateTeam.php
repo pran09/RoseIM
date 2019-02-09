@@ -4,6 +4,22 @@
 	<title>New Team</title>
 	<link rel="stylesheet" href="normalize.css">
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito:400,300">
+	<style>
+		input[type=submit] {
+  			padding: 19px 39px 18px 39px;
+ 			color: #FFF;
+ 			background-color: #800000;
+  			font-size: 18px;
+  			text-align: center;
+  			font-style: normal;
+  			border-radius: 5px;
+  			width: 100%;
+  			border: 1px solid #000000;
+  			border-width: 1px 1px 3px;
+  			box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+  			margin-bottom: 10px;
+		}
+	</style>
 </head>
 <body>
 	<center><font size = "128" color="black">Rose</font><font size="128" color="red">IM</font></center>
@@ -75,10 +91,8 @@
 				$stmt = $conn->prepare("SELECT Create_Team(?, ?) as return_value") or die($conn->error);
 				$stmt->bind_param("si", $name, $leagueid);
           		$stmt->execute();
-          		//$result = $stmt->get_result();
           		$stmt->close();
           		mysql_close();
-          		header("Location: TeamSelect.php");
 			}
 		}
 	?>
