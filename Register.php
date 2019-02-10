@@ -70,7 +70,7 @@ session_start();
   </style>
   </head>
   <body>
-	 <center><font size="128" color ="black">Rose</font><font size ="128" color="red">IM</font></center>
+	 <center><font size="200" color ="black">Rose</font><font size ="128" color="red">IM</font></center>
     <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
 
       <h1>Sign Up</h1>

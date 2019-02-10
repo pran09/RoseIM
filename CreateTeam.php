@@ -10,7 +10,7 @@ if (!isset($_SESSION['emailAddress'])) {
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width-device-width, initial-scale=1.0">
-	<title>New Team</title>
+	<title>Create a Team!</title>
 	<link rel="stylesheet" href="normalize.css">
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito:400,300">
 	<style>
@@ -46,7 +46,7 @@ if (!isset($_SESSION['emailAddress'])) {
 	</style>
 </head>
 <body>
-	<center><font size = "128" color="black">Rose</font><font size="128" color="red">IM</font></center>
+	<center><font size = "200" color="black">Rose</font><font size="128" color="red">IM</font></center>
 	<form action= "<?php echo $_SERVER['PHP_SELF'];?>" method="post">
 		<h1>New Team</h1>
 		<fieldset>
