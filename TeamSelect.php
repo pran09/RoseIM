@@ -21,11 +21,7 @@ if (!isset($_SESSION['emailAddress'])) {
 <div class = "container" style = "background-color:#f4f7f8">
 </br>
 
-
-<?php
-
-
-echo '  <form align="right" method="post" action= "<?php echo $_SERVER['PHP_SELF'];?>">
+<form align="right" method="post" action= "<?php echo $_SERVER['PHP_SELF'];?>">
   <label>
   <input type="submit" name = "submit" value="Log Out">
   </label>
@@ -40,7 +36,13 @@ echo '  <form align="right" method="post" action= "<?php echo $_SERVER['PHP_SELF
 				}
 				redirect("Login.php");
 			}
-	?>';
+	?>
+
+	
+<?php
+
+
+
 
 	$sport = $_POST["Sport"];
 	$league = $_POST["League"];
