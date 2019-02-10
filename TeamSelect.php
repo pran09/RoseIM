@@ -16,7 +16,16 @@ if (!isset($_SESSION['emailAddress'])) {
 	<link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/main.css">
 
-<form align="right" method="post" action= "<?php echo $_SERVER['PHP_SELF'];?>">
+</head>
+<center><font size="128" color ="black">Rose</font><font size ="128" color="red">IM</font></center>
+<div class = "container" style = "background-color:#f4f7f8">
+</br>
+
+
+<?php
+
+
+echo '  <form align="right" method="post" action= "<?php echo $_SERVER['PHP_SELF'];?>">
   <label>
   <input type="submit" name = "submit" value="Log Out">
   </label>
@@ -31,14 +40,7 @@ if (!isset($_SESSION['emailAddress'])) {
 				}
 				redirect("Login.php");
 			}
-	?>
-</head>
-<center><font size="128" color ="black">Rose</font><font size ="128" color="red">IM</font></center>
-<div class = "container" style = "background-color:#f4f7f8">
-</br>
-
-
-<?php
+	?>';
 
 	$sport = $_POST["Sport"];
 	$league = $_POST["League"];
