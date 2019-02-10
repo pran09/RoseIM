@@ -15,6 +15,30 @@
 	
 $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
+
+$stmt = $conn->prepare("SELECT wins, losses FROM Team WHERE team_ID = ?") or die($conn->error);
+$stmt->bind_param("s", $_GET['TeamName']);
+
+            $stmt->execute();
+            $result = $stmt->get_result();
+           echo ' <font size="118">Record</font>';
+           echo '</br>';
+            while ($row = $result->fetch_array())
+            {
+              
+            echo '<span style = "font-size: 150%">' . $row['wins'] . ' Wins and ' . $row['Losses']. ' Losses' . '</span>';
+            echo '</br>';
+
+            }
+      
+
+        $stmt->close();
+
+
+
+
+
+
 $stmt = $conn->prepare("CALL Get_Schedule (?)") or die($conn->error);
 $stmt->bind_param("s", $_GET['TeamName']);
 
@@ -25,7 +49,7 @@ $stmt->bind_param("s", $_GET['TeamName']);
       			while ($row = $result->fetch_array())
       			{
           		
-						echo '<span style = "font-size: 150%">' . $row['Team1'] . ' VS ' . $row['Team2']. ' AT ' .$row['StartTime'] .' | ' . $row['Location']. '</span>';
+						echo '<span style = "font-size: 150%">' . $row['Team1'] . ' VS ' . $row['Team2']. ' AT ' .$row['StartTime'] .'  ' . $row['Location']. ' | Score: ' . $row['Team1Score'] . '-' . $row['Team2Score'] . '</span>';
 						echo '</br>';
 
       			}
@@ -47,13 +71,15 @@ $stmt->bind_param("s", $_GET['TeamName']);
             while ($row = $result->fetch_array())
             {
               
-            echo '<span style = "font-size: 150%">' . $row['First'] . ' ' . $row['Last']. '</span>';
+            echo '<span style = "font-size: 150%">' . $row['First'] . ' ' . $row['Last']. ' ' . $row['Role'] . '</span>';
             echo '</br>';
 
             }
       
 
         $stmt->close();
+
+
 			
 mysqli_close($conn);
 
