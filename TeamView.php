@@ -25,7 +25,7 @@ $stmt->bind_param("s", $_GET['TeamName']);
             while ($row = $result->fetch_array())
             {
               
-            echo '<center><font size="118">'  .  $row['name']  .  '/font></center>';;
+            echo '<center><font size="118">'  .  $row['name']  .  '</font></center>';
             echo '</br>';
 
             }
