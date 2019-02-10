@@ -32,13 +32,14 @@ session_start();
 
 	while ($row = $result->fetch_array()) {
 
-		echo '<center><font size="100" color ="black">' . $row['firstName'] . ' ' . $row['lastName'] .'</font></center>';
+		echo '<center><font size="64" color ="black">' . $row['firstName'] . ' ' . $row['lastName'] .'</font></center>';
 		echo '</br>';
 	}
 
 	$stmt->close();
 
 	echo '<font size="118">My Teams</font>';
+	echo '</br>';
 
 
 
