@@ -15,6 +15,25 @@ if (!isset($_SESSION['emailAddress'])) {
 	<link rel="stylesheet" href="normalize.css">
 	<link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/main.css">
+
+	<form align="right" name="form1" method="post" action= "<?php echo $_SERVER['PHP_SELF'];?>">
+  <label class="logoutLblPos">
+  <input name="submit2" type="submit" id="submit2" value="Log Out">
+  </label>
+</form>
+<?php
+		if (isset($_POST['submit'])) {
+          		$_SESSION["emailAddress"] = null;
+			
+          		function redirect($url, $statusCode = 303) {
+					header('Location: ' . $url, true, $statusCode);
+					die();
+				}
+				redirect("Login.php");
+          		mysql_close();
+			}
+		}
+	?>
 </head>
 <center><font size="128" color ="black">Rose</font><font size ="128" color="red">IM</font></center>
 <div class = "container" style = "background-color:#f4f7f8">
