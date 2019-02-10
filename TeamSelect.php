@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+if (!isset($_SESSION['emailAddress'])) {
+    header('location: Login.php');
+    exit(); // <-- terminates the current script
+  }
+
 ?>
 
 <head>
