@@ -20,11 +20,11 @@ if (!isset($_SESSION['emailAddress'])) {
   			padding: 9px 18px 9px 18px;
  			color: #FFF;
  			background-color: #800000;
-  			font-size: 10px;
+  			font-size: 16px;
   			text-align: center;
   			font-style: normal;
   			border-radius: 5px;
-  			width: 100%;
+  			width: 50%;
   			border: 1px solid #000000;
   			border-width: 1px 1px 3px;
   			box-shadow: 0 -1px 0 rgba(100,100,100,0.1) inset;
