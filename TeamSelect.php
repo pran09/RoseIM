@@ -12,7 +12,6 @@ session_start();
 </head>
 <center><font size="128" color ="black">Rose</font><font size ="128" color="red">IM</font></center>
 <div class = "container" style = "background-color:#f4f7f8">
-	<font size="118">My Teams</font>
 </br>
 
 
@@ -33,12 +32,13 @@ session_start();
 
 	while ($row = $result->fetch_array()) {
 
-		echo '<center><font size="100" color ="black">' . $row['First'] . ' ' . $row['Last'] .'</font></center>';
+		echo '<center><font size="100" color ="black">' . $row['firstName'] . ' ' . $row['lastName'] .'</font></center>';
 		echo '</br>';
 	}
 
 	$stmt->close();
 
+	echo '<font size="118">My Teams</font>';
 
 
 
