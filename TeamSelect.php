@@ -16,9 +16,9 @@ if (!isset($_SESSION['emailAddress'])) {
 	<link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/main.css">
 
-	<form align="right" name="form1" method="post" action= "<?php echo $_SERVER['PHP_SELF'];?>">
-  <label class="logoutLblPos">
-  <input name="submit2" type="submit" id="submit2" value="Log Out">
+<form align="right" method="post" action= "<?php echo $_SERVER['PHP_SELF'];?>">
+  <label>
+  <input type="submit" name = "submit" value="Log Out">
   </label>
 </form>
 <?php
@@ -30,7 +30,6 @@ if (!isset($_SESSION['emailAddress'])) {
 					die();
 				}
 				redirect("Login.php");
-          		mysql_close();
 			}
 	?>
 </head>
