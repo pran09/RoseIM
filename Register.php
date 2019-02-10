@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,6 +38,35 @@
     input[type=text]:focus {
       border: 3px solid #555;
     }
+    input[type=password] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 3px solid #ccc;
+      -webkit-transition: 0.5s;
+      transition: 0.5s;
+      outline: none;
+    }
+
+    input[type=password]:focus {
+      border: 3px solid #555;
+    }
+    input[type=email] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 3px solid #ccc;
+      -webkit-transition: 0.5s;
+      transition: 0.5s;
+      outline: none;
+    }
+
+    input[type=email]:focus {
+      border: 3px solid #555;
+    }
+
   </style>
   </head>
   <body>

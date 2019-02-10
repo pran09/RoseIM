@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -102,7 +105,7 @@ $stmt->bind_param("s", $_GET['TeamName']);
             while ($row = $result->fetch_array())
             {
               
-            echo '<span style = "font-size: 150%">' . $row['First'] . ' ' . $row['Last']. ' ' . $row['Role'] . '</span>';
+            echo '<span style = "font-size: 150%">' . $row['First'] . ' ' . $row['Last']. ' | ' . $row['Role'] . '</span>';
             echo '</br>';
 
             }
