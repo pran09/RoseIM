@@ -111,6 +111,13 @@ session_start();
           		$stmt->execute();
           		$stmt->close();
 
+          		$stmt = $conn->prepare("SELECT Create_PlaysOn(  (SELECT person_ID FROM Person WHERE email = ?)  ,  (SELECT team_ID FROM Team ORDER BY team_ID DESC LIMIT 1) )") or die($conn->error);
+				$stmt->bind_param("s", $_SESSION["emailAddress"]);
+          		$stmt->execute();
+          		$stmt->close();
+
+          		$_SESSION["permission"] = 'Captain';
+
           		function redirect($url, $statusCode = 303) {
 					header('Location: ' . $url, true, $statusCode);
 					die();
