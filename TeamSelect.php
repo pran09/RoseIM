@@ -32,7 +32,7 @@ session_start();
 
 	while ($row = $result->fetch_array()) {
 
-		echo '<center><color ="black">' . $row['firstName'] . ' ' . $row['lastName'] .'</font></center>';
+		echo '<center><font size="48" color ="black">' . $row['firstName'] . ' ' . $row['lastName'] .'</font></center>';
 		echo '</br>';
 	}
 
