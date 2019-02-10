@@ -23,6 +23,25 @@ session_start();
 	$name = $_POST["teamName"];
 	$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
+
+
+	$stmt = $conn->prepare("SELECT firstName, lastName FROM Person WHERE email = ?") or die($conn->error);
+	 $stmt->bind_param("s", $_SESSION["emailAddress"]);
+
+	$stmt->execute();
+	$result = $stmt->get_result();
+
+	while ($row = $result->fetch_array()) {
+
+		echo '<center><font size="100" color ="black">' . $row['First'] . ' ' . $row['Last'] .'</font></center>';
+		echo '</br>';
+	}
+
+	$stmt->close();
+
+
+
+
 	$stmt = $conn->prepare("CALL Get_Teams(?)") or die($conn->error);
 	 $stmt->bind_param("s", $_SESSION["emailAddress"]);
 
