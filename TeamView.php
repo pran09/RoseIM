@@ -73,11 +73,11 @@ $stmt->bind_param("s", $_GET['TeamName']);
       			while ($row = $result->fetch_array())
       			{
           		
-						echo '<span style = "font-size: 150%">' . $row['Team1'] . ' VS ' . $row['Team2']. ' AT ' .$row['StartTime'] .'  ' . $row['Location']. ' | Score: ' . $row['Team1Score'] . ' - ' . $row['Team2Score'] . '</span>';
+						echo '<span style = "font-size: 150%">' . '<a href = TeamView.php?TeamName=', urlencode( $row['Team1']), '> ' . $row['Team1'] . ' </a>' . ' VS ' . '<a href = TeamView.php?TeamName=', urlencode( $row['Team2']), '> ' . $row['Team2'] . ' </a>'. ' AT ' .$row['StartTime'] .'  ' . $row['Location']. ' | Score: ' . $row['Team1Score'] . ' - ' . $row['Team2Score'] . '</span>';
 						echo '</br>';
 
       			}
-			
+			<a href = TeamView.php?TeamName=', urlencode( $row['Team1']), '> ' . $row['Team1'] . ' </a>
 
   			$stmt->close();
 
