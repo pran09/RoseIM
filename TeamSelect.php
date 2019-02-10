@@ -32,7 +32,6 @@ if (!isset($_SESSION['emailAddress'])) {
 				redirect("Login.php");
           		mysql_close();
 			}
-		}
 	?>
 </head>
 <center><font size="128" color ="black">Rose</font><font size ="128" color="red">IM</font></center>
