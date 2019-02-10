@@ -10,10 +10,34 @@
   <div class = "container" style = "background-color:#f4f7f8">
    </br>
    
-   
   	<?php
 	
 $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+
+
+
+
+$stmt = $conn->prepare("SELECT name FROM Team WHERE team_ID = ?") or die($conn->error);
+$stmt->bind_param("s", $_GET['TeamName']);
+
+            $stmt->execute();
+            $result = $stmt->get_result();
+            while ($row = $result->fetch_array())
+            {
+              
+            echo '<center><font size="118">'  .  $row['name']  .  '/font></center>';;
+            echo '</br>';
+
+            }
+      
+
+        $stmt->close();
+
+
+
+
+
+
 
 
 $stmt = $conn->prepare("SELECT wins, losses FROM Team WHERE team_ID = ?") or die($conn->error);
@@ -26,7 +50,7 @@ $stmt->bind_param("s", $_GET['TeamName']);
             while ($row = $result->fetch_array())
             {
               
-            echo '<span style = "font-size: 150%">' . $row['wins'] . ' Wins and ' . $row['Losses']. ' Losses' . '</span>';
+            echo '<span style = "font-size: 150%">' . $row['wins'] . ' Wins and ' . $row['losses']. ' Losses' . '</span>';
             echo '</br>';
 
             }
@@ -49,7 +73,7 @@ $stmt->bind_param("s", $_GET['TeamName']);
       			while ($row = $result->fetch_array())
       			{
           		
-						echo '<span style = "font-size: 150%">' . $row['Team1'] . ' VS ' . $row['Team2']. ' AT ' .$row['StartTime'] .'  ' . $row['Location']. ' | Score: ' . $row['Team1Score'] . '-' . $row['Team2Score'] . '</span>';
+						echo '<span style = "font-size: 150%">' . $row['Team1'] . ' VS ' . $row['Team2']. ' AT ' .$row['StartTime'] .'  ' . $row['Location']. ' | Score: ' . $row['Team1Score'] . ' - ' . $row['Team2Score'] . '</span>';
 						echo '</br>';
 
       			}
