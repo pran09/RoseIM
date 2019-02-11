@@ -88,7 +88,6 @@ input[type=password]:focus {
 
 $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
-
 $NotInDatabase = true;
 
   #Get permission
