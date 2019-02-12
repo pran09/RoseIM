@@ -91,7 +91,7 @@ if (!isset($_SESSION['emailAddress'])) {
 			<label>Team Name:</label>
 			<input type="text" name="teamName" required>
 		</fieldset>
-		<input type="submit" name="submit" value="Create Team"/>
+		<input type="submit" name="submit" value="Create Team">
 	</form>
 	<?php
 		if (isset($_POST['submit'])) {

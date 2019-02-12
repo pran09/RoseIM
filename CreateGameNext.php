@@ -68,20 +68,7 @@
 			$_SESSION['Facility'] = $_POST['Facility'];
 			$_SESSION['Time and Date'] = $_POST['Time and Date'];
 
-			$Sport = $_SESSION['Sport'];
-			$League = $_SESSION['League'];
-			$Referee = $_SESSION['Referee'];
-			$Facility = $_SESSION['Facility'];
-			$DateTime = $_SESSION['Time and Date'];
-			echo 'here1';
-			echo $Sport;
-			echo $League;
-			echo $HomeTeam;
-			echo $AwayTeam;
-			echo $Referee;
-			echo $Facility;
-			echo $DateTime;
-			echo 'here2';
+			echo $_POST['Time and Date'];
 
 		$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
@@ -132,7 +119,7 @@ echo '</br>';
 </br>
 
 		</fieldset>
-		<input type="submit" name="SuperSub" value="Create Game"/>
+		<input type="submit" name="SuperSub" value="Create Game">
 	</form>
 	<?php
 		if (isset($_POST['SuperSub'])) {

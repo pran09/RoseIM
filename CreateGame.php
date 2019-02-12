@@ -147,7 +147,7 @@ echo '</br>';
 </br>
 
 		</fieldset>
-		<input type="submit" name="submit" value="Next"/>
+		<input type="submit" name="submit" value="Next">
 	</form>
 
 
