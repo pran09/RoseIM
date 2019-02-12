@@ -55,12 +55,13 @@
 <center><font size = "200" color="black">Rose</font><font size="128" color="red">IM</font></center>
 
 
-<label>Create A Game:</label>
+
 <form>
+	<h1>Create A Game:</h1>
 
 <?php
 		$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
-
+		$sport = 5;
 
 		$stmt = $conn->prepare("SELECT League.name FROM League, Sport WHERE Sport.name = League.sport AND Sport.name = '" . $sport . "'") or die($conn->error);
 				$stmt->execute();
@@ -72,11 +73,11 @@
 						echo '<option value="' . $r . '">' . $r . '</option>';
 					}
 				}
-				echo "</select";
+				echo "</select>";
 				$stmt->close();
 
 
-
+echo '</br>';
 				
 				$stmt = $conn->prepare("SELECT name FROM Team") or die($conn->error);
 				$stmt->execute();
@@ -94,7 +95,7 @@
 
 				$stmt->close();
 
-
+echo '</br>';
 
 
 				$stmt = $conn->prepare("SELECT name FROM Team") or die($conn->error);
@@ -114,7 +115,7 @@
 				$stmt->close();
 
 
-
+echo '</br>';
 
 				$stmt = $conn->prepare("SELECT name FROM Person JOIN Referee ON Referee.person_ID = Person.person_ID") or die($conn->error);
 				$stmt->execute();
@@ -133,11 +134,11 @@
 				$stmt->close();
 
 
+echo '</br>';
 
 
 
-
-				$stmt = $conn->prepare("SELECT name FROM Facility") or die($conn->error);
+				$stmt = $conn->prepare("SELECT location FROM Facility") or die($conn->error);
 				$stmt->execute();
 				$result = $stmt->get_result();
 					echo '<label>Choose Facility:</label>';
@@ -152,7 +153,7 @@
 				echo "</select>";
 
 				$stmt->close();
-
+echo '</br>';
 				
 				mysqli_close($conn);
 			?>
