@@ -117,7 +117,7 @@ echo '</br>';
 
 echo '</br>';
 
-				$stmt = $conn->prepare("SELECT name FROM Person JOIN Referee ON Referee.person_ID = Person.person_ID") or die($conn->error);
+				$stmt = $conn->prepare("SELECT firstName, lastName, person_ID FROM Person JOIN Referee ON Referee.person_ID = Person.person_ID") or die($conn->error);
 				$stmt->execute();
 				$result = $stmt->get_result();
 					echo '<label>Choose Referee:</label>';
@@ -125,7 +125,7 @@ echo '</br>';
 				$sport = 5;
 				while ($row = $result->fetch_array(MYSQLI_NUM)) {
 					foreach ($row as $r) {
-						echo '<option value="' . $r . '":>' . $r . '</option>';
+						echo '<option value="' . $row['firstName'] . ' ' . $row['lastName'] '":>' . $row['person_ID'] . '</option>';
 						$sport = $r;
 					}
 				}
