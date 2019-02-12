@@ -117,7 +117,7 @@ echo '</br>';
 
 echo '</br>';
 
-				$stmt = $conn->prepare("SELECT firstName, lastName, person_ID FROM Person JOIN Referee ON Referee.person_ID = Person.person_ID") or die($conn->error);
+				$stmt = $conn->prepare("SELECT firstName, lastName, Person.person_ID FROM Person JOIN Referee ON Referee.person_ID = Person.person_ID") or die($conn->error);
 				$stmt->execute();
 				$result = $stmt->get_result();
 					echo '<label>Choose Referee:</label>';
