@@ -87,9 +87,9 @@
 				$aResult = 5;
       			while ($row = $result->fetch_array(MYSQLI_NUM)) {
           			foreach ($row as $r) {
-						echo '<option value="' . $r . '">' . $r . '</option>';
+						echo '<option name="' . $r . '">' . $r . '</option>';
 						$aResult = $r;
-						print(this.name);
+						echo this.name;
           			}
       			}
 			echo '</select>';
