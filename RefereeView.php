@@ -101,7 +101,7 @@ echo '<font size="118">My Games</font>';
 	while ($row = $result->fetch_array()) {
 
 		echo '<span style = "font-size: 150%">';
-						echo '<a href = TeamView.php?TeamName=', urlencode( $row['Team1_ID']), '> ' . $row['Team1_ID'] . ' </a>';
+						echo '<a href = TeamView.php?TeamName=', urlencode( $row['Team1_ID']), '> ' . $row['Team1'] . ' </a>';
            // echo $row['Team1'];
             echo ' VS ';
           //  echo $row['Team2'];
