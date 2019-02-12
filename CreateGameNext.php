@@ -127,6 +127,13 @@ echo '</br>';
 			$Referee = $_SESSION['Referee'];
 			$Facility = $_SESSION['Facility'];
 			$DateTime = $_SESSION['Time and Date'];
+			echo $Sport;
+			echo $League;
+			echo $HomeTeam;
+			echo $AwayTeam;
+			echo $Referee;
+			echo $Facility;
+			echo $DateTime;
 
 			if($HomeTeam == $AwayTeam){
 				echo 'The home team and away team must be different.';
