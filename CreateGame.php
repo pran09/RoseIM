@@ -108,10 +108,10 @@ echo '</br>';
 					echo '<select name="Home Team">';
 				$sport = 5;
 				while ($row = $result->fetch_array()) {
-					foreach ($row as $r) {
+					
 						echo '<option value="' . $row['team_ID'] . '":>' . $row['name'] . '</option>';
 						
-					}
+					
 				}
 				echo "</select>";
 
@@ -127,10 +127,10 @@ echo '</br>';
 					echo '<select name="Away Team">';
 				$sport = 5;
 				while ($row = $result->fetch_array()) {
-					foreach ($row as $r) {
+					
 						echo '<option value="' . $row['team_ID'] . '":>' . $row['name'] . '</option>';
 						
-					}
+					
 				}
 				echo "</select>";
 
@@ -146,10 +146,10 @@ echo '</br>';
 					echo '<select name="Referee">';
 				$sport = 5;
 				while ($row = $result->fetch_array()) {
-					foreach ($row as $r) {
+					
 						echo '<option value="' . $row['person_ID'] . '":>'  . $row['firstName'] . ' ' . $row['lastName'] . '</option>';
 						
-					}
+					
 				}
 				echo "</select>";
 
@@ -167,10 +167,10 @@ echo '</br>';
 					echo '<select name="Facility">';
 				$sport = 5;
 				while ($row = $result->fetch_array()) {
-					foreach ($row as $r) {
+					
 						echo '<option value="' . $row['facility_ID'] . '":>' . $row['location'] . '</option>';
 						
-					}
+					
 				}
 				echo "</select>";
 
