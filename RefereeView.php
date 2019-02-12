@@ -101,14 +101,14 @@ echo '<font size="118">My Games</font>';
 	while ($row = $result->fetch_array()) {
 
 		echo '<span style = "font-size: 150%">';
-						echo '<a href = TeamView.php?TeamName=', urlencode( $row['Team1']), '> ' . $row['Team1'] . ' </a>';
+						echo '<a href = TeamView.php?TeamName=', urlencode( $row['Team1_ID']), '> ' . $row['Team1'] . ' </a>';
            // echo $row['Team1'];
             echo ' VS ';
           //  echo $row['Team2'];
-            echo '<a href = TeamView.php?TeamName=', urlencode( $row['Team2']), '> ' . $row['Team2'] . ' </a>';
+            echo '<a href = TeamView.php?TeamName=', urlencode( $row['Team2_ID']), '> ' . $row['Team2'] . ' </a>';
             echo ' AT ' . $row['StartTime'] . '  ' . $row['Location'] . ' | Score: ' . $row['Team1Score'] . ' - ' . $row['Team2Score'];
             echo '</span>';
-            echo ' <form action="ScoreAGame.php" method="post"> <button type="submit">Score A Game</button> </form>';
+            echo ' <form action="ScoreAGame.php" method="post"> <button type="submit">Score Game</button> </form>';
 						echo '</br>';
 	}
 
