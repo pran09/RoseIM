@@ -47,6 +47,7 @@
 <body>
 
 <?php
+$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 	$stmt = $conn->prepare("SELECT firstName, lastName FROM Person WHERE email = ?") or die($conn->error);
 	 $stmt->bind_param("s", $_SESSION["emailAddress"]);
 
@@ -60,6 +61,7 @@
 	}
 
 	$stmt->close();
+	mysqli_close($conn);
 
 	?>
 
@@ -99,7 +101,7 @@ echo '<font size="118">My Games</font>';
 	while ($row = $result->fetch_array()) {
 
 		echo '<span style = "font-size: 150%">';
-						echo '<a href = ScoreAGame.php?GameID=', urlencode( $row['game_ID']), '> ' . $row['Team1'] . ' </a>';
+						echo '<a href = TeamView.php?TeamName=', urlencode( $row['Team1']), '> ' . $row['Team1'] . ' </a>';
            // echo $row['Team1'];
             echo ' VS ';
           //  echo $row['Team2'];
