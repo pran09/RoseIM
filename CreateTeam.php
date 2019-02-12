@@ -128,8 +128,10 @@ if (!isset($_SESSION['emailAddress'])) {
 					header('Location: ' . $url, true, $statusCode);
 					die();
 				}
+
+				mysql_close();
 				redirect("TeamSelect.php");
-          		mysql_close();
+          		
 			}
 		}
 	?>
