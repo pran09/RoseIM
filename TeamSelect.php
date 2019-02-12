@@ -128,15 +128,6 @@ if (!isset($_SESSION['emailAddress'])) {
 
 </form>
 
-<form action="RefereeView.php" method="post">
-
-	<button type="submit">Referee View</button>
-
-</div>
-
-</form>
-
-
 
 </body>
 </html>
