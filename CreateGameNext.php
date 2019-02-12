@@ -83,7 +83,7 @@
 				$sport = 5;
 				while ($row = $result->fetch_array()) {
 					
-						echo '<option value="' . $row['team_ID'] . '":>' . $row['name'] . '</option>';
+						echo '<option value="' . $row['team_ID'] . '">' . $row['name'] . '</option>';
 						
 					
 				}
@@ -104,7 +104,7 @@ echo '</br>';
 				$sport = 5;
 				while ($row = $result->fetch_array()) {
 					
-						echo '<option value="' . $row['team_ID'] . '":>' . $row['name'] . '</option>';
+						echo '<option value="' . $row['team_ID'] . '">' . $row['name'] . '</option>';
 						
 					
 				}
