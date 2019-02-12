@@ -63,7 +63,7 @@
 		$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 		$sport = 5;
 
-		$stmt = $conn->prepare("SELECT League.name FROM League, Sport WHERE Sport.name = League.sport AND Sport.name = '" . $sport . "'") or die($conn->error);
+		$stmt = $conn->prepare("SELECT League.name FROM League, Sport WHERE Sport.name = League.sport AND Sport.name = 'Basketball'") or die($conn->error);
 				$stmt->execute();
 				$result = $stmt->get_result();
 					echo "<label>League:</label>";
@@ -88,7 +88,7 @@ echo '</br>';
 				while ($row = $result->fetch_array(MYSQLI_NUM)) {
 					foreach ($row as $r) {
 						echo '<option value="' . $r . '":>' . $r . '</option>';
-						$sport = $r;
+						
 					}
 				}
 				echo "</select>";
@@ -107,7 +107,7 @@ echo '</br>';
 				while ($row = $result->fetch_array(MYSQLI_NUM)) {
 					foreach ($row as $r) {
 						echo '<option value="' . $r . '":>' . $r . '</option>';
-						$sport = $r;
+						
 					}
 				}
 				echo "</select>";
@@ -125,8 +125,8 @@ echo '</br>';
 				$sport = 5;
 				while ($row = $result->fetch_array(MYSQLI_NUM)) {
 					foreach ($row as $r) {
-						echo '<option value="' . $row['firstName'] . ' ' . $row['lastName'] '":>' . $row['person_ID'] . '</option>';
-						$sport = $r;
+						echo '<option value="' . $row['firstName'] . ' ' . $row['lastName'] . '":>' . $row['person_ID'] . '</option>';
+						
 					}
 				}
 				echo "</select>";
@@ -147,7 +147,7 @@ echo '</br>';
 				while ($row = $result->fetch_array(MYSQLI_NUM)) {
 					foreach ($row as $r) {
 						echo '<option value="' . $r . '":>' . $r . '</option>';
-						$sport = $r;
+						
 					}
 				}
 				echo "</select>";
