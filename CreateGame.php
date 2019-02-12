@@ -61,6 +61,28 @@
 
 <?php
 		$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+
+
+
+
+
+		$stmt = $conn->prepare("SELECT name FROM Sport") or die($conn->error);
+				$stmt->execute();
+				$result = $stmt->get_result();
+					echo "<label>Sport:</label>";
+					echo '<select name="Sport" required>';
+				while ($row = $result->fetch_array(MYSQLI_NUM)) {
+					foreach ($row as $r) {
+						echo '<option value="' . $r . '">' . $r . '</option>';
+					}
+				}
+				echo "</select>";
+				$stmt->close();
+
+
+echo '</br>';
+			
+
 		$sport = 5;
 
 		$stmt = $conn->prepare("SELECT League.name FROM League, Sport WHERE Sport.name = League.sport AND Sport.name = 'Basketball'") or die($conn->error);
@@ -79,7 +101,7 @@
 
 echo '</br>';
 				
-				$stmt = $conn->prepare("SELECT name FROM Team") or die($conn->error);
+				$stmt = $conn->prepare("SELECT name, team_ID FROM Team") or die($conn->error);
 				$stmt->execute();
 				$result = $stmt->get_result();
 					echo '<label>Choose Home Team:</label>';
@@ -87,7 +109,7 @@ echo '</br>';
 				$sport = 5;
 				while ($row = $result->fetch_array(MYSQLI_NUM)) {
 					foreach ($row as $r) {
-						echo '<option value="' . $r . '":>' . $r . '</option>';
+						echo '<option value="' . $row['name'] . '":>' . $row['team_ID'] . '</option>';
 						
 					}
 				}
@@ -98,7 +120,7 @@ echo '</br>';
 echo '</br>';
 
 
-				$stmt = $conn->prepare("SELECT name FROM Team") or die($conn->error);
+				$stmt = $conn->prepare("SELECT name, team_ID FROM Team") or die($conn->error);
 				$stmt->execute();
 				$result = $stmt->get_result();
 					echo '<label>Choose Away Team:</label>';
@@ -106,7 +128,7 @@ echo '</br>';
 				$sport = 5;
 				while ($row = $result->fetch_array(MYSQLI_NUM)) {
 					foreach ($row as $r) {
-						echo '<option value="' . $r . '":>' . $r . '</option>';
+						echo '<option value="' . $row['name'] . '":>' . $row['team_ID'] . '</option>';
 						
 					}
 				}
@@ -138,7 +160,7 @@ echo '</br>';
 
 
 
-				$stmt = $conn->prepare("SELECT location FROM Facility") or die($conn->error);
+				$stmt = $conn->prepare("SELECT location, facility_ID FROM Facility") or die($conn->error);
 				$stmt->execute();
 				$result = $stmt->get_result();
 					echo '<label>Choose Facility:</label>';
@@ -146,7 +168,7 @@ echo '</br>';
 				$sport = 5;
 				while ($row = $result->fetch_array(MYSQLI_NUM)) {
 					foreach ($row as $r) {
-						echo '<option value="' . $r . '":>' . $r . '</option>';
+						echo '<option value="' . $row['location'] . '":>' . $row['facility_ID'] . '</option>';
 						
 					}
 				}
@@ -167,6 +189,7 @@ echo '</br>';
 	</form>
 	<?php
 		if (isset($_POST['submit'])) {
+			$Sport = $_POST['Sport'];
 			$League = $_POST['League'];
 			$HomeTeam = $_POST['Home Team'];
 			$AwayTeam = $_POST['Away Team'];
@@ -175,21 +198,21 @@ echo '</br>';
 			$DateTime = $_POST['Time and Date'];
 
 			if($HomeTeam == $AwayTeam){
-				echo 'The home team and away team must be differe.';
+				echo 'The home team and away team must be different.';
 			}
 			else{
 
 				$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 				
-				// $stmt = $conn->prepare("SELECT Create_Team(?, ?) as return_value") or die($conn->error);
-				// $stmt->bind_param("si", $name, $leagueid);
-    //       		$stmt->execute();
-    //       		$stmt->close();
+				$stmt = $conn->prepare("SELECT Create_Game(?, ?, ?, ?, ?) as return_value") or die($conn->error);
+				$stmt->bind_param("ssss", $Sport, $Referee, $Facility, $League, $DateTime);
+          		$stmt->execute();
+          		$stmt->close();
 
-    //       		$stmt = $conn->prepare("SELECT Create_PlaysOn(  (SELECT person_ID FROM Person WHERE email = ?)  ,  (SELECT team_ID FROM Team ORDER BY team_ID DESC LIMIT 1), 'Captain' )") or die($conn->error);
-				// $stmt->bind_param("s", $_SESSION["emailAddress"]);
-    //       		$stmt->execute();
-    //       		$stmt->close();
+          		$stmt = $conn->prepare("SELECT Create_Plays(null, null, ?, ?, (SELECT game_ID FROM Game ORDER BY game_ID DESC LIMIT 1))") or die($conn->error);
+				$stmt->bind_param("s,s", $HomeTeam, $AwayTeam);
+          		$stmt->execute();
+          		$stmt->close();
 
           	
 
