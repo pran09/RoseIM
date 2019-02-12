@@ -109,7 +109,7 @@ echo '</br>';
 				$sport = 5;
 				while ($row = $result->fetch_array()) {
 					foreach ($row as $r) {
-						echo '<option value="' . $row['name'] . '":>' . $row['team_ID'] . '</option>';
+						echo '<option value="' . $row['team_ID'] . '":>' . $row['name'] . '</option>';
 						
 					}
 				}
@@ -128,7 +128,7 @@ echo '</br>';
 				$sport = 5;
 				while ($row = $result->fetch_array()) {
 					foreach ($row as $r) {
-						echo '<option value="' . $row['name'] . '":>' . $row['team_ID'] . '</option>';
+						echo '<option value="' . $row['team_ID'] . '":>' . $row['name'] . '</option>';
 						
 					}
 				}
@@ -147,7 +147,7 @@ echo '</br>';
 				$sport = 5;
 				while ($row = $result->fetch_array()) {
 					foreach ($row as $r) {
-						echo '<option value="' . $row['firstName'] . ' ' . $row['lastName'] . '":>' . $row['person_ID'] . '</option>';
+						echo '<option value="' . $row['person_ID'] . '":>'  . $row['firstName'] . ' ' . $row['lastName'] . '</option>';
 						
 					}
 				}
@@ -168,7 +168,7 @@ echo '</br>';
 				$sport = 5;
 				while ($row = $result->fetch_array()) {
 					foreach ($row as $r) {
-						echo '<option value="' . $row['location'] . '":>' . $row['facility_ID'] . '</option>';
+						echo '<option value="' . $row['facility_ID'] . '":>' . $row['location'] . '</option>';
 						
 					}
 				}
@@ -182,7 +182,7 @@ echo '</br>';
 
 			<label>Date and Time (YYYY-MM-DD HH:MM:SS):</label>
 			<input type="text" name="Time and Date" required>
-
+</br>;
 
 		</fieldset>
 		<input type="submit" name="submit" value="Create Game"/>
