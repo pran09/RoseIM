@@ -58,8 +58,6 @@ if (!isset($_SESSION['emailAddress'])) {
 
 <?php
 
-echo $_SESSION["permission"];
-
 
 	$sport = $_POST["Sport"];
 	$league = $_POST["League"];
