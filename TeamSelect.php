@@ -45,6 +45,7 @@ if (!isset($_SESSION['emailAddress'])) {
 <?php
 		if (isset($_POST['submit'])) {
           		$_SESSION["emailAddress"] = null;
+          		$_SESSION["permission"] = null;
 			
           		function redirect($url, $statusCode = 303) {
 					header('Location: ' . $url, true, $statusCode);
@@ -57,7 +58,7 @@ if (!isset($_SESSION['emailAddress'])) {
 
 <?php
 
-
+echo $_SESSION["permission"];
 
 
 	$sport = $_POST["Sport"];
