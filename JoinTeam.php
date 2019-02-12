@@ -51,6 +51,24 @@
     	}
   	</style>
 </head>
+<script type="text/javascript">
+	function showLeague(league) {
+		if (league=="") {
+			document.getElementById("txtHint").innerHTML="";
+			return;
+		}
+		if(window.XMLHttpRequest) {
+			xmlhttp = new XMLHttpRequest();
+		}
+		xmlhttp.onreadystatechange=function() {
+			if (this.readyState==4 && this.status==200) {
+				document.getElementById("txtHint").innerHTML=this.responseText;
+			}
+		}
+		xmlhttp.open("GET", "getLeague.php?q=" + league, true);
+		xmlhttp.send();
+	}
+</script>
 <body>
  	<center><font size="200" color ="black">Rose</font><font size ="128" color="red">IM</font></center>
     <form action="TeamSelect.php" method="post">
@@ -64,7 +82,7 @@
       			$stmt->execute();
       			$result = $stmt->get_result();
 				echo '<label>Sport:</label>';
-				echo '<select name="Sport" required>';
+				echo '<select name="Sport" onchange="showLeague(this.name)">';
 				$aResult = 5;
       			while ($row = $result->fetch_array(MYSQLI_NUM)) {
           			foreach ($row as $r) {
@@ -77,44 +95,43 @@
   			$stmt->close();
 
 
-			$stmt = $conn->prepare("SELECT League.name FROM League, Sport WHERE Sport.name = League.sport AND Sport.name = '" . $aResult . "'") or die($conn->error);
+			// $stmt = $conn->prepare("SELECT League.name FROM League, Sport WHERE Sport.name = League.sport AND Sport.name = '" . $aResult . "'") or die($conn->error);
 
-      			$stmt->execute();
-      			$result = $stmt->get_result();
-				echo '<label>League: </label>';
-				echo '<select name="League" required>';
-      			while ($row = $result->fetch_array(MYSQLI_NUM))
-      			{
-          		foreach ($row as $r)
-          			{
-						echo '<option name="' . $r . '">' . $r . '</option>';
-          			}
+   //    			$stmt->execute();
+   //    			$result = $stmt->get_result();
+			// 	echo '<label>League: </label>';
+			// 	echo '<select name="League" required>';
+   //    			while ($row = $result->fetch_array(MYSQLI_NUM))
+   //    			{
+   //        		foreach ($row as $r)
+   //        			{
+			// 			echo '<option name="' . $r . '">' . $r . '</option>';
+   //        			}
 
-      			}
-			echo '</select>';
+   //    			}
+			// echo '</select>';
 
-			$stmt->close();
-			$stmt = $conn->prepare("SELECT name FROM Team") or die($conn->error);
+			// $stmt->close();
+			// $stmt = $conn->prepare("SELECT name FROM Team") or die($conn->error);
 
-      			$stmt->execute();
-      			$result = $stmt->get_result();
-				echo '<label>Team: </label>';
-				echo '<select name="Team" required>';
-      			while ($row = $result->fetch_array(MYSQLI_NUM)) {
-          			foreach ($row as $r) {
-						echo '<option name="' . $r . '">' . $r . '</option>';
-          			}
-      			}
-			echo '</select>';
-  			$stmt->close();
+   //    			$stmt->execute();
+   //    			$result = $stmt->get_result();
+			// 	echo '<label>Team: </label>';
+			// 	echo '<select name="Team" required>';
+   //    			while ($row = $result->fetch_array(MYSQLI_NUM)) {
+   //        			foreach ($row as $r) {
+			// 			echo '<option name="' . $r . '">' . $r . '</option>';
+   //        			}
+   //    			}
+			// echo '</select>';
+  	// 		$stmt->close();
 			mysqli_close($conn);
 	?>
+	<div id="txtHint"><b>Leagues will be listed here</b></div>
+	<div id="txtHint2"><b>Teams will be listed here</b></div>
 </fieldset>
   <button type="submit">Join Team</button>
-
     </form>
-
-
   </body>
 </html>
 
