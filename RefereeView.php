@@ -4,8 +4,8 @@
 		header('location: Login.php');
 		exit();
 	}
-	
-	if ($_SESSION['permission'] != 'referee') {
+
+	if ($_SESSION['permission'] != 'Referee') {
 		
 		header('location: TeamSelect.php');
 		exit();
