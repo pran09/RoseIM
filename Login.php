@@ -132,6 +132,11 @@ if (isset($_POST['submit'])) {
 								header('Location: ' . $url, true, $statusCode);
 								die();
 							}
+
+							if($_SESSION['permission'] == 'Referee'){
+								redirect("RefereeView.php");
+							}
+							
 							redirect("TeamSelect.php");
 						}
 						else{

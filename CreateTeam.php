@@ -6,6 +6,12 @@ if (!isset($_SESSION['emailAddress'])) {
     exit(); // <-- terminates the current script
   }
 
+   if ($_SESSION['permission'] == 'Referee') {
+    
+    header('location: RefereeView.php');
+    exit();
+  }
+
 ?>
 <head>
 	<meta charset="utf-8">
