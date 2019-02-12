@@ -108,6 +108,7 @@ echo '<font size="118">My Games</font>';
             echo '<a href = TeamView.php?TeamName=', urlencode( $row['Team2']), '> ' . $row['Team2'] . ' </a>';
             echo ' AT ' . $row['StartTime'] . '  ' . $row['Location'] . ' | Score: ' . $row['Team1Score'] . ' - ' . $row['Team2Score'];
             echo '</span>';
+            echo ' <form action="ScoreAGame.php" method="post"> <button type="submit">Score A Game</button> </form>';
 						echo '</br>';
 	}
 
