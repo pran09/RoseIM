@@ -70,7 +70,7 @@
 		$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
 
-		$stmt = $conn->prepare("SELECT name, team_ID FROM Team JOIN (SELECT league_ID FROM League WHERE League.sport = ?) as jo ON jo.league_ID = ? ") or die($conn->error);
+		$stmt = $conn->prepare("SELECT name, team_ID FROM Team WHERE league = (SELECT league_ID FROM League WHERE sport = ? AND name = ?)") or die($conn->error);
 		$stmt->bind_param("ss", $_SESSION['Sport'], $_SESSION['League']);
 
 				$stmt->execute();
@@ -91,9 +91,9 @@
 echo '</br>';
 
 
-				$stmt = $conn->prepare("SELECT name, team_ID FROM Team JOIN (SELECT league_ID FROM League WHERE League.sport = ?) as jo ON jo.league_ID = ? ") or die($conn->error);
+				$stmt = $conn->prepare("SELECT name, team_ID FROM Team WHERE league = (SELECT league_ID FROM League WHERE sport = ? AND name = ?)") or die($conn->error);
 		$stmt->bind_param("ss", $_SESSION['Sport'], $_SESSION['League']);
-		
+
 				$stmt->execute();
 				$result = $stmt->get_result();
 					echo '<label>Choose Away Team:</label>';
