@@ -53,20 +53,21 @@
 </head>
 <script type="text/javascript">
 	function showLeague(league) {
-		if (league=="") {
+		if (league == "") {
 			document.getElementById("txtHint").innerHTML="";
 			return;
-		}
-		if(window.XMLHttpRequest) {
+		} else {
+			if(window.XMLHttpRequest) {
 			xmlhttp = new XMLHttpRequest();
-		}
-		xmlhttp.onreadystatechange=function() {
-			if (this.readyState==4 && this.status==200) {
-				document.getElementById("txtHint").innerHTML=this.responseText;
 			}
+			xmlhttp.onreadystatechange=function() {
+				if (this.readyState==4 && this.status==200) {
+					document.getElementById("txtHint").innerHTML=this.responseText;
+				}
+			}
+			xmlhttp.open("GET", "getLeague.php?q=" + league, true);
+			xmlhttp.send();
 		}
-		xmlhttp.open("GET", "getLeague.php?q=" + league, true);
-		xmlhttp.send();
 	}
 </script>
 <body>
@@ -88,6 +89,7 @@
           			foreach ($row as $r) {
 						echo '<option name="' . $r . '">' . $r . '</option>';
 						$aResult = $r;
+						print(this.name);
           			}
       			}
 			echo '</select>';
