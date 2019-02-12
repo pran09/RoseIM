@@ -83,11 +83,11 @@
       			$stmt->execute();
       			$result = $stmt->get_result();
 				echo '<label>Sport:</label>';
-				echo '<select name="Sport" onchange="showLeague(this.name)">';
+				echo '<select name="Sport">';
 				$aResult = 5;
       			while ($row = $result->fetch_array(MYSQLI_NUM)) {
           			foreach ($row as $r) {
-						echo '<option name="' . $r . '">' . $r . '</option>';
+						echo '<option value="' . $r . '">' . $r . '</option>';
 						$aResult = $r;
 						print(this.name);
           			}
