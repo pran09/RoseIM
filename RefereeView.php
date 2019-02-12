@@ -46,6 +46,23 @@
 
 <body>
 
+<?php
+	$stmt = $conn->prepare("SELECT firstName, lastName FROM Person WHERE email = ?") or die($conn->error);
+	 $stmt->bind_param("s", $_SESSION["emailAddress"]);
+
+	$stmt->execute();
+	$result = $stmt->get_result();
+
+	while ($row = $result->fetch_array()) {
+
+		echo '<font size="48" color ="black">Welcome ' . $row['firstName'] . ' ' . $row['lastName'] . '!'.'</font>';
+		echo '</br>';
+	}
+
+	$stmt->close();
+
+	?>
+
 	<form action="CreateGame.php" method="post">
 
 		<button type="submit">Create Game</button>
@@ -61,6 +78,41 @@
 </div>
 
 </form>
+
+
+
+<?php
+
+	$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+
+echo '<font size="118">My Games</font>';
+	echo '</br>';
+
+
+
+	$stmt = $conn->prepare("CALL Get_Games_Ref(?)") or die($conn->error);
+	 $stmt->bind_param("s", $_SESSION["emailAddress"]);
+
+	$stmt->execute();
+	$result = $stmt->get_result();
+
+	while ($row = $result->fetch_array()) {
+
+		echo '<span style = "font-size: 150%">';
+						echo '<a href = ScoreAGame.php?GameID=', urlencode( $row['game_ID']), '> ' . $row['Team1'] . ' </a>';
+           // echo $row['Team1'];
+            echo ' VS ';
+          //  echo $row['Team2'];
+            echo '<a href = TeamView.php?TeamName=', urlencode( $row['Team2']), '> ' . $row['Team2'] . ' </a>';
+            echo ' AT ' . $row['StartTime'] . '  ' . $row['Location'] . ' | Score: ' . $row['Team1Score'] . ' - ' . $row['Team2Score'];
+            echo '</span>';
+						echo '</br>';
+	}
+
+	$stmt->close();
+	mysqli_close($conn);
+
+	?>
 
 
 

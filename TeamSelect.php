@@ -80,7 +80,7 @@ if (!isset($_SESSION['emailAddress'])) {
 
 	while ($row = $result->fetch_array()) {
 
-		echo '<font size="48" color ="black">' . $row['firstName'] . ' ' . $row['lastName'] .'</font>';
+		echo '<font size="48" color ="black">Welcome ' . $row['firstName'] . ' ' . $row['lastName'] . '!'.'</font>';
 		echo '</br>';
 	}
 
