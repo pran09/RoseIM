@@ -56,7 +56,7 @@
 
 
 
-<form>
+<form action= "CreateGameNext.php" method="post">
 	<h1>Create A Game:</h1>
 
 <?php
@@ -96,44 +96,6 @@ echo '</br>';
 					}
 				}
 				echo "</select>";
-				$stmt->close();
-
-
-echo '</br>';
-				
-				$stmt = $conn->prepare("SELECT name, team_ID FROM Team") or die($conn->error);
-				$stmt->execute();
-				$result = $stmt->get_result();
-					echo '<label>Choose Home Team:</label>';
-					echo '<select name="Home Team">';
-				$sport = 5;
-				while ($row = $result->fetch_array()) {
-					
-						echo '<option value="' . $row['team_ID'] . '":>' . $row['name'] . '</option>';
-						
-					
-				}
-				echo "</select>";
-
-				$stmt->close();
-
-echo '</br>';
-
-
-				$stmt = $conn->prepare("SELECT name, team_ID FROM Team") or die($conn->error);
-				$stmt->execute();
-				$result = $stmt->get_result();
-					echo '<label>Choose Away Team:</label>';
-					echo '<select name="Away Team">';
-				$sport = 5;
-				while ($row = $result->fetch_array()) {
-					
-						echo '<option value="' . $row['team_ID'] . '":>' . $row['name'] . '</option>';
-						
-					
-				}
-				echo "</select>";
-
 				$stmt->close();
 
 
@@ -185,49 +147,9 @@ echo '</br>';
 </br>;
 
 		</fieldset>
-		<input type="submit" name="submit" value="Create Game"/>
+		<input type="submit" name="submit" value="Next"/>
 	</form>
-	<?php
-		if (isset($_POST['submit'])) {
-			$Sport = $_POST['Sport'];
-			$League = $_POST['League'];
-			$HomeTeam = $_POST['Home Team'];
-			$AwayTeam = $_POST['Away Team'];
-			$Referee = $_POST['Referee'];
-			$Facility = $_POST['Facility'];
-			$DateTime = $_POST['Time and Date'];
 
-			if($HomeTeam == $AwayTeam){
-				echo 'The home team and away team must be different.';
-			}
-			else{
-
-				$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
-				
-				$stmt = $conn->prepare("SELECT Create_Game(?, ?, ?, ?, ?) as return_value") or die($conn->error);
-				$stmt->bind_param("ssss", $Sport, $Referee, $Facility, $League, $DateTime);
-          		$stmt->execute();
-          		$stmt->close();
-
-          		$stmt = $conn->prepare("SELECT Create_Plays(null, null, ?, ?, (SELECT game_ID FROM Game ORDER BY game_ID DESC LIMIT 1))") or die($conn->error);
-				$stmt->bind_param("s,s", $HomeTeam, $AwayTeam);
-          		$stmt->execute();
-          		$stmt->close();
-
-          	
-
-
-				mysqli_close($conn);
-          		function redirect($url, $statusCode = 303) {
-					header('Location: ' . $url, true, $statusCode);
-					die();
-				}
-				mysql_close();
-				redirect("RefereeView.php");
-          		
-			}
-		}
-	?>
 
 </body>
 
