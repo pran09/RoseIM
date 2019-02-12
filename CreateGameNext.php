@@ -1,5 +1,6 @@
 <?php
 	session_start();
+
 	if (!isset($_SESSION['emailAddress'])) {
 		header('location: Login.php');
 		exit();
@@ -66,6 +67,21 @@
 			$_SESSION['Referee'] = $_POST['Referee'];
 			$_SESSION['Facility'] = $_POST['Facility'];
 			$_SESSION['Time and Date'] = $_POST['Time and Date'];
+
+			$Sport = $_SESSION['Sport'];
+			$League = $_SESSION['League'];
+			$Referee = $_SESSION['Referee'];
+			$Facility = $_SESSION['Facility'];
+			$DateTime = $_SESSION['Time and Date'];
+			echo 'here1';
+			echo $Sport;
+			echo $League;
+			echo $HomeTeam;
+			echo $AwayTeam;
+			echo $Referee;
+			echo $Facility;
+			echo $DateTime;
+			echo 'here2';
 
 		$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
