@@ -107,7 +107,7 @@ echo '</br>';
 					echo '<label>Choose Home Team:</label>';
 					echo '<select name="Home Team">';
 				$sport = 5;
-				while ($row = $result->fetch_array(MYSQLI_NUM)) {
+				while ($row = $result->fetch_array()) {
 					foreach ($row as $r) {
 						echo '<option value="' . $row['name'] . '":>' . $row['team_ID'] . '</option>';
 						
@@ -126,7 +126,7 @@ echo '</br>';
 					echo '<label>Choose Away Team:</label>';
 					echo '<select name="Away Team">';
 				$sport = 5;
-				while ($row = $result->fetch_array(MYSQLI_NUM)) {
+				while ($row = $result->fetch_array()) {
 					foreach ($row as $r) {
 						echo '<option value="' . $row['name'] . '":>' . $row['team_ID'] . '</option>';
 						
@@ -145,7 +145,7 @@ echo '</br>';
 					echo '<label>Choose Referee:</label>';
 					echo '<select name="Referee">';
 				$sport = 5;
-				while ($row = $result->fetch_array(MYSQLI_NUM)) {
+				while ($row = $result->fetch_array()) {
 					foreach ($row as $r) {
 						echo '<option value="' . $row['firstName'] . ' ' . $row['lastName'] . '":>' . $row['person_ID'] . '</option>';
 						
@@ -166,7 +166,7 @@ echo '</br>';
 					echo '<label>Choose Facility:</label>';
 					echo '<select name="Facility">';
 				$sport = 5;
-				while ($row = $result->fetch_array(MYSQLI_NUM)) {
+				while ($row = $result->fetch_array()) {
 					foreach ($row as $r) {
 						echo '<option value="' . $row['location'] . '":>' . $row['facility_ID'] . '</option>';
 						
