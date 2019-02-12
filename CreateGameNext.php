@@ -113,13 +113,13 @@ echo '</br>';
 echo '</br>';
 
 		?>
-</br>;
+</br>
 
 		</fieldset>
-		<input type="submit" name="submit" value="Create Game"/>
+		<input type="submit" name="SuperSub" value="Create Game"/>
 	</form>
 	<?php
-		if (isset($_POST['submit'])) {
+		if (isset($_POST['SuperSub'])) {
 			$Sport = $_SESSION['Sport'];
 			$League = $_SESSION['League'];
 			$HomeTeam = $_POST['Home Team'];

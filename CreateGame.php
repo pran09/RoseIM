@@ -144,7 +144,7 @@ echo '</br>';
 
 			<label>Date and Time (YYYY-MM-DD HH:MM:SS):</label>
 			<input type="text" name="Time and Date" required>
-</br>;
+</br>
 
 		</fieldset>
 		<input type="submit" name="submit" value="Next"/>
