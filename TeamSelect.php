@@ -40,26 +40,24 @@ if (!isset($_SESSION['emailAddress'])) {
 
 </head>
 <center><font size="200" color ="red">Rose</font><font size ="128" color="black">IM</font></center>
+<form align="right" method="post" action= "<?php echo $_SERVER['PHP_SELF'];?>">
   <label>
   <input type="submit" name = "submit" value="Log Out">
   </label>
-<div class = "container" style = "background-color:#f4f7f8">
-</br>
-
-<form align="center" method="post" action= "<?php echo $_SERVER['PHP_SELF'];?>">
 </form>
 <?php
-		if (isset($_POST['submit'])) {
-          		$_SESSION["emailAddress"] = null;
-          		$_SESSION["permission"] = null;
-			
-          		function redirect($url, $statusCode = 303) {
-					header('Location: ' . $url, true, $statusCode);
-					die();
-				}
-				redirect("Login.php");
-			}
-	?>
+	if (isse($_POST['submit'])) {
+    	$_SESSION["emailAddress"] = null;
+    	$_SESSION["permission"] = null;
+		function redirect($url, $statusCode = 303) {
+			header('Location: ' . $url, true, $statusCode);
+			die();
+		}
+		redirect("Login.php");
+	}
+?>
+<div class = "container" style = "background-color:#f4f7f8">
+</br>
 
 
 <?php
@@ -107,283 +105,15 @@ if (!isset($_SESSION['emailAddress'])) {
 	$stmt->close();
 	mysqli_close($conn);
 ?>
-
 </div>
-
-
 <body>
-
 	<form action="JoinTeam.php" method="post">
-
 		<button type="submit">Join Team</button>
-
 	</div>
-
 </form>
-
 <form action="CreateTeam.php" method="post">
-
 	<button type="submit">Create Team</button>
-
 </div>
-
 </form>
-
-
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
