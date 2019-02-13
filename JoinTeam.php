@@ -58,14 +58,14 @@
 			return;
 		} else {
 			ajax = new XMLHttpRequest();
-			ajax.open("GET", "getLeague.php" + league, true);
-			ajax.send();
 			ajax.onreadystatechange=function() {
 				if (this.readyState==4 && this.status==200) {
-					var data = JSON.parse(this.responseText);
-					console.log(data);
+					var res = ajax.responseText;
+					document.getElementById("second").innerHTML=res;
 				}
 			}
+			ajax.open("GET", "getLeague.php?league="+league, true);
+			ajax.send();
 		}
 	}
 </script>
@@ -82,11 +82,11 @@
       			$stmt->execute();
       			$result = $stmt->get_result();
 				echo '<label>Sport:</label>';
-				echo '<select name="Sport">';
+				echo '<select name="Sport" onChange="showLeague(this.value)">';
 				$aResult = 5;
       			while ($row = $result->fetch_array(MYSQLI_NUM)) {
           			foreach ($row as $r) {
-						echo '<option name="' . $r . '">' . $r . '</option>';
+						echo '<option value="' . $r . '">' . $r . '</option>';
 						$aResult = $r;
           			}
       			}
@@ -127,8 +127,8 @@
   	// 		$stmt->close();
 			mysqli_close($conn);
 	?>
-	<div id="txtHint"><b>Leagues will be listed here</b></div>
-	<div id="txtHint2"><b>Teams will be listed here</b></div>
+	<div id="second"><b>Leagues will be listed here</b></div>
+	<div id="third"><b>Teams will be listed here</b></div>
 </fieldset>
   <button type="submit">Join Team</button>
     </form>

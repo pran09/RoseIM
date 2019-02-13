@@ -2,7 +2,7 @@
 <html>
 <body>
 <?php
-	$q = intval($_GET['q']);
+	$league = mysql_real_escape_string($_REQUEST["first"]);
 
 	$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
@@ -11,11 +11,11 @@
 	$stmt->execute();
 	$result = $stmt->get_result();
 
-	$data = array();
-	while ($row = fetch_assoc($result)) {
-		$data[] = $row;
+	echo "<select>";
+	while ($row = $result->fetch_row()) {
+		echo "<option value=\"" .$row[0]. "\">" .$row[0]."</option>";
 	}
-	echo json_encode($data);
+	echo "</select>";
 	// echo "
 	// 	<label>League:</label>
 	// 	<select name='League' required>
