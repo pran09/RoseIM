@@ -44,6 +44,27 @@ if (!isset($_SESSION['emailAddress'])) {
 
 
 
+        $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+
+    $stmt = $conn->prepare("CALL League_Standings(?)") or die($conn->error);
+    $stmt->bind_param("i", $LeagueID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_array()) {
+        
+            echo '<span style = "font-size: 150%">' . $row['name'] . ' | '. $row['wins'] . ' Wins and ' . $row['losses']. ' Losses' . '</span>';
+            echo '</br>';
+          
+        }
+      
+        $stmt->close();
+
+
+
+
+
+
+
 mysqli_close($conn);
 ?> 
 
