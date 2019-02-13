@@ -43,10 +43,10 @@ if (!isset($_SESSION['emailAddress'])) {
 
 <div class = "container" style = "background-color:#f4f7f8">
 </br>
+
 <form align="center" method="post" action= "<?php echo $_SERVER['PHP_SELF'];?>">
-  <label>
   <input type="submit" name = "submit" value="Log Out">
-  </label>
+  
 </form>
 <?php
 	if (isse($_POST['submit'])) {
