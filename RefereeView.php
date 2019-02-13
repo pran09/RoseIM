@@ -44,7 +44,7 @@
 </br>
 
 
-<body>
+<div class = "container" style = "background-color:#f4f7f8">
 
 	<form align="center" method="post" action= "<?php echo $_SERVER['PHP_SELF'];?>">
   <label>
@@ -63,7 +63,7 @@
 				redirect("Login.php");
 			}
 	?>
-	
+
 
 <?php
 $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
@@ -88,12 +88,9 @@ $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
 		<button type="submit">Create Game</button>
 
-	</div>
+	
 
 </form>
-
-
-</div>
 
 
 
@@ -136,7 +133,7 @@ echo '<font size="118">My Games</font>';
 
 
 
-</body>
+</div>
 </html>
 
 
