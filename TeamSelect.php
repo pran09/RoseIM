@@ -40,6 +40,9 @@ if (!isset($_SESSION['emailAddress'])) {
 
 </head>
 <center><font size="200" color ="red">Rose</font><font size ="128" color="black">IM</font></center>
+
+<div class = "container" style = "background-color:#f4f7f8">
+</br>
 <form align="center" method="post" action= "<?php echo $_SERVER['PHP_SELF'];?>">
   <label>
   <input type="submit" name = "submit" value="Log Out">
@@ -56,9 +59,6 @@ if (!isset($_SESSION['emailAddress'])) {
 		redirect("Login.php");
 	}
 ?>
-<div class = "container" style = "background-color:#f4f7f8">
-</br>
-
 
 <?php
 
