@@ -3,6 +3,7 @@
 <body>
 <?php
 	$league = mysql_real_escape_string($_REQUEST["first"]);
+	echo $league;
 
 	$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
