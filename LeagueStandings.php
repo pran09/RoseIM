@@ -31,7 +31,7 @@ if (!isset($_SESSION['emailAddress'])) {
     $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
     $stmt = $conn->prepare("SELECT name FROM League WHERE league_ID = ?") or die($conn->error);
-    $stmt->bind_param("s", $LeagueID);
+    $stmt->bind_param("i", $LeagueID);
         $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_array(MYSQLI_NUM)) {
