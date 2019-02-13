@@ -99,7 +99,7 @@ echo '</br>';
 		if (isset($_POST['submit'])) {
 		
 			$Team1Score = $_POST['Team1'];		
-			$Team2Score = $_POST['Team2']
+			$Team2Score = $_POST['Team2'];
 			$GameID = $_GET['GameID'];		
 
 
