@@ -70,7 +70,7 @@ session_start();
   </style>
   </head>
   <body>
-	 <center><font size="200" color ="black">Rose</font><font size ="128" color="red">IM</font></center>
+	 <center><font size="200" color ="red">Rose</font><font size ="128" color="black">IM</font></center>
     <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
 
       <h1>Sign Up</h1>
@@ -140,7 +140,8 @@ if($getPassword != $getPasswordConfirmation){
           {
             if($r == $emailAddress){
               $notExistingEmail = false;
-              echo "Email address already exists. ";
+              echo "<center><font color = red>Email Address already exists.</font></center>";
+
             }
           }
         }
@@ -174,27 +175,13 @@ if($getPassword != $getPasswordConfirmation){
             }
 
             }   
-        echo "Make sure all fields are filled out.";
+        echo "<center><font color = red>All required fields must be filled out.</font></center>";
         $stmt->close();
   }
-
-
-      
 mysqli_close($conn);
-
 }
-
-
-
-
-
-
-
 }
-
-
   ?>
-
   </body>
 </html>
 

@@ -37,7 +37,7 @@
 	</style>
 
 </head>
-<center><font size="200" color ="black">Rose</font><font size ="128" color="red">IM</font></center>
+<center><font size="200" color ="red">Rose</font><font size ="128" color="black">IM</font></center>
 </br>
 <center><font size="120" color ="black">Referee Page</font></center>
 

@@ -70,7 +70,7 @@
 	}
 </script>
 <body>
- 	<center><font size="200" color ="black">Rose</font><font size ="128" color="red">IM</font></center>
+ 	<center><font size="200" color ="red">Rose</font><font size ="128" color="black">IM</font></center>
     <form action="TeamSelect.php" method="post">
 		<h1>Join Team</h1>
       	<fieldset>

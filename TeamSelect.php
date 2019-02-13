@@ -39,7 +39,7 @@ if (!isset($_SESSION['emailAddress'])) {
 	</style>
 
 </head>
-<center><font size="200" color ="black">Rose</font><font size ="128" color="red">IM</font></center>
+<center><font size="200" color ="red">Rose</font><font size ="128" color="black">IM</font></center>
 <div class = "container" style = "background-color:#f4f7f8">
 </br>
 
