@@ -104,7 +104,7 @@ echo '<font size="118">My Games</font>';
           //  echo $row['Team2'];
             echo '<a href = TeamView.php?TeamName=', urlencode( $row['Team2_ID']), '> ' . $row['Team2'] . ' </a>';
             echo ' AT ' . $row['StartTime'] . '  ' . $row['Location'] . ' | Score: ' . $row['Team1Score'] . ' - ' . $row['Team2Score'];
-            echo '<a href = TeamView.php?TeamName=', urlencode( $row['game_ID']), '>   SCORE GAME </a>';
+            echo '<a href = ScoreAGame.php?GameID=', urlencode( $row['game_ID']), '>  | SCORE GAME </a>';
             echo '</span>';
             
 						echo '</br>';
