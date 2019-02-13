@@ -24,14 +24,12 @@ if (!isset($_SESSION['emailAddress'])) {
   	<?php
 	
     $LeagueID = $_GET['LeagueID'];
-
+    echo 'her';
+echo $LeagueID;
     echo '</br>';
 
+
     $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
-
-
-
-
 
     $stmt = $conn->prepare("SELECT name FROM League WHERE league_ID = ?") or die($conn->error);
     $get_league->bind_param("s", $LeagueID);
