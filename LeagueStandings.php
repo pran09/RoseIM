@@ -35,9 +35,9 @@ if (!isset($_SESSION['emailAddress'])) {
         $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_array()) {
-          foreach ($row as $r) {
-            echo '<center><font size="118">'  .  $row['name']  . ' ' . $row['sport'].   '</font></center>';
-          }
+        
+            echo '<center><font size="64">'  .  $row['name']  . ' ' . $row['sport'].   '</font></center>';
+          
         }
       
         $stmt->close();
