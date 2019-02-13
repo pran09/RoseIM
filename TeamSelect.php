@@ -99,7 +99,8 @@ if (!isset($_SESSION['emailAddress'])) {
 
 	while ($row = $result->fetch_array()) {
 
-		echo '<span style = "font-size: 150%">Team <a href = TeamView.php?TeamName=', urlencode( $row['team_ID']), '> ' . $row['Team'] . ' </a> | ' . $row['League']. ' ' . $row['Sport']. '</span>';
+		echo '<span style = "font-size: 150%">Team <a href = TeamView.php?TeamName=', urlencode( $row['team_ID']), '> ' . $row['Team'] . ' </a> | ';
+		echo '<a href = LeagueStandings.php?LeagueID=', urlencode( $row['league_ID']), '> ' . $row['League'] . ' ' . $row['Sport'] .  ' </a> </span>';
 		echo '</br>';
 	}
 
