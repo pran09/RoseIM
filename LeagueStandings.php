@@ -34,7 +34,7 @@ if (!isset($_SESSION['emailAddress'])) {
     $stmt->bind_param("i", $LeagueID);
         $stmt->execute();
         $result = $stmt->get_result();
-        while ($row = $result->fetch_array(MYSQLI_NUM)) {
+        while ($row = $result->fetch_array()) {
           foreach ($row as $r) {
             echo '<center><font size="118">'  .  $row['name']  . ' ' . $row['sport'].   '</font></center>';
           }
