@@ -82,7 +82,7 @@
       			$stmt->execute();
       			$result = $stmt->get_result();
 				echo '<label>Sport:</label>';
-				echo '<select name="Sport" onChange="showLeague(this.value)">';
+				echo '<select name="Sport" id="sport" onChange="showLeague(this.value)">';
 				$aResult = 5;
       			while ($row = $result->fetch_array(MYSQLI_NUM)) {
           			foreach ($row as $r) {
