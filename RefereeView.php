@@ -122,8 +122,7 @@ echo '<font size="118">My Games</font>';
             echo ' AT ' . $row['StartTime'] . '  ' . $row['Location'] . ' | Score: ' . $row['Team1Score'] . ' - ' . $row['Team2Score'];
             echo '<a href = ScoreAGame.php?GameID=', urlencode( $row['game_ID']), '>  | SCORE GAME </a>';
             echo '</span>';
-            $_SESSION['Team' . $row['Team1_ID']] = $row['Team1'];
-            $_SESSION['Team' . $row['Team2_ID']] = $row['Team2'];
+
             
 						echo '</br>';
 	}
