@@ -64,7 +64,7 @@
 
 
 
-
+		$_SESSION['GameID'] = $_GET['GameID'];
 
 		$stmt = $conn->prepare("SELECT (SELECT name FROM Team WHERE team_ID = team1) as Team1, (SELECT name FROM Team WHERE team_ID = team2) as Team2 FROM Plays WHERE game = ?") or die($conn->error);
 		$stmt->bind_param("s", $_GET["GameID"]);
@@ -100,11 +100,11 @@ echo '</br>';
 		
 			$Team1Score = $_POST['Team1'];		
 			$Team2Score = $_POST['Team2'];
-			$GameID = $_GET['GameID'];	
+			$GameID = $_SESSION['GameID'];	
 
-			echo $Team1Score;
-			echo $Team2Score;
-			echo $GameID;	
+			echo $GameID;
+
+				
 
 
 
