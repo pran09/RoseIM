@@ -73,13 +73,10 @@ $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
 </form>
 
-<form action="ScoreAGame.php" method="post">
-
-	<button type="submit">Score A Game</button>
 
 </div>
 
-</form>
+
 
 
 
@@ -107,8 +104,9 @@ echo '<font size="118">My Games</font>';
           //  echo $row['Team2'];
             echo '<a href = TeamView.php?TeamName=', urlencode( $row['Team2_ID']), '> ' . $row['Team2'] . ' </a>';
             echo ' AT ' . $row['StartTime'] . '  ' . $row['Location'] . ' | Score: ' . $row['Team1Score'] . ' - ' . $row['Team2Score'];
+            echo '<a href = TeamView.php?TeamName=', urlencode( $row['game_ID']), '>   SCORE GAME </a>';
             echo '</span>';
-            echo ' <form action="ScoreAGame.php" method="post"> <button type="submit">Score Game</button> </form>';
+            
 						echo '</br>';
 	}
 
