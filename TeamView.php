@@ -15,7 +15,7 @@ if (!isset($_SESSION['emailAddress'])) {
       <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
       <link rel="stylesheet" href="css/main.css">
   </head>
-   <center><font size="200" color ="red">Rose</font><font size ="128" color="black">IM</font></center>
+   <center><font size="200" color ="black">Rose</font><font size ="128" color="red">IM</font></center>
   <div class = "container" style = "background-color:#f4f7f8">
    </br>
    
@@ -82,15 +82,37 @@ $stmt->bind_param("s", $_GET['TeamName']);
       			while ($row = $result->fetch_array())
       			{
           	
+
+            $st = $conn->prepare("SELECT name FROM Team WHERE  team_ID = ?") or die($conn->error);
+            $st->bind_param("s", $row['Team1_ID']);
+
+            $st->execute();
+            $res = $st->get_result();
+            while ($ro = $res->fetch_array())
+            {
+
+
+              $s = $conn->prepare("SELECT name FROM Team WHERE  team_ID = ?") or die($conn->error);
+            $s->bind_param("s", $row['Team2_ID']);
+
+            $s->execute();
+            $re = $s->get_result();
+            while ($rad = $re->fetch_array())
+            {
+
             echo '<span style = "font-size: 150%">';
-						echo '<a href = TeamView.php?TeamName=', urlencode( $row['Team1_ID']), '> ' . $row['Team1'] . ' </a>';
+						echo '<a href = TeamView.php?TeamName=', urlencode( $row['Team1_ID']), '> ' . $ro['name'] . ' </a>';
            // echo $row['Team1'];
             echo ' VS ';
           //  echo $row['Team2'];
-            echo '<a href = TeamView.php?TeamName=', urlencode( $row['Team2_ID']), '> ' . $row['Team2'] . ' </a>';
+            echo '<a href = TeamView.php?TeamName=', urlencode( $row['Team2_ID']), '> ' . $rad['name'] . ' </a>';
             echo ' AT ' . $row['StartTime'] . '  ' . $row['Location'] . ' | Score: ' . $row['Team1Score'] . ' - ' . $row['Team2Score'];
             echo '</span>';
 						echo '</br>';
+          }
+          $s->close();
+        }
+        $st->close();
 
       			}
 			
