@@ -34,7 +34,7 @@ if (!isset($_SESSION['emailAddress'])) {
 
 
     $stmt = $conn->prepare("SELECT name FROM League WHERE league_ID = ?") or die($conn->error);
-    $get_league->bind_param("i", $LeagueID);
+    $get_league->bind_param("s", $LeagueID);
         $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_array(MYSQLI_NUM)) {
