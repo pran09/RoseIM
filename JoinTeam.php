@@ -57,16 +57,15 @@
 			document.getElementById("txtHint").innerHTML="";
 			return;
 		} else {
-			if(window.XMLHttpRequest) {
-			xmlhttp = new XMLHttpRequest();
-			}
-			xmlhttp.onreadystatechange=function() {
+			ajax = new XMLHttpRequest();
+			ajax.open("GET", "getLeague.php" + league, true);
+			ajax.send();
+			ajax.onreadystatechange=function() {
 				if (this.readyState==4 && this.status==200) {
-					document.getElementById("txtHint").innerHTML=this.responseText;
+					var data = JSON.parse(this.responseText);
+					console.log(data);
 				}
 			}
-			xmlhttp.open("GET", "getLeague.php?q=" + league, true);
-			xmlhttp.send();
 		}
 	}
 </script>
@@ -89,7 +88,6 @@
           			foreach ($row as $r) {
 						echo '<option name="' . $r . '">' . $r . '</option>';
 						$aResult = $r;
-						echo this.name;
           			}
       			}
 			echo '</select>';
