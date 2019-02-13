@@ -55,7 +55,7 @@ session_start();
 </head>
 <body>
 
-	<center><font size="200" color ="black">Rose</font><font size ="128" color="red">IM</font></center>
+	<center><font size="200" color ="red">Rose</font><font size ="128" color="black">IM</font></center>
 
 	<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
 		<h1>Login</h1>
@@ -140,7 +140,7 @@ if (isset($_POST['submit'])) {
 							redirect("TeamSelect.php");
 						}
 						else{
-							echo "Username or password are incorrect.";
+							echo "<center><font color = 'red'>Username or password are incorrect.</font></center>";
 						}
 					}
 
@@ -153,7 +153,7 @@ if (isset($_POST['submit'])) {
 	}
 	
 	If ($NotInDatabase){
-		echo "This email address is not registered.";
+		echo "<center><font color = 'red'>This email address is not registered.</font></center>";
 	}
 
 	$s->close();
