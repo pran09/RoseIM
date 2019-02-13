@@ -42,23 +42,28 @@ if (!isset($_SESSION['emailAddress'])) {
 <center><font size="200" color ="red">Rose</font><font size ="128" color="black">IM</font></center>
 
 <div class = "container" style = "background-color:#f4f7f8">
-</br>
 
-<form align="center" method="post" action= "<?php echo $_SERVER['PHP_SELF'];?>">
+	<form align="center" method="post" action= "<?php echo $_SERVER['PHP_SELF'];?>">
+  <label>
   <input type="submit" name = "submit" value="Log Out">
-  
+  </label>
 </form>
 <?php
-	if (isse($_POST['submit'])) {
-    	$_SESSION["emailAddress"] = null;
-    	$_SESSION["permission"] = null;
-		function redirect($url, $statusCode = 303) {
-			header('Location: ' . $url, true, $statusCode);
-			die();
-		}
-		redirect("Login.php");
-	}
-?>
+		if (isset($_POST['submit'])) {
+          		$_SESSION["emailAddress"] = null;
+          		$_SESSION["permission"] = null;
+			
+          		function redirect($url, $statusCode = 303) {
+					header('Location: ' . $url, true, $statusCode);
+					die();
+				}
+				redirect("Login.php");
+			}
+	?>
+
+	
+</br>
+
 
 <?php
 
