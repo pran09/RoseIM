@@ -66,7 +66,7 @@
 
 
 
-		$stmt = $conn->prepare("SELECT team1, team2 FROM Game WHERE game_ID = ?") or die($conn->error);
+		$stmt = $conn->prepare("SELECT team1, team2 FROM Plays WHERE game = ?") or die($conn->error);
 		$stmt->bind_param("s", $_GET["GameID"]);
 				$stmt->execute();
 				$result = $stmt->get_result();
