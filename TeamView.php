@@ -90,29 +90,31 @@ $stmt->bind_param("s", $_GET['TeamName']);
             $res = $st->get_result();
             while ($ro = $res->fetch_array())
             {
+              $_SESSION['Team1'] = $ro['name'];
+            }
+            $s->close();
 
+              $st = $conn->prepare("SELECT name FROM Team WHERE  team_ID = ?") or die($conn->error);
+            $st->bind_param("s", $row['Team2_ID']);
 
-              $s = $conn->prepare("SELECT name FROM Team WHERE  team_ID = ?") or die($conn->error);
-            $s->bind_param("s", $row['Team2_ID']);
-
-            $s->execute();
-            $re = $s->get_result();
-            while ($rad = $re->fetch_array())
+            $st->execute();
+            $res = $st->get_result();
+            while ($ro = $res->fetch_array())
             {
+              $_SESSION['Team2'] = $ro['name'];
+            }
+            $s->close();
 
             echo '<span style = "font-size: 150%">';
-						echo '<a href = TeamView.php?TeamName=', urlencode( $row['Team1_ID']), '> ' . $ro['name'] . ' </a>';
+						echo '<a href = TeamView.php?TeamName=', urlencode( $row['Team1_ID']), '> ' . $_SESSION['Team1'] . ' </a>';
            // echo $row['Team1'];
             echo ' VS ';
           //  echo $row['Team2'];
-            echo '<a href = TeamView.php?TeamName=', urlencode( $row['Team2_ID']), '> ' . $rad['name'] . ' </a>';
+            echo '<a href = TeamView.php?TeamName=', urlencode( $row['Team2_ID']), '> ' . $_SESSION['Team2'] . ' </a>';
             echo ' AT ' . $row['StartTime'] . '  ' . $row['Location'] . ' | Score: ' . $row['Team1Score'] . ' - ' . $row['Team2Score'];
             echo '</span>';
 						echo '</br>';
-          }
-          $s->close();
-        }
-        $st->close();
+        
 
       			}
 			

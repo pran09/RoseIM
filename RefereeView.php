@@ -46,6 +46,25 @@
 
 <body>
 
+	<form align="center" method="post" action= "<?php echo $_SERVER['PHP_SELF'];?>">
+  <label>
+  <input type="submit" name = "submit" value="Log Out">
+  </label>
+</form>
+<?php
+		if (isset($_POST['submit'])) {
+          		$_SESSION["emailAddress"] = null;
+          		$_SESSION["permission"] = null;
+			
+          		function redirect($url, $statusCode = 303) {
+					header('Location: ' . $url, true, $statusCode);
+					die();
+				}
+				redirect("Login.php");
+			}
+	?>
+	
+
 <?php
 $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 	$stmt = $conn->prepare("SELECT firstName, lastName FROM Person WHERE email = ?") or die($conn->error);
