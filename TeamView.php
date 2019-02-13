@@ -92,7 +92,7 @@ $stmt->bind_param("s", $_GET['TeamName']);
             {
               $_SESSION['Team1'] = $ro['name'];
             }
-            $s->close();
+            $st->close();
 
               $st = $conn->prepare("SELECT name FROM Team WHERE  team_ID = ?") or die($conn->error);
             $st->bind_param("s", $row['Team2_ID']);
@@ -103,7 +103,7 @@ $stmt->bind_param("s", $_GET['TeamName']);
             {
               $_SESSION['Team2'] = $ro['name'];
             }
-            $s->close();
+            $st->close();
 
             echo '<span style = "font-size: 150%">';
 						echo '<a href = TeamView.php?TeamName=', urlencode( $row['Team1_ID']), '> ' . $_SESSION['Team1'] . ' </a>';
