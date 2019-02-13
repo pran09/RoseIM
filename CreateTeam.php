@@ -135,7 +135,6 @@ if (!isset($_SESSION['emailAddress'])) {
 					die();
 				}
 
-				mysql_close();
 				redirect("TeamSelect.php");
           		
 			}
