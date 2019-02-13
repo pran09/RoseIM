@@ -66,18 +66,18 @@
 
 
 
-		$stmt = $conn->prepare("SELECT (SELECT name FROM Team WHERE team_ID = team1) as team1, (SELECT name FROM Team WHERE team_ID = team2) as team2 FROM Game WHERE game_ID = ?") or die($conn->error);
+		$stmt = $conn->prepare("SELECT (SELECT name FROM Team WHERE team_ID = team1) as Team1, (SELECT name FROM Team WHERE team_ID = team2) as Team2 FROM Game WHERE game_ID = ?") or die($conn->error);
 		$stmt->bind_param("s", $_GET["GameID"]);
 				$stmt->execute();
 				$result = $stmt->get_result();
 					
 				while ($row = $result->fetch_array()) {
-					echo '<label>'. $row['team1'].' Score</label>';
+					echo '<label>'. $row['Team1'].' Score</label>';
 					echo '<input type="text" name="Team1" required>';
 
 					echo '</br>';
 
-					echo '<label>'. $row['team2'].' Score</label>';
+					echo '<label>'. $row['Team2'].' Score</label>';
 					echo '<input type="text" name="Team2" required>';
 					
 					
@@ -98,6 +98,11 @@ echo '</br>';
 		</fieldset>
 		<input type="submit" name="submit" value="Next">
 	</form>
+	<?php
+		if (isset($_POST['submit'])) {
+			
+		}
+	?>
 
 
 </body>
