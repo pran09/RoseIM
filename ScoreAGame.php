@@ -100,7 +100,11 @@ echo '</br>';
 		
 			$Team1Score = $_POST['Team1'];		
 			$Team2Score = $_POST['Team2'];
-			$GameID = $_GET['GameID'];		
+			$GameID = $_GET['GameID'];	
+
+			echo $Team1Score;
+			echo $Team2Score;
+			echo $GameID;	
 
 
 
@@ -125,7 +129,7 @@ echo '</br>';
 				}
 
 			
-				redirect("RefereeView.php");
+				//redirect("RefereeView.php");
 
 
 
