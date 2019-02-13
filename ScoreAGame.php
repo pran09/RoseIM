@@ -84,6 +84,7 @@
 				}
 				
 				$stmt->close();
+				mysqli_close($conn);
 
 
 echo '</br>';
@@ -93,14 +94,46 @@ echo '</br>';
 				
 				mysqli_close($conn);
 			?>
-
+</br>
 
 		</fieldset>
 		<input type="submit" name="submit" value="Add Score">
 	</form>
 	<?php
 		if (isset($_POST['submit'])) {
+		
+			$Team1Score = $_POST['Team1'];		
+			$Team2Score = $_POST['Team2']
+			$GameID = $_GET['GameID'];		
+
+
+
+			if($Team1Score == $Team2Score){
+				echo "No Ties Allowed";
+			}
+			else{
+						$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+
+
+			$stmt = $conn->prepare("SELECT Update_Plays(?,?,?)") or die($conn->error);
+			$stmt->bind_param("iii", $Team1Score, $Team2Score, $GameID);
+				$stmt->execute();
+				
+				
+				$stmt->close();
+				mysqli_close($conn);
+
+				function redirect($url, $statusCode = 303) {
+					header('Location: ' . $url, true, $statusCode);
+					die();
+				}
+
 			
+				redirect("RefereeView.php");
+
+
+
+}
 		}
 	?>
 
