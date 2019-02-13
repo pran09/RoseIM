@@ -25,6 +25,29 @@ if (!isset($_SESSION['emailAddress'])) {
 	
     $LeagueID = $_GET['LeagueID'];
 
+    echo '</br>';
+
+    $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+
+
+
+
+
+    $stmt = $conn->prepare("SELECT name FROM League WHERE league_ID = ?") or die($conn->error);
+    $get_league->bind_param("i", $LeagueID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_array(MYSQLI_NUM)) {
+          foreach ($row as $r) {
+            echo '<center><font size="118">'  .  $row['name']  .  '</font></center>';
+          }
+        }
+      
+        $stmt->close();
+
+
+
+mysqli_close($conn);
 ?> 
 
 </div>
