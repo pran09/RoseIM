@@ -37,14 +37,12 @@ if (!isset($_SESSION['emailAddress'])) {
   			margin-bottom: 7px;
 		}
 	</style>
-
-</head>
-<center><font size="200" color ="red">Rose</font><font size ="128" color="black">IM</font></center>
-<form align="right" method="post" action= "<?php echo $_SERVER['PHP_SELF'];?>">
-  <label>
-  <input type="submit" name = "submit" value="Log Out">
-  </label>
-</form>
+	<center><font size="200" color ="red">Rose</font><font size ="128" color="black">IM</font></center>
+	<form align="right" method="post" action= "<?php echo $_SERVER['PHP_SELF'];?>">
+  	<label>
+  		<input type="submit" name = "submit" value="Log Out">
+  	</label>
+	</form>
 <?php
 	if (isse($_POST['submit'])) {
     	$_SESSION["emailAddress"] = null;
@@ -56,10 +54,9 @@ if (!isset($_SESSION['emailAddress'])) {
 		redirect("Login.php");
 	}
 ?>
+</head>
 <div class = "container" style = "background-color:#f4f7f8">
 </br>
-
-
 <?php
 
 
