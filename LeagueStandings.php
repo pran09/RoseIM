@@ -43,7 +43,7 @@ if (!isset($_SESSION['emailAddress'])) {
         $stmt->close();
 
 
-$counter = 0;
+$counter = 1;
         $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
     $stmt = $conn->prepare("CALL League_Standings(?)") or die($conn->error);
@@ -52,8 +52,9 @@ $counter = 0;
         $result = $stmt->get_result();
         while ($row = $result->fetch_array()) {
         
-            echo '<span style = "font-size: 150%">' . $row['name'] . ' | '. $row['wins'] . ' Wins and ' . $row['losses']. ' Losses' . $counter . ' Place' .'</span>';
+            echo '<span style = "font-size: 150%">' . $row['name'] . ' | '. $row['wins'] . ' Wins and ' . $row['losses']. ' Losses ' . $counter . ' Place' .'</span>';
             echo '</br>';
+            $counter = $counter + 1;
           
         }
       
