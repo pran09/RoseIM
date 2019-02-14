@@ -99,16 +99,7 @@ echo '</br>';
 	</form>
 	<?php
 	session_start();
-	if (!isset($_SESSION['emailAddress'])) {
-		header('location: Login.php');
-		exit();
-	}
-
-	if ($_SESSION['permission'] != 'Referee') {
-		
-		header('location: TeamSelect.php');
-		exit();
-	}
+	
 
 		if (isset($_POST['submit'])) {
 		
@@ -143,7 +134,7 @@ echo '</br>';
 				}
 
 			
-				redirect("RefereeView.php");
+				//redirect("RefereeView.php");
 
 
 
