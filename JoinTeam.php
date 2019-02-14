@@ -53,24 +53,32 @@
 </head>
 <script type="text/javascript">
 	function showLeague(league) {
-    	var sportDiv = document.getElementById("sport");
-    	var teamDiv = document.getElementById("third");
-    	teamDiv.innerHTML = "Please choose a league";
-		// code for IE7+, Firefox, Chrome, Opera, Safari
-		if(window.XMLHttpRequest) {
-        	xmlhttp = new XMLHttpRequest();
-        } else {	// code for IE5 and IE6
-        	xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-		xmlhttp.onreadystatechange=function() {
-			if (this.readyState==4 && this.status==200) {
-				var res = ajax.responseText;
-				document.getElementById("second").innerHTML=this.responseText;
-			}
-		}
-		xmlhttp.open("GET", "getLeague.php?league="+league, true);
-		xmlhttp.send();
-	}
+  //   	var sportDiv = document.getElementById("sport");
+  //   	var leagueDiv = document.getElementById("second");
+  //   	var teamDiv = document.getElementById("third");
+  //   	teamDiv.innerHTML = "Please choose a league";
+		// // code for IE7+, Firefox, Chrome, Opera, Safari
+		// if(window.XMLHttpRequest) {
+  //       	xmlhttp = new XMLHttpRequest();
+  //       } else {	// code for IE5 and IE6
+  //       	xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  //       }
+		// xmlhttp.onreadystatechange=function() {
+		// 	if (this.readyState==4 && this.status==200) {
+		// 		leagueDiv.innerHTML=this.responseText;
+		// 	}
+		// };
+		// xmlhttp.open("GET", "getLeague.php?league="+league, true);
+		// xmlhttp.send();      
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+    		if (this.readyState == 4 && this.status == 200) {
+      			document.getElementById("second").innerHTML = this.responseText;
+    		}
+		};
+		xhttp.open("GET", "getLeague.php?league=" + league, true);
+  		xhttp.send();
+}
 </script>
 <body>
  	<center><font size="200" color ="red">Rose</font><font size ="128" color="black">IM</font></center>
@@ -104,7 +112,7 @@
           			}
       			}
 			echo '</select>';
-			echo "<br>";
+			echo "<br />";
   			$stmt->close();
 
 
