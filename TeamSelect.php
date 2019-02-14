@@ -61,9 +61,15 @@ if (!isset($_SESSION['emailAddress'])) {
 			}
 	?>
 
-	
-</br>
 
+</br>
+<script>
+// When the user clicks on <div>, open the popup
+function myFunction() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+}
+</script>
 
 <?php
 
@@ -103,13 +109,19 @@ if (!isset($_SESSION['emailAddress'])) {
 	while ($row = $result->fetch_array()) {
 
 		echo '<span style = "font-size: 150%">Team <a href = TeamView.php?TeamName=', urlencode( $row['team_ID']), '> ' . $row['Team'] . ' </a> | ';
-		echo '<a href = LeagueStandings.php?LeagueID=', urlencode( $row['league_ID']), '> ' . $row['League'] . ' ' . $row['Sport'] .  ' </a> </span>';
+		echo '<a href = LeagueStandings.php?LeagueID=', urlencode( $row['league_ID']), '> ' . $row['League'] . ' ' . '<div class="popup" onclick="myFunction()">' . $row['Sport'].
+  		'<span class="popuptext" id="myPopup">' . $row['Rules'] . '</span>
+		</div>' .  ' </a> </span>';
 		echo '</br>';
+
+		
 	}
 
 	$stmt->close();
 	mysqli_close($conn);
 ?>
+
+
 
 </div>
 <body>
