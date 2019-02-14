@@ -53,20 +53,23 @@
 </head>
 <script type="text/javascript">
 	function showLeague(league) {
-		if (league == "") {
-			document.getElementById("txtHint").innerHTML="";
-			return;
-		} else {
-			ajax = new XMLHttpRequest();
-			ajax.onreadystatechange=function() {
-				if (this.readyState==4 && this.status==200) {
-					var res = ajax.responseText;
-					document.getElementById("second").innerHTML=res;
-				}
+    	var sportDiv = document.getElementById("sport");
+    	var teamDiv = document.getElementById("third");
+    	teamDiv.innerHTML = "Please choose a league";
+		// code for IE7+, Firefox, Chrome, Opera, Safari
+		if(window.XMLHttpRequest) {
+        	xmlhttp = new XMLHttpRequest();
+        } else {	// code for IE5 and IE6
+        	xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+		xmlhttp.onreadystatechange=function() {
+			if (this.readyState==4 && this.status==200) {
+				var res = ajax.responseText;
+				document.getElementById("second").innerHTML=this.responseText;
 			}
-			ajax.open("GET", "getLeague.php?league="+league, true);
-			ajax.send();
 		}
+		xmlhttp.open("GET", "getLeague.php?league="+league, true);
+		xmlhttp.send();
 	}
 </script>
 <body>
@@ -91,7 +94,7 @@
           			}
       			}
 			echo '</select>';
-
+			echo "<br>";
   			$stmt->close();
 
 
@@ -127,7 +130,7 @@
   	// 		$stmt->close();
 			mysqli_close($conn);
 	?>
-	<div id="second"></div>
+	<div id="second">Please choose a sport</div>
 	<div id="third"></div>
 </fieldset>
   <button type="submit">Join Team</button>
