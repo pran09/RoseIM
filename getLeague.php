@@ -1,9 +1,15 @@
-<!DOCTYPE html>
-<html>
-<body>
 <?php
-	$league = mysql_real_escape_string($_GET["league"]);
-	echo '<script>console.log('.$league');</script>';
+	function debug_to_console( $data ) {
+		$output = $data;
+		if (is_array($output))
+			$output = implode( ',', $output);
+
+		echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
+	}
+
+
+	$league = $_GET["league"])
+	debug_to_console($league);
 
 	// $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
@@ -25,5 +31,3 @@
 		</select>";
 	//mysql_close($conn);
 ?>
-</body>
-</html>
