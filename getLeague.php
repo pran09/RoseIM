@@ -17,13 +17,13 @@
 	// 	echo "<option value=\"" .$row[0]. "\">" .$row[0]."</option>";
 	// }
 	// echo "</select>";
-	// echo "
+	 echo "
 		<label>League:</label>
 		<select name='League' required>
 		<option name='team1'>team 1</option>
 		<option name='team2'>team 2</option>
 		</select>";
-	mysql_close($conn);
+	//mysql_close($conn);
 ?>
 </body>
 </html>
