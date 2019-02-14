@@ -6,6 +6,8 @@
 
 		echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
 	}
+	$test = "hello world";
+	debug_to_console($test);
 
 
 	$league = $_GET["league"])
