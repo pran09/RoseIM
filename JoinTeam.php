@@ -78,6 +78,15 @@
 		<h1>Join Team</h1>
       	<fieldset>
         	<?php
+        		function debug_to_console( $data ) {
+					$output = $data;
+					if (is_array($output))
+						$output = implode( ',', $output);
+
+					echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
+				}
+
+
           		$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
 				$stmt = $conn->prepare("SELECT name FROM Sport") or die($conn->error);
@@ -90,6 +99,7 @@
       			while ($row = $result->fetch_array(MYSQLI_NUM)) {
           			foreach ($row as $r) {
 						echo '<option value="' . $r . '">' . $r . '</option>';
+						debug_to_console($r);
 						$aResult = $r;
           			}
       			}
