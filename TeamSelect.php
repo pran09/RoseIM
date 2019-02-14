@@ -75,8 +75,8 @@ if (!isset($_SESSION['emailAddress'])) {
 /* Toggle this class when clicking on the popup container (hide and show the popup) */
 .popup .show {
   visibility: visible;
-  -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s
+  -webkit-animation: fadeIn 0.5s;
+  animation: fadeIn 0.5s
 }
 
 /* Add animation (fade in the popup) */
