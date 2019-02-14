@@ -60,6 +60,8 @@
 	<h1>Score A Game:</h1>
 
 <?php
+	$_SESSION['GameID'] = $_GET['GameID'];
+
 		$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
 
@@ -96,11 +98,23 @@ echo '</br>';
 		<input type="submit" name="submit" value="Add Score">
 	</form>
 	<?php
+	session_start();
+	if (!isset($_SESSION['emailAddress'])) {
+		header('location: Login.php');
+		exit();
+	}
+
+	if ($_SESSION['permission'] != 'Referee') {
+		
+		header('location: TeamSelect.php');
+		exit();
+	}
+
 		if (isset($_POST['submit'])) {
 		
 			$Team1Score = $_POST['Team1'];		
 			$Team2Score = $_POST['Team2'];
-			$GameID = $_GET["GameID"];	
+			$GameID = $_SESSION['GameID'];	
 
 			echo $GameID;
 
