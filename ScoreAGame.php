@@ -106,7 +106,7 @@ echo '</br>';
 		
 			$Team1Score = $_POST['Team1'];		
 			$Team2Score = $_POST['Team2'];
-			$GameID = $_SESSION['GameID'];	
+			$GameID = $_GET["GameID"];	
 				
 
 echo $Team1Score;
