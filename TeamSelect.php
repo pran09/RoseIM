@@ -109,9 +109,9 @@ function myFunction() {
 	while ($row = $result->fetch_array()) {
 
 		echo '<span style = "font-size: 150%">Team <a href = TeamView.php?TeamName=', urlencode( $row['team_ID']), '> ' . $row['Team'] . ' </a> | ';
-		echo '<a href = LeagueStandings.php?LeagueID=', urlencode( $row['league_ID']), '> ' . $row['League'] . ' ' . '<div class="popup" onclick="myFunction()">' . $row['Sport'].
+		echo '<a href = LeagueStandings.php?LeagueID=', urlencode( $row['league_ID']), '> ' . $row['League'] . ' </a> ' . '<div class="popup" onclick="myFunction()">' . $row['Sport'].
   		'<span class="popuptext" id="myPopup">' . $row['Rules'] . '</span>
-		</div>' .  ' </a> </span>';
+		</div>' .  '  </span>';
 		echo '</br>';
 
 		
