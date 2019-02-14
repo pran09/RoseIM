@@ -163,7 +163,7 @@ function myFunction() {
 
 		echo '<span style = "font-size: 150%">Team <a href = TeamView.php?TeamName=', urlencode( $row['team_ID']), '> ' . $row['Team'] . ' </a> | ';
 		echo '<a href = LeagueStandings.php?LeagueID=', urlencode( $row['league_ID']), '> ' . $row['League'] . ' </a> </span>';
-		echo '<div class="popup" onclick="myFunction()">' . $row['Sport']. '<span class="popuptext" id="myPopup">' . $row['Rules'] . '</span> </div>';
+		echo '<div class="popup" onclick="myFunction()">' . $row['Sport']. '<span style = "font-size: 150%" class="popuptext" id="myPopup">' . $row['Rules'] . '</span> </div>';
 		echo '</br>';
 
 		
