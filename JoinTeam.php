@@ -1,5 +1,4 @@
 <?php
-	phpinfo();
 	session_start();
 	if(!isset($_SESSION['emailAddress'])) {
 		header('location: Login.php');
