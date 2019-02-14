@@ -65,7 +65,7 @@ session_start();
 
 		$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
-
+		echo $_SESSION['GameID'];
 
 		
 
@@ -106,7 +106,7 @@ echo '</br>';
 		
 			$Team1Score = $_POST['Team1'];		
 			$Team2Score = $_POST['Team2'];
-			$GameID = $_GET["GameID"];	
+			$GameID = $_SESSION['GameID'];	
 				
 
 echo $Team1Score;
