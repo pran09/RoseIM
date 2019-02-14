@@ -107,12 +107,11 @@ echo '</br>';
 			$Team1Score = $_POST['Team1'];		
 			$Team2Score = $_POST['Team2'];
 			$GameID = $_SESSION['GameID'];	
-
-			echo $GameID;
-
 				
 
-
+echo $Team1Score;
+echo $Team2Score;
+echo $GameID;
 
 			if($Team1Score == $Team2Score){
 				echo "No Ties Allowed";
