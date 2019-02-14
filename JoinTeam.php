@@ -72,7 +72,17 @@
 		// xmlhttp.send();      
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
+			if (this.readyState == 1) {
+				console.log("Server connection established");
+			}
+			if (this.readyState == 2) {
+				console.log("Request received");
+			}
+			if (this.readyState == 3) {
+				console.log("Processing request");
+			}
     		if (this.readyState == 4 && this.status == 200) {
+    			console.log("request finished and response is ready");
       			document.getElementById("second").innerHTML = this.responseText;
     		}
 		};
