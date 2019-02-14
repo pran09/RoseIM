@@ -60,6 +60,7 @@
 	<h1>Score A Game:</h1>
 
 <?php
+session_start();
 	$_SESSION['GameID'] = $_GET['GameID'];
 
 		$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
