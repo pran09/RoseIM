@@ -169,8 +169,8 @@ if($getPassword != $getPasswordConfirmation){
           header('Location: ' . $url, true, $statusCode);
           die();
         }
-          redirect("Register.php");
-        // header("Location: TeamSelect.php");
+          redirect("TeamSelect.php");
+        //header("Location: TeamSelect.php");
         }
             }
 

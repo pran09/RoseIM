@@ -1,6 +1,6 @@
 <?php
 session_start();
-mysqli_connect("p:roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+$conn = mysqli_connect("p:roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 ?>
 
 <head>
