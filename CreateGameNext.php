@@ -7,7 +7,7 @@ if (!isset($_SESSION['emailAddress'])) {
 }
 
 if ($_SESSION['permission'] != 'Referee') {
-	
+
 	header('location: TeamSelect.php');
 	exit();
 }
@@ -62,11 +62,17 @@ if ($_SESSION['permission'] != 'Referee') {
 
 		<?php
 
-		$_SESSION['Sport'] = $_POST['Sport'];
-		$_SESSION['League'] = $_POST['League'];
-		$_SESSION['Referee'] = $_POST['Referee'];
-		$_SESSION['Facility'] = $_POST['Facility'];
-		$_SESSION['Time and Date'] = $_POST['Time and Date'];
+		$Sport = $_POST['Sport'];
+		$League = $_POST['League'];
+		$Referee = $_POST['Referee'];
+		$Facility = $_POST['Facility'];
+		$StartTime = $_POST['Time and Date'];
+
+		echo '<input type = "hidden" name = "Sport" value = "' . $Sport .'" />';
+		echo '<input type = "hidden" name = "League" value = "' . $League .'" />';
+		echo '<input type = "hidden" name = "Referee" value = "' . $Referee .'" />';
+		echo '<input type = "hidden" name = "Facility" value = "' . $Facility .'" />';
+		echo '<input type = "hidden" name = "StartTime" value = "' . $StartTime .'" />';
 
 		echo $_POST['Time and Date'];
 
@@ -74,7 +80,7 @@ if ($_SESSION['permission'] != 'Referee') {
 
 
 		$stmt = $conn->prepare("SELECT name, team_ID FROM Team WHERE league = (SELECT league_ID FROM League WHERE sport = ? AND name = ?)") or die($conn->error);
-		$stmt->bind_param("ss", $_SESSION['Sport'], $_SESSION['League']);
+		$stmt->bind_param("ss", $Sport, $League);
 
 		$stmt->execute();
 		$result = $stmt->get_result();
@@ -82,10 +88,10 @@ if ($_SESSION['permission'] != 'Referee') {
 		echo '<select name="Home Team">';
 		$sport = 5;
 		while ($row = $result->fetch_array()) {
-			
+
 			echo '<option value="' . $row['team_ID'] . '">' . $row['name'] . '</option>';
-			
-			
+
+
 		}
 		echo "</select>";
 
@@ -95,7 +101,7 @@ if ($_SESSION['permission'] != 'Referee') {
 
 
 		$stmt = $conn->prepare("SELECT name, team_ID FROM Team WHERE league = (SELECT league_ID FROM League WHERE sport = ? AND name = ?)") or die($conn->error);
-		$stmt->bind_param("ss", $_SESSION['Sport'], $_SESSION['League']);
+		$stmt->bind_param("ss", $Sport, $League);
 
 		$stmt->execute();
 		$result = $stmt->get_result();
@@ -103,10 +109,10 @@ if ($_SESSION['permission'] != 'Referee') {
 		echo '<select name="Away Team">';
 		$sport = 5;
 		while ($row = $result->fetch_array()) {
-			
+
 			echo '<option value="' . $row['team_ID'] . '">' . $row['name'] . '</option>';
-			
-			
+
+
 		}
 		echo "</select>";
 
@@ -123,22 +129,14 @@ if ($_SESSION['permission'] != 'Referee') {
 </form>
 <?php
 if (isset($_POST['SuperSub'])) {
-	$Sport = $_SESSION['Sport'];
-	$League = $_SESSION['League'];
+	$Sport = $_POST['Sport'];
+	$League = $_POST['League'];
 	$HomeTeam = $_POST['Home Team'];
 	$AwayTeam = $_POST['Away Team'];
-	$Referee = $_SESSION['Referee'];
-	$Facility = $_SESSION['Facility'];
-	$DateTime = $_SESSION['Time and Date'];
-	echo 'here1';
-	echo $Sport;
-	echo $League;
-	echo $HomeTeam;
-	echo $AwayTeam;
-	echo $Referee;
-	echo $Facility;
-	echo $DateTime;
-	echo 'here2';
+	$Referee = $_POST['Referee'];
+	$Facility = $_POST['Facility'];
+	$DateTime = $_POST['StartTime'];
+
 
 	if($HomeTeam == $AwayTeam){
 		echo 'The home team and away team must be different.';
@@ -146,7 +144,7 @@ if (isset($_POST['SuperSub'])) {
 	else{
 
 		include 'datalogin.php';
-		
+
 		$stmt = $conn->prepare("SELECT Create_Game(?, ?, ?, ?, ?) as return_value") or die($conn->error);
 		$stmt->bind_param("ssss", $Sport, $Referee, $Facility, $League, $DateTime);
 		$stmt->execute();
@@ -157,7 +155,7 @@ if (isset($_POST['SuperSub'])) {
 		$stmt->execute();
 		$stmt->close();
 
-		
+
 
 
 		mysqli_close($conn);
@@ -165,9 +163,9 @@ if (isset($_POST['SuperSub'])) {
 			header('Location: ' . $url, true, $statusCode);
 			die();
 		}
-		mysql_close();
-		redirect("RefereeView.php");
 		
+		redirect("RefereeView.php");
+
 	}
 }
 ?>
