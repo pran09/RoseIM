@@ -137,12 +137,18 @@ if (isset($_POST['SuperSub'])) {
 	$Facility = $_POST['Facility'];
 	$DateTime = $_POST['StartTime'];
 
-echo $HomeTeam;
-echo $AwayTeam;
-//	if($HomeTeam === $AwayTeam){
-//		echo 'The home team and away team must be different.';
-	//}
-	//else{
+echo $Sport;
+	echo $League;
+	echo $HomeTeam;
+	echo $AwayTeam;
+	echo $Referee;
+	echo $Facility;
+	echo $DateTime;
+
+	if($HomeTeam === $AwayTeam){
+		echo 'The home team and away team must be different.';
+	}
+	else{
 
 		include 'datalogin.php';
 
@@ -167,7 +173,7 @@ echo $AwayTeam;
 		
 		redirect("RefereeView.php");
 
-	//}
+	}
 }
 ?>
 
