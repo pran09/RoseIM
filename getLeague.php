@@ -13,7 +13,7 @@ $returnString = '<label>League:</label> <select name="League" id="leagueSelect">
 while ($row = $result->fetch_array()) {
 	$returnString .= '\n<option value="' . $row['league_ID'] . '">' . $row['name'] . '</option>';
 }
-
+$returnString .= '</select>';
 mysqli_close($conn);
 echo $returnString;
 ?>
