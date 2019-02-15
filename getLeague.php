@@ -1,17 +1,5 @@
 <?php
-	function debug_to_console( $data ) {
-		$output = $data;
-		if (is_array($output))
-			$output = implode( ',', $output);
-
-		echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
-	}
-	$test = "hello world";
-	debug_to_console($test);
-
-
-	$sport = $POST["sport"])
-	debug_to_console($sport);
+	$sport = $POST["sport"]);
 
 	$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
