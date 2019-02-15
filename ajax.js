@@ -21,7 +21,7 @@ $(function () {
 		});
 	});
 
-	$leagueMenu = $('#leagueSelect');
+	$leagueMenu = $('#league');
 	$leagueMenu.on('change', function () {
 		$teams = $('#team');
 		var leagueID = $leagueMenu.val();

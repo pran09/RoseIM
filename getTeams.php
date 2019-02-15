@@ -2,6 +2,9 @@
 include 'datalogin.php';
 
 $league = isset($_GET['league'])? $_GET['league'] : null;
+if ($league == null) {
+	echo "";
+}
 
 $stmt = $conn->prepare("SELECT team_ID, name FROM Team WHERE league = ?") or die($conn->error);
 $stmt->bind_param("i", $league);
