@@ -145,10 +145,10 @@ echo $Sport;
 	echo $Facility;
 	echo $DateTime;
 
-	if($HomeTeam === $AwayTeam){
-		echo 'The home team and away team must be different.';
-	}
-	else{
+	//if($HomeTeam === $AwayTeam){
+	//	echo 'The home team and away team must be different.';
+	//}
+	//else{
 
 		include 'datalogin.php';
 
@@ -173,7 +173,7 @@ echo $Sport;
 		
 		redirect("RefereeView.php");
 
-	}
+	//}
 }
 ?>
 
