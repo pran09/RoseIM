@@ -9,7 +9,7 @@ session_start();
 	<title>Login Form</title>
 	<link rel="stylesheet" href="normalize.css">
 	<link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="css/main.css">
+	<!--<link rel="stylesheet" href="css/main.css">-->
 	<style>
 	input[type=submit] {
 		padding: 19px 39px 18px 39px;
