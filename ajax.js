@@ -1,20 +1,3 @@
-// function getTeams(leagueID) {
-// 	$teams = $('#team');
-// 	$.ajax( {
-// 		type: 'GET',
-// 		url: 'http://roseim.csse.rose-hulman.edu/RoseIM/getTeams.php',
-// 		data: {league: leagueID},
-// 		datatype: "html",
-// 		success: function(teams) {
-// 			$teams.append(teams);
-// 		}
-// 		error: function() {
-// 			alert('error loading teams');
-// 		}
-// 	});
-// };
-
-
 $(function () {
 
 	$sport = $('#sportDiv');
@@ -39,7 +22,20 @@ $(function () {
 	});
 
 	$leagueMenu = $('#leagueSelect');
-	$leagueMenu.on('change', function() {
-		console.log('league selected');
+	$leagueMenu.on('change', function () {
+		$teams = $('#team');
+		var leagueID = $leagueMenu.val();
+		$.ajax( {
+			type: 'GET',
+			url: 'http://roseim.csse.rose-hulman.edu/RoseIM/getTeams.php',
+			data: {league: leagueID},
+			datatype: "html",
+			success: function(teams) {
+				$teams.append(teams);
+			}
+			error: function() {
+				alert('error loading teams');
+			}
+		});
 	});
 });
