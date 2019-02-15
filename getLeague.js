@@ -8,7 +8,7 @@ $(function () {
 		console.log(sport);
 		$.ajax( {
 			type: 'POST',
-			url: 'getLeague.php',
+			url: 'roseim.csse.rose-hulman.edu/RoseIM/getLeague.php',
 			data: {sport: $sport.val()},
 			datatype: "html",
 			success: function(leagues) {
