@@ -39,5 +39,7 @@ $(function () {
 	});
 
 	$leagueMenu = $('#leagueSelect');
-	$leagueMenu.on('change', getTeams($leagueMenu.val()));
+	$leagueMenu.on('change', function() {
+		console.log('league selected');
+	});
 });
