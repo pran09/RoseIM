@@ -121,8 +121,8 @@
   	// 		$stmt->close();
 			mysqli_close($conn);
 	?>
-	<div id="second">Please choose a sport</div>
-	<div id="third"></div>
+	<div id="league">Please choose a sport</div>
+	<div id="team"></div>
 </fieldset>
   <button type="submit">Join Team</button>
     </form>
