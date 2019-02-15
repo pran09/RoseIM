@@ -57,7 +57,7 @@ if (!isset($_SESSION['emailAddress'])) {
 		<h1>New Team</h1>
 		<fieldset>
 			<?php
-				$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+				$conn = $_SESSION['conn'];
 				$stmt = $conn->prepare("SELECT name FROM Sport") or die($conn->error);
 				$stmt->execute();
 				$result = $stmt->get_result();
