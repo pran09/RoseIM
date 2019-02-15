@@ -62,6 +62,7 @@ if ($_SESSION['permission'] != 'Referee') {
 		<?php
 		session_start();
 		$_SESSION['GameID'] = $_GET['GameID'];
+		$GLOBALS['GID'] = $_GET['GameID'];
 
 		include 'datalogin.php';
 
@@ -103,15 +104,15 @@ if (isset($_POST['submit'])) {
 
 	$Team1Score = $_POST['Team1'];		
 	$Team2Score = $_POST['Team2'];
-		
+	$GameID = $GLOBALS['GID'];	
 
-
+echo $GameID;
 	if($Team1Score == $Team2Score){
 		echo "No Ties Allowed";
 	}
 	else{
 		include 'datalogin.php';
-	
+
 
 		$stmt = $conn->prepare("SELECT Update_Plays(?,?,?)") or die($conn->error);
 		$stmt->bind_param("iii", $Team1Score, $Team2Score, $GameID);
@@ -127,7 +128,7 @@ if (isset($_POST['submit'])) {
 		}
 
 
-		redirect("RefereeView.php");
+		//redirect("RefereeView.php");
 
 
 
