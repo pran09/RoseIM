@@ -139,10 +139,10 @@ if (isset($_POST['SuperSub'])) {
 
 echo $HomeTeam;
 echo $AwayTeam;
-	if($HomeTeam === $AwayTeam){
-		echo 'The home team and away team must be different.';
-	}
-	else{
+//	if($HomeTeam === $AwayTeam){
+//		echo 'The home team and away team must be different.';
+	//}
+	//else{
 
 		include 'datalogin.php';
 
@@ -167,7 +167,7 @@ echo $AwayTeam;
 		
 		redirect("RefereeView.php");
 
-	}
+	//}
 }
 ?>
 
