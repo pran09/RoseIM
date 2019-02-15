@@ -11,10 +11,10 @@ $(function () {
 			url: 'getLeague.php',
 			data: {sport: $sport.val()},
 			datatype: "html",
-			success: function(leagues) {
+			.done: function(leagues) {
 				$league.append(leagues);
 			},
-			error: function() {
+			.fail: function() {
 				alert('error loading leagues');
 			}
 		});
