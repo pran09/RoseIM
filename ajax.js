@@ -1,18 +1,18 @@
-// function getTeams(leagueID) {
-// 	$teams = $('#team');
-// 	$.ajax( {
-// 		type: 'GET',
-// 		url: 'http://roseim.csse.rose-hulman.edu/RoseIM/getTeams.php',
-// 		data: {league: leagueID},
-// 		datatype: "html",
-// 		success: function(teams) {
-// 			$teams.append(teams);
-// 		}
-// 		error: function() {
-// 			alert('error loading teams');
-// 		}
-// 	});
-// };
+function getTeams(leagueID) {
+	$teams = $('#team');
+	$.ajax( {
+		type: 'GET',
+		url: 'http://roseim.csse.rose-hulman.edu/RoseIM/getTeams.php',
+		data: {league: leagueID},
+		datatype: "html",
+		success: function(teams) {
+			$teams.append(teams);
+		}
+		error: function() {
+			alert('error loading teams');
+		}
+	});
+};
 
 
 $(function () {
