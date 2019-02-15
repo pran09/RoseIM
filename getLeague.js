@@ -11,8 +11,8 @@ $(function () {
 			url: 'http://roseim.csse.rose-hulman.edu/RoseIM/getLeague.php',
 			data: {sport: $sport.val()},
 			datatype: "html",
-			success: function() {
-				console.log('hi');
+			success: function(sport) {
+				console.log(sport);
 				//$league.append(leagues);
 			},
 			error: function() {
