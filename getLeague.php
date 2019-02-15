@@ -1,5 +1,5 @@
 <?php
-include 'datalogin.php';
+//include 'datalogin.php';
 
 $sport = isset($_POST['sport']))? $_POST['sport'] : null;
 echo $sport;
