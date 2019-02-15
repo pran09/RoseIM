@@ -38,5 +38,6 @@ $(function () {
 		});
 	});
 
-	$('#leagueSelect').on('change', getTeams($league.val()));
+	$leagueMenu = $('#leagueSelect');
+	$leagueMenu.on('change', getTeams($leagueMenu.val()));
 });
