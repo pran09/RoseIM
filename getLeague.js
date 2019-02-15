@@ -12,7 +12,8 @@ $(function () {
 			data: {sport: $sport.val()},
 			datatype: "html",
 			success: function(leagues) {
-				$league.append(leagues);
+				console.log(leagues);
+				//$league.append(leagues);
 			},
 			error: function() {
 				alert('error loading leagues');
