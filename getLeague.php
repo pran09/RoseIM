@@ -10,13 +10,13 @@
 	debug_to_console($test);
 
 
-	$league = $_GET["league"])
-	debug_to_console($league);
+	$sport = $POST["sport"])
+	debug_to_console($sport);
 
 	$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
 	$stmt = $conn->prepare("SELECT name FROM League WHERE sport = ?") or die($conn->error);
-	$stmt->bind_param("s", $q);
+	$stmt->bind_param("s", $sport);
 	$stmt->execute();
 	$result = $stmt->get_result();
 
