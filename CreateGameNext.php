@@ -66,7 +66,7 @@ if ($_SESSION['permission'] != 'Referee') {
 		$League = $_POST['League'];
 		$Referee = $_POST['Referee'];
 		$Facility = $_POST['Facility'];
-		$StartTime = $_POST['Time and Date'];
+		$StartTime = $_POST["StartTime"];
 
 		echo '<input type = "hidden" name = "Sport" value = "' . $Sport .'" />';
 		echo '<input type = "hidden" name = "League" value = "' . $League .'" />';
@@ -74,7 +74,7 @@ if ($_SESSION['permission'] != 'Referee') {
 		echo '<input type = "hidden" name = "Facility" value = "' . $Facility .'" />';
 		echo '<input type = "hidden" name = "StartTime" value = "' . $StartTime .'" />';
 
-		echo $_POST['Time and Date'];
+		echo $_POST["StartTime"];
 
 		include 'datalogin.php';
 
@@ -85,8 +85,8 @@ if ($_SESSION['permission'] != 'Referee') {
 		$stmt->execute();
 		$result = $stmt->get_result();
 		echo '<label>Choose Home Team:</label>';
-		echo '<select name="Home Team">';
-		$sport = 5;
+		echo '<select name="HomeTeam">';
+
 		while ($row = $result->fetch_array()) {
 
 			echo '<option value="' . $row['team_ID'] . '">' . $row['name'] . '</option>';
@@ -106,8 +106,8 @@ if ($_SESSION['permission'] != 'Referee') {
 		$stmt->execute();
 		$result = $stmt->get_result();
 		echo '<label>Choose Away Team:</label>';
-		echo '<select name="Away Team">';
-		$sport = 5;
+		echo '<select name="AwayTeam">';
+		
 		while ($row = $result->fetch_array()) {
 
 			echo '<option value="' . $row['team_ID'] . '">' . $row['name'] . '</option>';
@@ -131,8 +131,8 @@ if ($_SESSION['permission'] != 'Referee') {
 if (isset($_POST['SuperSub'])) {
 	$Sport = $_POST['Sport'];
 	$League = $_POST['League'];
-	$HomeTeam = $_POST['Home Team'];
-	$AwayTeam = $_POST['Away Team'];
+	$HomeTeam = $_POST['HomeTeam'];
+	$AwayTeam = $_POST['AwayTeam'];
 	$Referee = $_POST['Referee'];
 	$Facility = $_POST['Facility'];
 	$DateTime = $_POST['StartTime'];
@@ -161,8 +161,6 @@ echo $Sport;
 		$stmt->bind_param("s,s", $HomeTeam, $AwayTeam);
 		$stmt->execute();
 		$stmt->close();
-
-
 
 
 		mysqli_close($conn);

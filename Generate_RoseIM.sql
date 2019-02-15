@@ -1,10 +1,8 @@
-CREATE DATABASE `RoseIM` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE `NewRoseIM` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE NewRoseIM;
 
 DELIMITER //
-
-CREATE PROCEDURE `Generate_Tables`()
-Begin
-
 CREATE TABLE Person(
 	person_ID INT AUTO_INCREMENT PRIMARY KEY,
 	firstName varchar(20) NOT NULL,
@@ -68,6 +66,8 @@ CREATE TABLE Team (
 	name varchar(50) NOT NULL,
 	team_ID INT AUTO_INCREMENT PRIMARY KEY,
 	league INT,
+    wins INT,
+    losses INT,
 	FOREIGN KEY (league)
 		REFERENCES League(league_ID)
 		ON DELETE RESTRICT
@@ -102,58 +102,58 @@ CREATE TABLE Plays(
 		REFERENCES Game(game_ID)
 		ON DELETE RESTRICT
 );
-END//
 
-CREATE VIEW `RoseIM`.`My_Teams` AS
+            
+CREATE VIEW `NewRoseIM`.`Player_Person` AS
     SELECT 
-        `RoseIM`.`Team`.`league` AS `league`,
-        `RoseIM`.`Team`.`team_ID` AS `team`,
-        `RoseIM`.`League`.`sport` AS `sport`,
+        `NewRoseIM`.`Person`.`person_ID` AS `person_ID`,
+        `NewRoseIM`.`Person`.`firstName` AS `firstName`,
+        `NewRoseIM`.`Person`.`lastName` AS `lastName`,
+        `NewRoseIM`.`Person`.`email` AS `email`,
+        `NewRoseIM`.`Person`.`sex` AS `sex`
+    FROM
+        (`NewRoseIM`.`Person`
+        JOIN `NewRoseIM`.`Player` ON ((`NewRoseIM`.`Person`.`person_ID` = `NewRoseIM`.`Player`.`person_ID`)))//
+        
+        CREATE VIEW `NewRoseIM`.`My_Teams` AS
+    SELECT 
+        `NewRoseIM`.`Team`.`league` AS `league`,
+        `NewRoseIM`.`Team`.`team_ID` AS `team`,
+        `NewRoseIM`.`League`.`sport` AS `sport`,
         `Player_Person`.`email` AS `email`
     FROM
-        (((`RoseIM`.`Team`
-        JOIN `RoseIM`.`League`)
-        JOIN `RoseIM`.`Player_Person`)
-        JOIN `RoseIM`.`PlaysOn`)
+        (((`NewRoseIM`.`Team`
+        JOIN `NewRoseIM`.`League`)
+        JOIN `NewRoseIM`.`Player_Person`)
+        JOIN `NewRoseIM`.`PlaysOn`)
     WHERE
-        ((`RoseIM`.`Team`.`team_ID` = `RoseIM`.`PlaysOn`.`team`)
-            AND (`RoseIM`.`PlaysOn`.`player` = `Player_Person`.`person_ID`)
-            AND (`RoseIM`.`Team`.`league` = `RoseIM`.`League`.`league_ID`)
-            AND (`RoseIM`.`PlaysOn`.`team` = `RoseIM`.`Team`.`team_ID`))//
-            
-CREATE VIEW `RoseIM`.`Player_Person` AS
-    SELECT 
-        `RoseIM`.`Person`.`person_ID` AS `person_ID`,
-        `RoseIM`.`Person`.`firstName` AS `firstName`,
-        `RoseIM`.`Person`.`lastName` AS `lastName`,
-        `RoseIM`.`Person`.`email` AS `email`,
-        `RoseIM`.`Person`.`sex` AS `sex`
-    FROM
-        (`RoseIM`.`Person`
-        JOIN `RoseIM`.`Player` ON ((`RoseIM`.`Person`.`person_ID` = `RoseIM`.`Player`.`person_ID`)))//
+        ((`NewRoseIM`.`Team`.`team_ID` = `NewRoseIM`.`PlaysOn`.`team`)
+            AND (`NewRoseIM`.`PlaysOn`.`player` = `Player_Person`.`person_ID`)
+            AND (`NewRoseIM`.`Team`.`league` = `NewRoseIM`.`League`.`league_ID`)
+            AND (`NewRoseIM`.`PlaysOn`.`team` = `NewRoseIM`.`Team`.`team_ID`))//
         
-CREATE VIEW `RoseIM`.`Ref_Person` AS
+CREATE VIEW `NewRoseIM`.`Ref_Person` AS
     SELECT 
-        `RoseIM`.`Person`.`person_ID` AS `person_ID`,
-        `RoseIM`.`Person`.`firstName` AS `firstName`,
-        `RoseIM`.`Person`.`lastName` AS `lastName`,
-        `RoseIM`.`Person`.`email` AS `email`,
-        `RoseIM`.`Person`.`sex` AS `sex`
+        `NewRoseIM`.`Person`.`person_ID` AS `person_ID`,
+        `NewRoseIM`.`Person`.`firstName` AS `firstName`,
+        `NewRoseIM`.`Person`.`lastName` AS `lastName`,
+        `NewRoseIM`.`Person`.`email` AS `email`,
+        `NewRoseIM`.`Person`.`sex` AS `sex`
     FROM
-        (`RoseIM`.`Person`
-        JOIN `RoseIM`.`Referee` ON ((`RoseIM`.`Person`.`person_ID` = `RoseIM`.`Referee`.`person_ID`)))//
+        (`NewRoseIM`.`Person`
+        JOIN `NewRoseIM`.`Referee` ON ((`NewRoseIM`.`Person`.`person_ID` = `NewRoseIM`.`Referee`.`person_ID`)))//
         
-CREATE VIEW `RoseIM`.`Team_Win_Percentage` AS
+CREATE VIEW `NewRoseIM`.`Team_Win_Percentage` AS
     SELECT 
-        `RoseIM`.`Team`.`name` AS `name`,
-        (`RoseIM`.`Team`.`wins` / (`RoseIM`.`Team`.`wins` + `RoseIM`.`Team`.`losses`)) AS `WinPercentage`,
-        `RoseIM`.`Team`.`team_ID` AS `team_ID`,
-        `RoseIM`.`League`.`league_ID` AS `league_ID`,
-        `RoseIM`.`Team`.`wins` AS `wins`,
-        `RoseIM`.`Team`.`losses` AS `losses`
+        `NewRoseIM`.`Team`.`name` AS `name`,
+        (`NewRoseIM`.`Team`.`wins` / (`NewRoseIM`.`Team`.`wins` + `NewRoseIM`.`Team`.`losses`)) AS `WinPercentage`,
+        `NewRoseIM`.`Team`.`team_ID` AS `team_ID`,
+        `NewRoseIM`.`League`.`league_ID` AS `league_ID`,
+        `NewRoseIM`.`Team`.`wins` AS `wins`,
+        `NewRoseIM`.`Team`.`losses` AS `losses`
     FROM
-        (`RoseIM`.`Team`
-        JOIN `RoseIM`.`League` ON ((`RoseIM`.`Team`.`league` = `RoseIM`.`League`.`league_ID`)))//
+        (`NewRoseIM`.`Team`
+        JOIN `NewRoseIM`.`League` ON ((`NewRoseIM`.`Team`.`league` = `NewRoseIM`.`League`.`league_ID`)))//
         
 CREATE FUNCTION `Create_Facility`(loc varchar(100)) RETURNS int(11)
 BEGIN
@@ -1050,7 +1050,7 @@ BEGIN
     SET @p = Create_Referee('Laura', 'Hulman', 'rosehulman@rose-hulman.edu', null, 'Female');
     SET @q = Create_Referee('Lia', 'Apple', 'google@rose-hulman.edu', null, 'Female');	# already exists in Add_Person
     SET @a = Create_Referee('Rob', 'Coons', 'coons@rose-hulman.edu', '$2y$10$IZKGs6hC79oI0Y9SqaVN5.I6SN7esmTZZbPUesnNe.cODkqHiFNPi', 'Male');	# ManchesterUnitedRashford10
-    SET @b = Create_Referee('Sriram', 'Mohan', 'mohan@rose-hulman.edu', '$2y$10$eUQSIsGv8NpIrIuPv2PfTexEKZgUwlbLYF/cDBNVlhBv6igzP3G/q', 'Male');	# roseIMStuff
+    SET @b = Create_Referee('Sriram', 'Mohan', 'mohan@rose-hulman.edu', '$2y$10$eUQSIsGv8NpIrIuPv2PfTexEKZgUwlbLYF/cDBNVlhBv6igzP3G/q', 'Male');	# NewRoseIMStuff
     
 END//
 
@@ -1192,86 +1192,13 @@ BEGIN
 
 END//
 
-CREATE TRIGGER Update_Record AFTER UPDATE ON Plays
-FOR EACH ROW
-BEGIN
-
-SET @TeamID = NEW.game;
-SET @Team1Score = NEW.home_Score;
-SET @Team2Score = NEW.away_Score;
-
-IF(OLD.home_Score IS NOT NULL OR OLD.away_Score IS NOT NULL)
-THEN
-IF(OLD.home_Score > OLD.away_Score)
-THEN
-
-IF(@Team1Score < @Team2Score)
-THEN
-UPDATE Team
-SET losses = losses + 1,
-wins = wins - 1
-WHERE team_ID = OLD.team1;
+CALL Add_League_Data();
+CALL Add_Person_Data();
+CALL Add_Player_Data();
+CALL Add_PlaysOn_Data(1);
+CALL Add_Referee_Data();
+CALL Add_Sport_Data();
+CALL Add_Team_Data();
 
 
-UPDATE Team
-SET wins = wins + 1,
-losses = losses - 1
-WHERE team_ID = OLD.team2;
-
-END IF;
-
-END IF;
-
-IF(OLD.home_Score < OLD.away_Score)
-THEN
-
-
-IF(@Team1Score > @Team2Score)
-THEN
-UPDATE Team
-SET losses = losses - 1,
-wins = wins + 1
-WHERE team_ID = OLD.team1;
-
-
-UPDATE Team
-SET wins = wins - 1,
-losses = losses + 1
-WHERE team_ID = OLD.team2;
-
-END IF;
-
-
-END IF;
-
-ELSE
-
-
-IF(@Team1Score > @Team2Score)
-THEN
-UPDATE Team
-SET wins = wins + 1
-WHERE team_ID = OLD.team1;
-
-UPDATE Team
-SET losses = losses + 1
-WHERE team_ID = OLD.team2;
-
-END IF;
-
-
-IF(@Team2Score > @Team1Score)
-THEN
-UPDATE Team
-SET wins = wins + 1
-WHERE team_ID = OLD.team2;
-
-UPDATE Team
-SET losses = losses + 1
-WHERE team_ID = OLD.team1;
-END IF;
-
-END IF;
-
-END//
 

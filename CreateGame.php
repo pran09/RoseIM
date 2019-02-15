@@ -62,10 +62,6 @@ if ($_SESSION['permission'] != 'Referee') {
 		<?php
 		include 'datalogin.php';
 
-
-
-
-
 		$stmt = $conn->prepare("SELECT name FROM Sport") or die($conn->error);
 		$stmt->execute();
 		$result = $stmt->get_result();
@@ -143,7 +139,7 @@ if ($_SESSION['permission'] != 'Referee') {
 		?>
 
 		<label>Date and Time (YYYY-MM-DD HH:MM:SS):</label>
-		<input type="text" name="Time and Date" required>
+		<input type="text" name="StartTime" required>
 	</br>
 
 </fieldset>
