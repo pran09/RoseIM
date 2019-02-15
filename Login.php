@@ -58,6 +58,27 @@ session_start();
 
 	<center><font size="200" color ="red">Rose</font><font size ="128" color="black">IM</font></center>
 
+	<?php
+include 'datalogin.php';
+
+
+
+$stmt = $conn->prepare("SELECT firstName, lastName FROM Person") or die($conn->error);
+$stmt->bind_param("s", $_SESSION["emailAddress"]);
+
+$stmt->execute();
+$result = $stmt->get_result();
+
+while ($row = $result->fetch_array()) {
+
+	echo '<font size="48" color ="black">Welcome ' . $row['firstName'] . ' ' . $row['lastName'] . '!'.'</font>';
+	echo '</br>';
+}
+
+$stmt->close();
+mysqli_close($conn);
+	?>
+
 	<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
 		<h1>Login</h1>
 
@@ -81,20 +102,13 @@ session_start();
 </form>
 
 <?php
-function debug_to_console( $data ) {
-       $output = $data;
-       if (is_array($output))
-        $output = implode( ',', $output);
 
-      echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
-      }
 if (isset($_POST['submit'])) {
 	
 	$emailAddress = $_POST["emailAddress"];
 	$getPassword = $_POST["password"];
 	$notExistingEmail = true;
 
-	debug_to_console($emailAddress);
 
 	include 'datalogin.php';
 
