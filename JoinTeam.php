@@ -1,15 +1,15 @@
 <?php
 	session_start();
-	if(!isset($_SESSION['emailAddress'])) {
-		header('location: Login.php');
-    	exit(); // <-- terminates the current script
-	}
+	// if(!isset($_SESSION['emailAddress'])) {
+	// 	header('location: Login.php');
+ //    	exit(); // <-- terminates the current script
+	// }
 
-  if ($_SESSION['permission'] == 'Referee') {
+ //  if ($_SESSION['permission'] == 'Referee') {
     
-    header('location: RefereeView.php');
-    exit();
-  }
+ //    header('location: RefereeView.php');
+ //    exit();
+ //  }
 
 ?>
 <head>

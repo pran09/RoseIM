@@ -1,5 +1,5 @@
 <?php
-	$sport = $_GET['sport']);
+	$sport = $_POST['sport']);
 
 	$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
@@ -16,6 +16,8 @@
 			$returnString .= '\n<option value="' . $r . '">' . $r . '</option>';
         }
     }
+
+	
 	mysql_close($conn);
 	echo $returnString;
 ?>
