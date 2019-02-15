@@ -17,7 +17,7 @@
 
 $(function () {
 
-	$sport = $('#sport');
+	$sport = $('#sportDiv');
 	$league = $('#league');
 
 	$sport.on('change', function() {
@@ -38,5 +38,5 @@ $(function () {
 		});
 	});
 
-	//$('#leagueSelect').on('change', getTeams($league.val()));
+	$('#leagueSelect').on('change', getTeams($league.val()));
 });

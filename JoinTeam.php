@@ -71,6 +71,7 @@ if ($_SESSION['permission'] == 'Referee') {
 
 			$stmt->execute();
 			$result = $stmt->get_result();
+			echo '<div id="sportDiv">';
 			echo '<label>Sport:</label>';
 			echo '<select name="Sport" id="sport">';
 			$aResult = 5;
@@ -82,6 +83,7 @@ if ($_SESSION['permission'] == 'Referee') {
 				}
 			}
 			echo '</select>';
+			echo '</div>';
 			echo "<br />";
 			$stmt->close();
 
