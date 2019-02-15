@@ -21,21 +21,21 @@ $(function () {
 		});
 	});
 
-	$leagueMenu = $('#league');
-	$leagueMenu.on('change', function () {
-		$teams = $('#team');
-		var leagueID = $leagueMenu.val();
-		$.ajax( {
-			type: 'GET',
-			url: 'http://roseim.csse.rose-hulman.edu/RoseIM/getTeams.php',
-			data: {league: leagueID},
-			datatype: "html",
-			success: function(teams) {
-				$teams.append(teams);
-			}
-			error: function() {
-				alert('error loading teams');
-			}
-		});
-	});
+	// $leagueMenu = $('#league');
+	// $leagueMenu.on('change', function () {
+	// 	$teams = $('#team');
+	// 	var leagueID = $leagueMenu.val();
+	// 	$.ajax( {
+	// 		type: 'GET',
+	// 		url: 'http://roseim.csse.rose-hulman.edu/RoseIM/getTeams.php',
+	// 		data: {league: leagueID},
+	// 		datatype: "html",
+	// 		success: function(teams) {
+	// 			$teams.append(teams);
+	// 		}
+	// 		error: function() {
+	// 			alert('error loading teams');
+	// 		}
+	// 	});
+	// });
 });
