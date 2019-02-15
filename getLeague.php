@@ -1,22 +1,22 @@
 <?php
-	$sport = $_POST['sport']);
+$sport = $_POST['sport']);
 
-	include 'datalogin.php';
+include 'datalogin.php';
 
-	$stmt = $conn->prepare("SELECT name FROM League WHERE sport = ?") or die($conn->error);
-	$stmt->bind_param("s", $sport);
-	$stmt->execute();
-	$result = $stmt->get_result();
+$stmt = $conn->prepare("SELECT name FROM League WHERE sport = ?") or die($conn->error);
+$stmt->bind_param("s", $sport);
+$stmt->execute();
+$result = $stmt->get_result();
 
-	$rows = array();
-	$returnString = '<label>League:</label>
-					<select name="League" id="league">';
-	while ($row = $result->fetch_array(MYSQLI_NUM)) {
-      	foreach ($row as $r) {
-			$returnString .= '\n<option value="' . $r . '">' . $r . '</option>';
-        }
-    }
+$rows = array();
+$returnString = '<label>League:</label>
+<select name="League" id="league">';
+while ($row = $result->fetch_array(MYSQLI_NUM)) {
+	foreach ($row as $r) {
+		$returnString .= '\n<option value="' . $r . '">' . $r . '</option>';
+	}
+}
 
-	mysql_close($conn);
-	echo $returnString;
+mysql_close($conn);
+echo $returnString;
 ?>
