@@ -86,7 +86,6 @@ CREATE TABLE PlaysOn(
 );
 
 CREATE TABLE Plays(
-	isHome BOOLEAN NOT NULL,
 	home_Score INT CHECK(home_Score >= 0 or home_Score = NULL),
 	away_Score INT CHECK(away_Score >= 0 or away_Score = NULL),
 	team1 INT NOT NULL,
@@ -960,6 +959,96 @@ BEGIN
 
 END//
 
+
+CREATE PROCEDURE `Get_Games_Ref`(IN mail varchar(50))
+BEGIN
+   SELECT game_ID, Team1 as Team1_ID, Team2 as Team2_ID, (SELECT location FROM Facility WHERE facility_ID = facility) AS Location, StartDateTime AS StartTime, (SELECT name FROM Team WHERE team_ID = Plays.team1) as Team1, (SELECT name FROM Team  WHERE team_ID = Plays.team2) AS Team2, home_Score as Team1Score, away_Score as Team2Score
+    FROM Game
+    JOIN Plays ON game = game_ID
+    WHERE ref = (SELECT person_ID FROM Person WHERE email = mail);
+END//
+
+CREATE  PROCEDURE `get_permission`(IN mail varchar(50), OUT permission varchar(20))
+BEGIN
+
+SET @id = (SELECT person_ID FROM Person WHERE email = mail);
+
+IF(@id IN (SELECT person_ID FROM Player))
+THEN
+SELECT 'Player' INTO permission;
+END IF;
+
+IF(@id IN (SELECT person_ID FROM Referee))
+THEN
+SELECT 'Referee' INTO permission;
+END IF;
+
+IF(@id IN (SELECT player FROM PlaysOn WHERE role = 'Captain'))
+THEN
+SELECT 'Captain' INTO permission;
+END IF;
+
+END//
+
+CREATE PROCEDURE `Get_Roster`(IN teamID int)
+BEGIN
+
+SELECT Person.firstName as First, Person.lastName as Last, role as Role
+FROM Person
+JOIN PlaysOn ON player = person_ID
+JOIN Team ON team_ID = team
+WHERE team_ID = teamID;
+
+END//
+
+CREATE PROCEDURE `Get_Schedule`(IN teamid int)
+BEGIN
+    
+    Select Plays.team1 as Team1_ID, Plays.team2 as Team2_ID,  (SELECT name FROM Team WHERE team_ID = Plays.team1) as Team1,  (SELECT name FROM Team WHERE team_ID = Plays.team2) as Team2, Game.StartDateTime as StartTime, Facility.location as  Location, home_Score as Team1Score, away_Score as Team2Score
+    From Plays
+		Join Game ON Plays.game = Game.game_ID
+        Join Facility ON Facility.facility_ID = Game.facility
+	Where Plays.team1 = teamid OR Plays.team2 = teamid;
+    
+END//
+
+CREATE PROCEDURE `Get_Teams`(
+IN mail varchar(50))
+BEGIN
+
+	SET @id = (SELECT person_ID FROM Person WHERE email = mail);
+    
+    Select league_ID, team_ID, sport as Sport, League.name as League, Team.name as Team, (SELECT rules FROM Sport WHERE name = sport) as Rules
+    From League
+    Join Team ON League.league_ID = Team.league
+    Where Team.team_ID IN (Select team
+							From PlaysOn
+							Where player = @id);
+
+END//
+
+CREATE PROCEDURE `League_Standings`(IN leagueID INT)
+BEGIN
+SELECT name, wins, losses
+FROM Team_Win_Percentage
+WHERE league_ID = leagueID
+ORDER BY WinPercentage DESC;
+
+END//
+
+CREATE PROCEDURE `Remove_League_Data`()
+BEGIN
+	DELETE FROM League;
+END//
+
+CREATE PROCEDURE `Remove_Sport_Data`()
+BEGIN
+
+	DELETE FROM Sport;
+
+END//
+
+
 CREATE PROCEDURE `Add_League_Data`()
 BEGIN
 
@@ -1074,12 +1163,26 @@ BEGIN
 
 END//
 
-CREATE PROCEDURE `Add_PlaysOn_Data`(IN input int)
+CREATE PROCEDURE `Add_Facility_Data`()
 BEGIN
-	
-    Set @x = -25;
+Set @a = Create_Facility('IM Field 1');
+Set @b = Create_Facility('IM Field 2');
+Set @c = Create_Facility('IM Field 3');
+Set @d = Create_Facility('SRC Court 1');
+Set @e = Create_Facility('SRC Court 2');
+Set @f = Create_Facility('SRC Court 3');
+Set @g = Create_Facility('SRC Pool');
+Set @h = Create_Facility('Hulbert Arena');
+Set @i = Create_Facility('IM Softball Field 1');
+Set @j = Create_Facility('IM Softball Field 2');
+Set @k = Create_Facility('IM Softball Field 3');
 
-	Set @a = Create_PlaysOn(1, 26+@x, 'Captain');
+END//
+
+CREATE PROCEDURE `Add_PlaysOn_Data`()
+BEGIN
+    
+    Set @x = -25;
 	Set @b = Create_PlaysOn(2, 27+@x, 'Captain');
     Set @c = Create_PlaysOn(3, 28+@x, 'Captain');
     Set @d = Create_PlaysOn(4, 29+@x, 'Captain');
@@ -1104,98 +1207,24 @@ BEGIN
 
 END//
 
-CREATE PROCEDURE `Get_Games_Ref`(IN mail varchar(50))
+
+CREATE PROCEDURE `Add_Game_Data` ()
 BEGIN
-   SELECT game_ID, Team1 as Team1_ID, Team2 as Team2_ID, (SELECT location FROM Facility WHERE facility_ID = facility) AS Location, StartDateTime AS StartTime, (SELECT name FROM Team WHERE team_ID = Plays.team1) as Team1, (SELECT name FROM Team  WHERE team_ID = Plays.team2) AS Team2, home_Score as Team1Score, away_Score as Team2Score
-    FROM Game
-    JOIN Plays ON game = game_ID
-    WHERE ref = (SELECT person_ID FROM Person WHERE email = mail);
-END//
+Set @a = Create_Game('Ultimate Frisbee', 24, 2, 13, '2019-03-03 18:10:00');
+Set @b = Create_Plays(null, null, 3, 4, (SELECT game_ID FROM Game ORDER BY game_ID DESC LIMIT 1));
 
-CREATE  PROCEDURE `get_permission`(IN mail varchar(50), OUT permission varchar(20))
-BEGIN
+Set @c = Create_Game('Ultimate Frisbee', 24, 2, 13, '2019-04-03 18:10:00');
+Set @d = Create_Plays(null, null, 4, 3, (SELECT game_ID FROM Game ORDER BY game_ID DESC LIMIT 1));
 
-SET @id = (SELECT person_ID FROM Person WHERE email = mail);
-
-IF(@id IN (SELECT person_ID FROM Player))
-THEN
-SELECT 'Player' INTO permission;
-END IF;
-
-IF(@id IN (SELECT person_ID FROM Referee))
-THEN
-SELECT 'Referee' INTO permission;
-END IF;
-
-IF(@id IN (SELECT player FROM PlaysOn WHERE role = 'Captain'))
-THEN
-SELECT 'Captain' INTO permission;
-END IF;
-
-END//
-
-CREATE PROCEDURE `Get_Roster`(IN teamID int)
-BEGIN
-
-SELECT Person.firstName as First, Person.lastName as Last, role as Role
-FROM Person
-JOIN PlaysOn ON player = person_ID
-JOIN Team ON team_ID = team
-WHERE team_ID = teamID;
-
-END//
-
-CREATE PROCEDURE `Get_Schedule`(IN teamid int)
-BEGIN
-    
-    Select Plays.team1 as Team1_ID, Plays.team2 as Team2_ID,  (SELECT name FROM Team WHERE team_ID = Plays.team1) as Team1,  (SELECT name FROM Team WHERE team_ID = Plays.team2) as Team2, Game.StartDateTime as StartTime, Facility.location as  Location, home_Score as Team1Score, away_Score as Team2Score
-    From Plays
-		Join Game ON Plays.game = Game.game_ID
-        Join Facility ON Facility.facility_ID = Game.facility
-	Where Plays.team1 = teamid OR Plays.team2 = teamid;
-    
-END//
-
-CREATE PROCEDURE `Get_Teams`(
-IN mail varchar(50))
-BEGIN
-
-	SET @id = (SELECT person_ID FROM Person WHERE email = mail);
-    
-    Select league_ID, team_ID, sport as Sport, League.name as League, Team.name as Team, (SELECT rules FROM Sport WHERE name = sport) as Rules
-    From League
-    Join Team ON League.league_ID = Team.league
-    Where Team.team_ID IN (Select team
-							From PlaysOn
-							Where player = @id);
-
-END//
-
-CREATE PROCEDURE `League_Standings`(IN leagueID INT)
-BEGIN
-SELECT name, wins, losses
-FROM Team_Win_Percentage
-WHERE league_ID = leagueID
-ORDER BY WinPercentage DESC;
-
-END//
-
-CREATE PROCEDURE `Remove_League_Data`()
-BEGIN
-	DELETE FROM League;
-END//
-
-CREATE PROCEDURE `Remove_Sport_Data`()
-BEGIN
-
-	DELETE FROM Sport;
 
 END//
 
 CALL Add_League_Data();
 CALL Add_Person_Data();
 CALL Add_Player_Data();
-CALL Add_PlaysOn_Data(1);
+CALL Add_PlaysOn_Data();
 CALL Add_Referee_Data();
 CALL Add_Sport_Data();
 CALL Add_Team_Data();
+CALL Add_Facility_Data();
+CALL Add_Game_Data();
