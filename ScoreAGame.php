@@ -6,7 +6,7 @@ if (!isset($_SESSION['emailAddress'])) {
 }
 
 if ($_SESSION['permission'] != 'Referee') {
-	
+
 	header('location: TeamSelect.php');
 	exit();
 }
@@ -70,7 +70,7 @@ if ($_SESSION['permission'] != 'Referee') {
 		$stmt->bind_param("s", $_GET["GameID"]);
 		$stmt->execute();
 		$result = $stmt->get_result();
-		
+
 		while ($row = $result->fetch_array()) {
 			echo '<label>'. $row['Team1'].' Score</label>';
 			echo '<input type="text" name="Team1" required>';
@@ -79,16 +79,16 @@ if ($_SESSION['permission'] != 'Referee') {
 
 			echo '<label>'. $row['Team2'].' Score</label>';
 			echo '<input type="text" name="Team2" required>';
-			
-			
+
+
 		}
-		
+
 		$stmt->close();
 		mysqli_close($conn);
 
 
 		echo '</br>';
-		
+
 		?>
 	</br>
 
@@ -100,29 +100,24 @@ session_start();
 
 
 if (isset($_POST['submit'])) {
-	
+
 	$Team1Score = $_POST['Team1'];		
 	$Team2Score = $_POST['Team2'];
-	$GameID2 = $_SESSION['GameID'];	
-	
+		
 
-	echo $Team1Score;
-	echo $Team2Score;
-	echo $GameID2;
-	echo  $_SESSION['GameID'];
 
 	if($Team1Score == $Team2Score){
 		echo "No Ties Allowed";
 	}
 	else{
 		include 'datalogin.php';
-
+	
 
 		$stmt = $conn->prepare("SELECT Update_Plays(?,?,?)") or die($conn->error);
 		$stmt->bind_param("iii", $Team1Score, $Team2Score, $GameID);
 		$stmt->execute();
-		
-		
+
+
 		$stmt->close();
 		mysqli_close($conn);
 
@@ -131,7 +126,7 @@ if (isset($_POST['submit'])) {
 			die();
 		}
 
-		
+
 		redirect("RefereeView.php");
 
 
