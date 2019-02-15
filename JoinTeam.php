@@ -20,7 +20,6 @@
     <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="getLeague.js"></script>
-    <!-- <link rel="stylesheet" href="css/main.css"> -->
     <style>
     	input[type=submit] {
         	padding: 19px 39px 18px 39px;
@@ -67,7 +66,6 @@
 					echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
 				}
 
-
           		$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
 				$stmt = $conn->prepare("SELECT name FROM Sport") or die($conn->error);
@@ -78,7 +76,7 @@
 				echo '<select name="Sport" id="sport">';
 				$aResult = 5;
       			while ($row = $result->fetch_array(MYSQLI_NUM)) {
-          			foreach ($row as $r) {
+      				foreach ($row as $r) {
 						echo '<option value="' . $r . '">' . $r . '</option>';
 						debug_to_console($r);
 						$aResult = $r;
