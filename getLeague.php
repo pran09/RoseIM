@@ -1,5 +1,5 @@
 <?php
-	$sport = $POST["sport"]);
+	$sport = $_POST["sport"]);
 
 	$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
