@@ -21,7 +21,7 @@ if (!isset($_SESSION['emailAddress'])) {
    
   	<?php
 	
-$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+include 'datalogin.php';
 
 
 

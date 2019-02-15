@@ -66,7 +66,7 @@
 
 
 <?php
-$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+include 'datalogin.php';
 	$stmt = $conn->prepare("SELECT firstName, lastName FROM Person WHERE email = ?") or die($conn->error);
 	 $stmt->bind_param("s", $_SESSION["emailAddress"]);
 
@@ -98,7 +98,7 @@ $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 
 <?php
 
-	$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+	include 'datalogin.php';
 
 echo '<font size="118">My Games</font>';
 	echo '</br>';

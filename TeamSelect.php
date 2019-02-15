@@ -130,7 +130,7 @@ function myFunction() {
 	$sport = $_POST["Sport"];
 	$league = $_POST["League"];
 	$name = $_POST["teamName"];
-	$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+	include 'datalogin.php';
 
 
 

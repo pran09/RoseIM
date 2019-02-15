@@ -87,8 +87,7 @@ if (isset($_POST['submit'])) {
 	$getPassword = $_POST["password"];
 	$notExistingEmail = true;
 
-	$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
-
+	include 'datalogin.php';
 	$NotInDatabase = true;
 
   #Get permission

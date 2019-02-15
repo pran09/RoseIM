@@ -113,7 +113,7 @@ session_start();
  $getPasswordConfirmation = $_POST["passwordConfirmation"];
  $notExistingEmail = true;
 
-$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+include 'datalogin.php';
 
 
 $NotInDatabase = true;

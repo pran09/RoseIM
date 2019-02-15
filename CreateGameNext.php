@@ -70,7 +70,7 @@
 
 			echo $_POST['Time and Date'];
 
-		$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+		include 'datalogin.php';
 
 
 		$stmt = $conn->prepare("SELECT name, team_ID FROM Team WHERE league = (SELECT league_ID FROM League WHERE sport = ? AND name = ?)") or die($conn->error);
@@ -145,7 +145,7 @@ echo '</br>';
 			}
 			else{
 
-				$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+				include 'datalogin.php';
 				
 				$stmt = $conn->prepare("SELECT Create_Game(?, ?, ?, ?, ?) as return_value") or die($conn->error);
 				$stmt->bind_param("ssss", $Sport, $Referee, $Facility, $League, $DateTime);

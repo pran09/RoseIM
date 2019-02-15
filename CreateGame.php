@@ -60,7 +60,7 @@
 	<h1>Create A Game:</h1>
 
 <?php
-		$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+		include 'datalogin.php';
 
 
 

@@ -28,7 +28,7 @@ if (!isset($_SESSION['emailAddress'])) {
     echo '</br>';
 
 
-    $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+    include 'datalogin.php';
 
     $stmt = $conn->prepare("SELECT name, sport FROM League WHERE league_ID = ?") or die($conn->error);
     $stmt->bind_param("i", $LeagueID);
@@ -44,7 +44,7 @@ if (!isset($_SESSION['emailAddress'])) {
 
 
 $counter = 1;
-        $conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+        include 'datalogin.php';
 
     $stmt = $conn->prepare("CALL League_Standings(?)") or die($conn->error);
     $stmt->bind_param("i", $LeagueID);

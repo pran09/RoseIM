@@ -1,7 +1,7 @@
 <?php
 	$sport = $_POST['sport']);
 
-	$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+	include 'datalogin.php';
 
 	$stmt = $conn->prepare("SELECT name FROM League WHERE sport = ?") or die($conn->error);
 	$stmt->bind_param("s", $sport);

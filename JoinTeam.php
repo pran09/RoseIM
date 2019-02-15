@@ -66,7 +66,7 @@
 					echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
 				}
 
-          		$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+          		include 'datalogin.php';
 
 				$stmt = $conn->prepare("SELECT name FROM Sport") or die($conn->error);
 

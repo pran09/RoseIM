@@ -63,7 +63,7 @@
 session_start();
 	$_SESSION['GameID'] = $_GET['GameID'];
 
-		$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+		include 'datalogin.php';
 
 		echo $_SESSION['GameID'];
 
@@ -118,7 +118,7 @@ echo  $_SESSION['GameID'];
 				echo "No Ties Allowed";
 			}
 			else{
-						$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+						include 'datalogin.php';
 
 
 			$stmt = $conn->prepare("SELECT Update_Plays(?,?,?)") or die($conn->error);

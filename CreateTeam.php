@@ -58,7 +58,6 @@ if (!isset($_SESSION['emailAddress'])) {
 		<fieldset>
 			<?php
 				include 'datalogin.php'; 
-				//$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 				$stmt = $conn->prepare("SELECT name FROM Sport") or die($conn->error);
 				$stmt->execute();
 				$result = $stmt->get_result();
@@ -95,7 +94,6 @@ if (!isset($_SESSION['emailAddress'])) {
 		<input type="submit" name="submit" value="Create Team">
 	</form>
 	<?php
-	include 'datalogin.php'; 
 		if (isset($_POST['submit'])) {
 			$sport = $_POST['Sport'];
 			$league = $_POST['League'];
@@ -103,7 +101,7 @@ if (!isset($_SESSION['emailAddress'])) {
 			if ($sport == Unselected or $league == Unselected or $name == Unselected) {
 				echo "Inputs cannot be empty";
 			} else {
-				//$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
+				include 'datalogin.php';
 				$leagueid;
 				$get_league = $conn->prepare("SELECT league_ID FROM League WHERE name = ? AND sport = ?") or die($conn->error);
 				$get_league->bind_param("ss", $league, $sport);
