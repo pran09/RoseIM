@@ -62,7 +62,7 @@ if ($_SESSION['permission'] != 'Referee') {
 		<?php
 		session_start();
 		$_SESSION['GameID'] = $_GET['GameID'];
-		$GLOBALS['GID'] = $_GET['GameID'];
+		echo '<input type = "hidden" name = "GameID" value = "' . $_GET['GameID'] .'" />';
 
 		include 'datalogin.php';
 
@@ -104,7 +104,7 @@ if (isset($_POST['submit'])) {
 
 	$Team1Score = $_POST['Team1'];		
 	$Team2Score = $_POST['Team2'];
-	$GameID = $GLOBALS['GID'];	
+	$GameID = $_POST['GameID'];	
 
 echo $GameID;
 	if($Team1Score == $Team2Score){
