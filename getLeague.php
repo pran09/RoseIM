@@ -24,7 +24,7 @@
 	while($r = mysqli_fetch_assoc($result)) {
     	$rows[] = $r;
 	}
-	echo json_encode($rows);
+	echo $rows;
 	 // echo "
 		// <label>League:</label>
 		// <select name='League' required>
