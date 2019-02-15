@@ -75,7 +75,7 @@ session_start();
 		<input type="submit" name="submit" value="Login"/>
 
 		<label>
-			<input type="checkbox" name="remember"> Remember me
+			<input type="checkbox" name="remember">Remember me</input>
 		</label>
 	</div>
 </form>

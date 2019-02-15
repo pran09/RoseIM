@@ -8,11 +8,12 @@ $(function () {
 		console.log(sport);
 		$.ajax( {
 			type: 'POST',
-			url: 'getLeague.php',
+			url: 'http://roseim.csse.rose-hulman.edu/RoseIM/getLeague.php',
 			data: {sport: $sport.val()},
 			datatype: "html",
-			success: function(leagues) {
-				$league.append(leagues);
+			success: function() {
+				console.log('hi');
+				//$league.append(leagues);
 			},
 			error: function() {
 				alert('error loading leagues');
