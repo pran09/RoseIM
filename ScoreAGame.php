@@ -106,7 +106,6 @@ if (isset($_POST['submit'])) {
 	$Team2Score = $_POST['Team2'];
 	$GameID = $_POST['GameID'];	
 
-echo $GameID;
 	if($Team1Score == $Team2Score){
 		echo "No Ties Allowed";
 	}
@@ -128,7 +127,7 @@ echo $GameID;
 		}
 
 
-		//redirect("RefereeView.php");
+		redirect("RefereeView.php");
 
 
 
