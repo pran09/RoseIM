@@ -7,7 +7,7 @@ $(function () {
 		var sport = $sport.val();
 		console.log(sport);
 		$.ajax( {
-			type: 'POST',
+			type: 'GET',
 			url: 'http://roseim.csse.rose-hulman.edu/RoseIM/getLeague.php',
 			data: {sport: $sport.val()},
 			datatype: "html",

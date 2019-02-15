@@ -1,7 +1,7 @@
 <?php
 //include 'datalogin.php';
 
-$sport = isset($_POST['sport']))? $_POST['sport'] : null;
+$sport = isset($_GET['sport']))? $_GET['sport'] : null;
 echo $sport;
 
 // $stmt = $conn->prepare("SELECT name FROM League WHERE sport = ?") or die($conn->error);
@@ -17,6 +17,6 @@ echo $sport;
 // 	}
 // }
 
-// mysql_close($conn);
+// mysqli_close($conn);
 // echo $returnString;
 ?>
