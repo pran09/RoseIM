@@ -17,7 +17,6 @@
         }
     }
 
-	
 	mysql_close($conn);
 	echo $returnString;
 ?>
