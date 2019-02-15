@@ -18,6 +18,8 @@
     <title>Join a Team!</title>
     <link rel="stylesheet" href="normalize.css">
     <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="getLeague.js"></script>
     <!-- <link rel="stylesheet" href="css/main.css"> -->
     <style>
     	input[type=submit] {
@@ -51,45 +53,6 @@
     	}
   	</style>
 </head>
-<script type="text/javascript">
-	function showLeague(league) {
-  //   	var sportDiv = document.getElementById("sport");
-  //   	var leagueDiv = document.getElementById("second");
-  //   	var teamDiv = document.getElementById("third");
-  //   	teamDiv.innerHTML = "Please choose a league";
-		// // code for IE7+, Firefox, Chrome, Opera, Safari
-		// if(window.XMLHttpRequest) {
-  //       	xmlhttp = new XMLHttpRequest();
-  //       } else {	// code for IE5 and IE6
-  //       	xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-  //       }
-		// xmlhttp.onreadystatechange=function() {
-		// 	if (this.readyState==4 && this.status==200) {
-		// 		leagueDiv.innerHTML=this.responseText;
-		// 	}
-		// };
-		// xmlhttp.open("GET", "getLeague.php?league="+league, true);
-		// xmlhttp.send();      
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-			if (this.readyState == 1) {
-				console.log("Server connection established");
-			}
-			if (this.readyState == 2) {
-				console.log("Request received");
-			}
-			if (this.readyState == 3) {
-				console.log("Processing request");
-			}
-    		if (this.readyState == 4 && this.status == 200) {
-    			console.log("request finished and response is ready");
-      			document.getElementById("second").innerHTML = this.responseText;
-    		}
-		};
-		xhttp.open("GET", "getLeague.php?league=" + league, true);
-  		xhttp.send();
-}
-</script>
 <body>
  	<center><font size="200" color ="red">Rose</font><font size ="128" color="black">IM</font></center>
     <form action="TeamSelect.php" method="post">
@@ -112,7 +75,7 @@
       			$stmt->execute();
       			$result = $stmt->get_result();
 				echo '<label>Sport:</label>';
-				echo '<select name="Sport" id="sport" onchange="showLeague(this.value)">';
+				echo '<select name="Sport" id="sport">';
 				$aResult = 5;
       			while ($row = $result->fetch_array(MYSQLI_NUM)) {
           			foreach ($row as $r) {
