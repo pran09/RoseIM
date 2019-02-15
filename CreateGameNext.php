@@ -137,7 +137,8 @@ if (isset($_POST['SuperSub'])) {
 	$Facility = $_POST['Facility'];
 	$DateTime = $_POST['StartTime'];
 
-
+echo $HomeTeam;
+echo $AwayTeam;
 	if($HomeTeam === $AwayTeam){
 		echo 'The home team and away team must be different.';
 	}
