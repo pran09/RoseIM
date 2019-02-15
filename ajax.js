@@ -1,6 +1,6 @@
 $(function () {
 
-	$sport = $('#sportDiv');
+	$sport = $('#sport');
 	$league = $('#league');
 
 	$sport.on('change', function() {
