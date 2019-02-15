@@ -57,7 +57,8 @@ if (!isset($_SESSION['emailAddress'])) {
 		<h1>New Team</h1>
 		<fieldset>
 			<?php
-				$conn = mysqli_connect();
+				include 'datalogin.php'; 
+				//$conn = new mysqli("roseim.csse.rose-hulman.edu", "test", "test", "RoseIM");
 				$stmt = $conn->prepare("SELECT name FROM Sport") or die($conn->error);
 				$stmt->execute();
 				$result = $stmt->get_result();
@@ -94,6 +95,7 @@ if (!isset($_SESSION['emailAddress'])) {
 		<input type="submit" name="submit" value="Create Team">
 	</form>
 	<?php
+	include 'datalogin.php'; 
 		if (isset($_POST['submit'])) {
 			$sport = $_POST['Sport'];
 			$league = $_POST['League'];
