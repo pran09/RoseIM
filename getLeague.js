@@ -9,7 +9,7 @@ $(function () {
 		$.ajax( {
 			type: 'POST',
 			url: 'getLeague.php',
-			data: sport,
+			data: {sport: $sport.val()},
 			datatype: "html",
 			success: function(leagues) {
 				// $league.append('<label>League:</label>');
