@@ -9,7 +9,7 @@ session_start();
 	<title>Login Form</title>
 	<link rel="stylesheet" href="normalize.css">
 	<link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
-	<!--<link rel="stylesheet" href="css/main.css">-->
+	<link rel="stylesheet" href="css/main.css">
 	<style>
 	input[type=submit] {
 		padding: 19px 39px 18px 39px;
@@ -81,13 +81,23 @@ session_start();
 </form>
 
 <?php
+function debug_to_console( $data ) {
+       $output = $data;
+       if (is_array($output))
+        $output = implode( ',', $output);
+
+      echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
+      }
 if (isset($_POST['submit'])) {
 	
 	$emailAddress = $_POST["emailAddress"];
 	$getPassword = $_POST["password"];
 	$notExistingEmail = true;
 
+	debug_to_console($emailAddress);
+
 	include 'datalogin.php';
+
 	$NotInDatabase = true;
 
   #Get permission
